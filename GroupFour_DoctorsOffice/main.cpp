@@ -8,4 +8,6 @@ int main(int argc, char *argv[])
     w.show();
 
     return a.exec();
+
+    //Kommentar for testing av GIT
 }
