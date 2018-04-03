@@ -10,4 +10,5 @@ int main(int argc, char *argv[])
     return a.exec();
 
     //Kommentar for testing av GIT
+    //Test en gang til
 }
