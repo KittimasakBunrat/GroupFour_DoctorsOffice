@@ -12,4 +12,6 @@ int main(int argc, char *argv[])
     //Kommentar for testing av GIT
     //Test en gang til
     // Test fra Rudi. Funker det snart Pontus??
+
+    //Hej hej hemskt mycket hej från Pontus
 }
