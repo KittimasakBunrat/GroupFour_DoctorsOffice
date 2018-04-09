@@ -1,5 +1,6 @@
 #ifndef WIDGET_H
 #define WIDGET_H
+#include "doctor.h"
 
 #include <QWidget>
 
@@ -18,5 +19,7 @@ public:
 private:
     Ui::Widget *ui;
 };
+
+static string buildDoctorNamespace(Doctor *doctor);
 
 #endif // WIDGET_H
