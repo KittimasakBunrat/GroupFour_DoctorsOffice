@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -22,6 +23,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
     QPushButton *pushButton;
 
     void setupUi(QWidget *MainWindow)
@@ -29,9 +32,19 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(639, 510);
-        pushButton = new QPushButton(MainWindow);
+        gridLayoutWidget = new QWidget(MainWindow);
+        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 641, 511));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        pushButton = new QPushButton(gridLayoutWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(500, 440, 80, 21));
+
+        gridLayout->addWidget(pushButton, 0, 0, 1, 1);
+
 
         retranslateUi(MainWindow);
 
