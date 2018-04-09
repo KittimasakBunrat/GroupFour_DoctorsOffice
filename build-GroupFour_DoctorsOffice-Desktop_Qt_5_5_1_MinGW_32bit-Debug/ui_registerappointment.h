@@ -56,9 +56,11 @@ public:
         listView->setGeometry(QRect(50, 170, 256, 381));
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setEnabled(false);
         lineEdit->setGeometry(QRect(110, 40, 113, 21));
         lineEdit_2 = new QLineEdit(centralwidget);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setEnabled(false);
         lineEdit_2->setGeometry(QRect(110, 70, 113, 21));
         label = new QLabel(centralwidget);
         label->setObjectName(QStringLiteral("label"));

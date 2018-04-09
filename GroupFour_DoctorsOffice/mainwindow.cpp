@@ -12,3 +12,16 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::openRegisterAppointment()
+{
+    registerAppointmentWindow = new RegisterAppointment();
+
+    registerAppointmentWindow->show();
+    mainWindow->hide();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    openRegisterAppointment();
+}
