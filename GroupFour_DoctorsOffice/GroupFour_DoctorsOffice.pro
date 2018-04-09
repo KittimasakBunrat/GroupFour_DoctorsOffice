@@ -25,21 +25,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        widget.cpp \
     person.cpp \
     doctor.cpp \
     patient.cpp \
-    registerappointment.cpp
+    registerappointment.cpp \
+    mainwindow.cpp
 
 HEADERS += \
-        widget.h \
     person.h \
     doctor.h \
     patient.h \
-    registerappointment.h
+    registerappointment.h \
+    mainwindow.h
 
 FORMS += \
-        widget.ui \
-    registerappointment.ui
+    registerappointment.ui \
+    mainwindow.ui
 
 CONFIG += c++14

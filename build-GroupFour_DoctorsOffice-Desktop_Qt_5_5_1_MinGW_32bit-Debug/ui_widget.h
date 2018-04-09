@@ -40,7 +40,7 @@ public:
 
 };
 
-namespace Ui {
+namespMainWindow {
     class Widget: public Ui_Widget {};
 } // namespace Ui
 
