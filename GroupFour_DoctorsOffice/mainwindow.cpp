@@ -1,5 +1,7 @@
+#include "doctor.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
@@ -12,6 +14,19 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+struct MainWindow::Appointment
+{
+    Appointment(const Doctor &doctor, const Patient &patient):
+        Doctor(doctor), Patient(patient),
+    {
+
+    }
+
+    Doctor doctor;
+    Patient patient;
+    //Date??
+};
 
 void MainWindow::openRegisterAppointment()
 {
