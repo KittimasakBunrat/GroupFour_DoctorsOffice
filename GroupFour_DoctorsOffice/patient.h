@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-class Patient: public Person
+class Patient
 {
 public:
     Patient();
