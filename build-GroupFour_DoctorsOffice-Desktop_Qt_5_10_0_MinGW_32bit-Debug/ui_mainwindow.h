@@ -42,13 +42,6 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         pushButton = new QPushButton(gridLayoutWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
-        pushButton->setMinimumSize(QSize(80, 22));
-        pushButton->setMaximumSize(QSize(200, 100));
 
         gridLayout->addWidget(pushButton, 0, 0, 1, 1);
 
@@ -61,7 +54,7 @@ public:
     void retranslateUi(QWidget *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Click me!", nullptr));
     } // retranslateUi
 
 };

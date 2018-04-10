@@ -25,31 +25,8 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QPushButton" name="pushButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>80</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>200</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Click me!</string>
       </property>
      </widget>
     </item>

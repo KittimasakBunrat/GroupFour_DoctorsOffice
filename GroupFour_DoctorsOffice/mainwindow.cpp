@@ -17,26 +17,26 @@ MainWindow::~MainWindow()
 
 struct MainWindow::Appointment
 {
-    Appointment(const Doctor &doctor, const Patient &patient):
-        Doctor(doctor), Patient(patient),
+    Appointment(const Doctor &doctor_, const Patient &patient_)
     {
-
+        Doctor doctor = doctor_;
+        Patient patient = patient_;
     }
-
-    Doctor doctor;
-    Patient patient;
-    //Date??
 };
 
-void MainWindow::openRegisterAppointment()
+vector<MainWindow::Appointment> MainWindow::getAppointments()
 {
-    registerAppointmentWindow = new RegisterAppointment();
-
-    registerAppointmentWindow->show();
-    mainWindow->hide();
+    return v_appointments_;
 }
+
+void MainWindow::addAppointment(Appointment &appointment)
+{
+    getAppointments().push_back(appointment);
+}
+
 
 void MainWindow::on_pushButton_clicked()
 {
-    openRegisterAppointment();
+    dialog = new Dialog(this);
+    dialog->show();
 }

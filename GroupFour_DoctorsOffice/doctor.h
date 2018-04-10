@@ -8,12 +8,17 @@ using namespace std;
 
 class Doctor
 {
+
 public:
     Doctor(string first_name, string last_name, int social_number, int phone_number);
-    int get_employee_number();
 
 private:
-    int employee_number_;
+
+    string first_name;
+    string last_name;
+    int social_number;
+    int phone_number;
+
     vector<Patient> v_patients_;
 };
 
