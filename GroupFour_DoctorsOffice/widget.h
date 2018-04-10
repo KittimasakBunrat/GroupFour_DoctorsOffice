@@ -1,6 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 #include "doctor.h"
+#include <QListWidgetItem>
 
 #include <QWidget>
 
@@ -16,10 +17,15 @@ public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
 
+
+private slots:
+    void on_listWidget_Doctors_itemActivated(QListWidgetItem *item);
+
 private:
     Ui::Widget *ui;
+    vector<Doctor> *doctors;
 };
 
-static string buildDoctorNamespace(Doctor *doctor);
+static string BuildDoctorNamespace(Doctor *doctor);
 
 #endif // WIDGET_H
