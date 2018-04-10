@@ -42,6 +42,8 @@ Widget::Widget(QWidget *parent) :
 
     ui->button_SelectDoctor->setEnabled(false);
 
+    //
+
 }
 
 Widget::~Widget()
