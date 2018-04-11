@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "registerappointment.h"
 #include <vector>
+#include <string>
+using namespace std;
 
 namespace Ui {
 class MainWindow;
@@ -15,13 +17,13 @@ class MainWindow : public QWidget
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    struct Appointment;
+//    struct Appointment;
     ~MainWindow();
 
 private:
     RegisterAppointment *registerAppointmentWindow;
     MainWindow *mainWindow;
-    vector<Appointment> v_appointments_;
+   // vector<Appointment> v_appointments_;
 
 private slots:
     void on_pushButton_clicked();

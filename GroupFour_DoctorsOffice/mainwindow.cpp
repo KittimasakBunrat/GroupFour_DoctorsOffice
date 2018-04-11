@@ -14,7 +14,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+/*
 struct MainWindow::Appointment
 {
     Appointment(const Doctor &doctor, const Patient &patient):
@@ -26,7 +26,7 @@ struct MainWindow::Appointment
     Doctor doctor;
     Patient patient;
     //Date??
-};
+};*/
 
 void MainWindow::openRegisterAppointment()
 {
