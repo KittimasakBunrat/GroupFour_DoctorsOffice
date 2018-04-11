@@ -28,15 +28,21 @@ SOURCES += \
         widget.cpp \
     person.cpp \
     doctor.cpp \
-    patient.cpp
+    patient.cpp \
+    doctorpage.cpp \
+    patientpage.cpp
 
 HEADERS += \
         widget.h \
     person.h \
     doctor.h \
-    patient.h
+    patient.h \
+    doctorpage.h \
+    patientpage.h
 
 FORMS += \
-        widget.ui
+        widget.ui \
+    doctorpage.ui \
+    patientpage.ui
 
-CONFIG += c++14
+CONFIG += c++11

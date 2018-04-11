@@ -6,35 +6,101 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>724</width>
-    <height>453</height>
+    <width>606</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QListWidget" name="listWidget_Doctors">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>130</y>
-     <width>371</width>
-     <height>211</height>
+     <x>170</x>
+     <y>10</y>
+     <width>281</width>
+     <height>51</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QPushButton" name="button_SelectDoctor">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>380</y>
-     <width>80</width>
-     <height>21</height>
-    </rect>
+   <property name="font">
+    <font>
+     <family>Gill Sans</family>
+     <pointsize>36</pointsize>
+    </font>
    </property>
    <property name="text">
-    <string>Gå på tur</string>
+    <string>iDoctor Software</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>80</y>
+     <width>524</width>
+     <height>260</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <family>Gill Sans</family>
+          <pointsize>24</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Doctors</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="listWidget_Doctors"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_SelectDoctor">
+        <property name="text">
+         <string>Select Doctor</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>Gill Sans</family>
+          <pointsize>24</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Patients</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="listWidget_Patients"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_SelectPatient">
+        <property name="text">
+         <string>Select Patient</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

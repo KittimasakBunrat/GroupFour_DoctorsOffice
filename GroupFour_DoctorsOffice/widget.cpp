@@ -2,11 +2,8 @@
 #include "ui_widget.h"
 #include "doctor.h"
 #include <iostream>
-//flytt disse til header
-#include <QtGui>
-#include <QtCore>
-#include <string>
-#include <sstream>
+//ikke disse
+#include <QMessageBox>
 
 using namespace std;
 Widget::Widget(QWidget *parent) :
@@ -15,55 +12,105 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Doctor *doctor1 = new Doctor("Kittimasak1", "Bunrat1", 1112, 12345678, 35463);
-    Doctor *doctor2 = new Doctor("Kittimasak2", "Bunrat2", 1113, 12345678, 35464);
-    Doctor *doctor3 = new Doctor("Kittimasak3", "Bunrat3", 1113, 12345678, 35465);
-    Doctor *doctor4 = new Doctor("Kittimasak4", "Bunrat4", 1114, 12345678, 35466);
-    Doctor *doctor5 = new Doctor("Kittimasak5", "Bunrat5", 1115, 12345678, 35467);
-    Doctor *doctor6 = new Doctor("Kittimasak6", "Bunrat6", 1116, 12345678, 35468);
-    Doctor *doctor7 = new Doctor("Kittimasak7", "Bunrat7", 1117, 12345678, 354699);
-    Doctor *doctor8 = new Doctor("Kittimasak8", "Bunrat8", 1118, 12345678, 35467655);
+    Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 12345678, 35463);
+    Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 12345678, 35464);
+    Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 12345678, 35465);
+    Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 12345678, 35466);
+
+    Patient *patient1 = new Patient("Shohaib", "Muhammad", 123321123, 46937362);
+    Patient *patient2 = new Patient("Kittimasak", "Bunrat", 34534345, 456765);
+    Patient *patient3 = new Patient("Rudi", "Dahle", 6785677, 92567894);
+    Patient *patient4 = new Patient("Pontus", "Skóld", 98786758, 80904930);
 
     doctors = new vector<Doctor>();
+    patients = new vector<Patient>();
 
     doctors->push_back(*doctor1);
     doctors->push_back(*doctor2);
     doctors->push_back(*doctor3);
     doctors->push_back(*doctor4);
-    doctors->push_back(*doctor5);
-    doctors->push_back(*doctor6);
-    doctors->push_back(*doctor7);
-    doctors->push_back(*doctor8);
 
-    for(int i = 0; i < doctors->size(); i++)
+    patients->push_back(*patient1);
+    patients->push_back(*patient2);
+    patients->push_back(*patient3);
+    patients->push_back(*patient4);
+
+    for(unsigned int i = 0; i < doctors->size(); i++)
     {
         ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
     }
 
-    ui->button_SelectDoctor->setEnabled(false);
+    for(unsigned int i = 0; i < patients->size(); i++)
+    {
+        ui->listWidget_Patients->addItem(BuildPatientNamespace(&patients->at(i)).c_str());
+    }
 
-    //
+    ui->button_SelectDoctor->setEnabled(false);
 
 }
 
 Widget::~Widget()
 {
     delete doctors;
+    delete patients;
+    delete doctorPage;
+    delete patientPage;
     delete ui;
 }
+
 
 static string BuildDoctorNamespace(Doctor *doctor)
 {
     string doctorInfo;
     ostringstream bodyStream;
-    bodyStream << doctor->get_first_name() << " " << doctor->get_last_name() << " " << doctor->get_employee_number();
+    bodyStream << doctor->get_first_name() << " " << doctor->get_last_name();
     doctorInfo = bodyStream.str();
     return doctorInfo;
 }
 
+static string BuildPatientNamespace(Patient *patient)
+{
+    string patientInfo;
+    ostringstream bodyStream;
+    bodyStream << patient->get_first_name() << " " << patient->get_last_name();
+    patientInfo = bodyStream.str();
+    return patientInfo;
+}
 
+void Widget::on_button_SelectDoctor_clicked()
+{
 
-void Widget::on_listWidget_Doctors_itemActivated(QListWidgetItem *item)
+    doctorPage = new DoctorPage(this);
+
+    string fullName = BuildDoctorNamespace(&doctors->at(ui->listWidget_Doctors->currentRow())).c_str();
+    static const int socialNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_social_number();
+    static const int phoneNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_phone_number();
+    static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+
+    doctorPage->setFullName(fullName.c_str());
+    doctorPage->setSocialNumber(socialNumber);
+    doctorPage->setPhoneNumber(phoneNumber);
+    doctorPage->setEmployeeNumber(employeeNumber);
+
+    doctorPage->show();
+}
+
+void Widget::on_button_SelectPatient_clicked()
+{
+    patientPage = new PatientPage(this);
+
+    string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
+    static const int socialNumber = patients->at(ui->listWidget_Patients->currentRow()).get_social_number();
+    static const int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
+
+    patientPage->setFullName(fullName.c_str());
+    patientPage->setSocialNumber(socialNumber);
+    patientPage->setPhoneNumber(phoneNumber);
+
+    patientPage->show();
+}
+
+void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectDoctor->setEnabled(true);
 }
