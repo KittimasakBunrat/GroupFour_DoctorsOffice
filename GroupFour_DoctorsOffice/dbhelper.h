@@ -8,6 +8,8 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include "doctor.h"
+#include "patient.h"
 
 using namespace std;
 
@@ -27,8 +29,13 @@ public:
     void print_all_persons() const;
     bool remove_all_persons();*/
 
+    //doctor
     bool create_new_doctor(Doctor *doctor);
+    void print_info(Doctor *doctor);
 
+    //patients
+    bool create_new_Patient(Patient *patient);
+    void print_info(Patient *patient);
 
 private:
     QSqlDatabase office_db;

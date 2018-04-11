@@ -27,3 +27,8 @@ void PatientPage::setPhoneNumber(int phoneNumber)
 {
     ui->label_PhoneNumber->setText(QString::number(phoneNumber));
 }
+
+void PatientPage::on_pushButton_clicked()
+{
+
+}

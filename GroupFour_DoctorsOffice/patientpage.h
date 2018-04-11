@@ -19,6 +19,9 @@ public:
     void setSocialNumber(int socialNumber);
     void setPhoneNumber(int phoneNumber);
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::PatientPage *ui;
 };

@@ -12,6 +12,19 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+   // DbHelper db(db_path);
+   // if (db.isOpen())
+   // {
+    //    db.create_table(doctors_table);
+    //    db.create_table(patients_table);
+    //    db.create_table(appointments_table);
+   //     qDebug() << "Database OK";
+   // }
+   // else
+   // {
+   //     qDebug() << "Database not connected";
+   // }
+
     Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 12345678, 35463);
     Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 12345678, 35464);
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 12345678, 35465);

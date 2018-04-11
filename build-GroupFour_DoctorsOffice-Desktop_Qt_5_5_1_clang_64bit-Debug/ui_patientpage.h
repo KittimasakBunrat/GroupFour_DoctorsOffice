@@ -14,10 +14,10 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -26,8 +26,9 @@ QT_BEGIN_NAMESPACE
 class Ui_PatientPage
 {
 public:
-    QDialogButtonBox *buttonBox;
     QLabel *label_6;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
@@ -44,11 +45,6 @@ public:
         if (PatientPage->objectName().isEmpty())
             PatientPage->setObjectName(QStringLiteral("PatientPage"));
         PatientPage->resize(400, 300);
-        buttonBox = new QDialogButtonBox(PatientPage);
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(30, 240, 341, 32));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         label_6 = new QLabel(PatientPage);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(100, 10, 281, 51));
@@ -56,6 +52,12 @@ public:
         font.setFamily(QStringLiteral("Gill Sans"));
         font.setPointSize(18);
         label_6->setFont(font);
+        pushButton = new QPushButton(PatientPage);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(200, 240, 161, 24));
+        pushButton_2 = new QPushButton(PatientPage);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(110, 240, 80, 24));
         widget = new QWidget(PatientPage);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(60, 70, 291, 111));
@@ -110,8 +112,6 @@ public:
 
 
         retranslateUi(PatientPage);
-        QObject::connect(buttonBox, SIGNAL(accepted()), PatientPage, SLOT(accept()));
-        QObject::connect(buttonBox, SIGNAL(rejected()), PatientPage, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(PatientPage);
     } // setupUi
@@ -120,6 +120,8 @@ public:
     {
         PatientPage->setWindowTitle(QApplication::translate("PatientPage", "Dialog", 0));
         label_6->setText(QApplication::translate("PatientPage", "Information About Patient", 0));
+        pushButton->setText(QApplication::translate("PatientPage", "New Appointment", 0));
+        pushButton_2->setText(QApplication::translate("PatientPage", "Cancel", 0));
         label_5->setText(QApplication::translate("PatientPage", "Patient Name: ", 0));
         label_4->setText(QApplication::translate("PatientPage", "Social Number: ", 0));
         label_3->setText(QApplication::translate("PatientPage", "Phone Number", 0));

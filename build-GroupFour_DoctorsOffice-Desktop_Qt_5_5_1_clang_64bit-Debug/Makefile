@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -std=c++11 -stdlib=libc++ -mmacosx-version-min=10.7 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../GroupFour_DoctorsOffice -I. -I../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../../../Qt/5.5/clang_64/mkspecs/macx-clang -F/Users/shohaib/Qt/5.5/clang_64/lib
+INCPATH       = -I../GroupFour_DoctorsOffice -I. -I../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../../../Qt/5.5/clang_64/mkspecs/macx-clang -F/Users/shohaib/Qt/5.5/clang_64/lib
 QMAKE         = /Users/shohaib/Qt/5.5/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = GroupFour_DoctorsOffice1.0.0
 DISTDIR = /Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/build-GroupFour_DoctorsOffice-Desktop_Qt_5_5_1_clang_64bit-Debug/.tmp/GroupFour_DoctorsOffice1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -headerpad_max_install_names -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -stdlib=libc++ -mmacosx-version-min=10.7 -Wl,-rpath,/Users/shohaib/Qt/5.5/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Users/shohaib/Qt/5.5/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Users/shohaib/Qt/5.5/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework QtSql -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -54,7 +54,8 @@ SOURCES       = ../GroupFour_DoctorsOffice/main.cpp \
 		../GroupFour_DoctorsOffice/doctor.cpp \
 		../GroupFour_DoctorsOffice/patient.cpp \
 		../GroupFour_DoctorsOffice/doctorpage.cpp \
-		../GroupFour_DoctorsOffice/patientpage.cpp moc_widget.cpp \
+		../GroupFour_DoctorsOffice/patientpage.cpp \
+		../GroupFour_DoctorsOffice/dbhelper.cpp moc_widget.cpp \
 		moc_doctorpage.cpp \
 		moc_patientpage.cpp
 OBJECTS       = main.o \
@@ -64,6 +65,7 @@ OBJECTS       = main.o \
 		patient.o \
 		doctorpage.o \
 		patientpage.o \
+		dbhelper.o \
 		moc_widget.o \
 		moc_doctorpage.o \
 		moc_patientpage.o
@@ -216,13 +218,15 @@ DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
 		../GroupFour_DoctorsOffice/doctorpage.h \
-		../GroupFour_DoctorsOffice/patientpage.h ../GroupFour_DoctorsOffice/main.cpp \
+		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/dbhelper.h ../GroupFour_DoctorsOffice/main.cpp \
 		../GroupFour_DoctorsOffice/widget.cpp \
 		../GroupFour_DoctorsOffice/person.cpp \
 		../GroupFour_DoctorsOffice/doctor.cpp \
 		../GroupFour_DoctorsOffice/patient.cpp \
 		../GroupFour_DoctorsOffice/doctorpage.cpp \
-		../GroupFour_DoctorsOffice/patientpage.cpp
+		../GroupFour_DoctorsOffice/patientpage.cpp \
+		../GroupFour_DoctorsOffice/dbhelper.cpp
 QMAKE_TARGET  = GroupFour_DoctorsOffice
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = GroupFour_DoctorsOffice.app/Contents/MacOS/GroupFour_DoctorsOffice
@@ -413,6 +417,7 @@ Makefile: ../GroupFour_DoctorsOffice/GroupFour_DoctorsOffice.pro ../../../../Qt/
 		../GroupFour_DoctorsOffice/GroupFour_DoctorsOffice.pro \
 		/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/QtGui.prl \
+		/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/QtSql.prl \
 		/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/QtCore.prl
 	$(QMAKE) -spec macx-clang CONFIG+=debug CONFIG+=x86_64 CONFIG+=qml_debug -o Makefile ../GroupFour_DoctorsOffice/GroupFour_DoctorsOffice.pro
 ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf:
@@ -562,6 +567,7 @@ Makefile: ../GroupFour_DoctorsOffice/GroupFour_DoctorsOffice.pro ../../../../Qt/
 ../GroupFour_DoctorsOffice/GroupFour_DoctorsOffice.pro:
 /Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/QtGui.prl:
+/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/QtSql.prl:
 /Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/QtCore.prl:
 qmake: FORCE
 	@$(QMAKE) -spec macx-clang CONFIG+=debug CONFIG+=x86_64 CONFIG+=qml_debug -o Makefile ../GroupFour_DoctorsOffice/GroupFour_DoctorsOffice.pro
@@ -592,8 +598,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.h ../GroupFour_DoctorsOffice/person.h ../GroupFour_DoctorsOffice/doctor.h ../GroupFour_DoctorsOffice/patient.h ../GroupFour_DoctorsOffice/doctorpage.h ../GroupFour_DoctorsOffice/patientpage.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/person.cpp ../GroupFour_DoctorsOffice/doctor.cpp ../GroupFour_DoctorsOffice/patient.cpp ../GroupFour_DoctorsOffice/doctorpage.cpp ../GroupFour_DoctorsOffice/patientpage.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.h ../GroupFour_DoctorsOffice/person.h ../GroupFour_DoctorsOffice/doctor.h ../GroupFour_DoctorsOffice/patient.h ../GroupFour_DoctorsOffice/doctorpage.h ../GroupFour_DoctorsOffice/patientpage.h ../GroupFour_DoctorsOffice/dbhelper.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/person.cpp ../GroupFour_DoctorsOffice/doctor.cpp ../GroupFour_DoctorsOffice/patient.cpp ../GroupFour_DoctorsOffice/doctorpage.cpp ../GroupFour_DoctorsOffice/patientpage.cpp ../GroupFour_DoctorsOffice/dbhelper.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.ui ../GroupFour_DoctorsOffice/doctorpage.ui ../GroupFour_DoctorsOffice/patientpage.ui $(DISTDIR)/
 
 
@@ -630,74 +636,9 @@ moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/doctorpage.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../GroupFour_DoctorsOffice/patientpage.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../GroupFour_DoctorsOffice/widget.h
-	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/widget.h -o moc_widget.cpp
-
-moc_doctorpage.cpp: ../GroupFour_DoctorsOffice/doctor.h \
-		../GroupFour_DoctorsOffice/patient.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		../GroupFour_DoctorsOffice/doctorpage.h
-	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/doctorpage.h -o moc_doctorpage.cpp
-
-moc_patientpage.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		../GroupFour_DoctorsOffice/patientpage.h
-	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/patientpage.h -o moc_patientpage.cpp
-
-compiler_moc_source_make_all:
-compiler_moc_source_clean:
-compiler_uic_make_all: ui_widget.h ui_doctorpage.h ui_patientpage.h
-compiler_uic_clean:
-	-$(DEL_FILE) ui_widget.h ui_doctorpage.h ui_patientpage.h
-ui_widget.h: ../GroupFour_DoctorsOffice/widget.ui
-	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/widget.ui -o ui_widget.h
-
-ui_doctorpage.h: ../GroupFour_DoctorsOffice/doctorpage.ui
-	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/doctorpage.ui -o ui_doctorpage.h
-
-ui_patientpage.h: ../GroupFour_DoctorsOffice/patientpage.ui
-	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/patientpage.ui -o ui_patientpage.h
-
-compiler_rez_source_make_all:
-compiler_rez_source_clean:
-compiler_yacc_decl_make_all:
-compiler_yacc_decl_clean:
-compiler_yacc_impl_make_all:
-compiler_yacc_impl_clean:
-compiler_lex_make_all:
-compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
-
-####### Compile
-
-main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.h \
-		../GroupFour_DoctorsOffice/doctor.h \
-		../GroupFour_DoctorsOffice/patient.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
-		../GroupFour_DoctorsOffice/doctorpage.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../GroupFour_DoctorsOffice/main.cpp
-
-widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/widget.h \
-		../GroupFour_DoctorsOffice/doctor.h \
-		../GroupFour_DoctorsOffice/patient.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
-		../GroupFour_DoctorsOffice/doctorpage.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		ui_widget.h \
 		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QtGui \
 		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessible.h \
 		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessiblebridge.h \
@@ -961,6 +902,634 @@ widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/widge
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtcoreversion.h \
+		../GroupFour_DoctorsOffice/dbhelper.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../GroupFour_DoctorsOffice/widget.h
+	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/widget.h -o moc_widget.cpp
+
+moc_doctorpage.cpp: ../GroupFour_DoctorsOffice/doctor.h \
+		../GroupFour_DoctorsOffice/patient.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../GroupFour_DoctorsOffice/doctorpage.h
+	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/doctorpage.h -o moc_doctorpage.cpp
+
+moc_patientpage.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../GroupFour_DoctorsOffice/patientpage.h
+	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/patientpage.h -o moc_patientpage.cpp
+
+compiler_moc_source_make_all:
+compiler_moc_source_clean:
+compiler_uic_make_all: ui_widget.h ui_doctorpage.h ui_patientpage.h
+compiler_uic_clean:
+	-$(DEL_FILE) ui_widget.h ui_doctorpage.h ui_patientpage.h
+ui_widget.h: ../GroupFour_DoctorsOffice/widget.ui
+	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/widget.ui -o ui_widget.h
+
+ui_doctorpage.h: ../GroupFour_DoctorsOffice/doctorpage.ui
+	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/doctorpage.ui -o ui_doctorpage.h
+
+ui_patientpage.h: ../GroupFour_DoctorsOffice/patientpage.ui
+	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/patientpage.ui -o ui_patientpage.h
+
+compiler_rez_source_make_all:
+compiler_rez_source_clean:
+compiler_yacc_decl_make_all:
+compiler_yacc_decl_clean:
+compiler_yacc_impl_make_all:
+compiler_yacc_impl_clean:
+compiler_lex_make_all:
+compiler_lex_clean:
+compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+
+####### Compile
+
+main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.h \
+		../GroupFour_DoctorsOffice/doctor.h \
+		../GroupFour_DoctorsOffice/patient.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../GroupFour_DoctorsOffice/doctorpage.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../GroupFour_DoctorsOffice/patientpage.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QtGui \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessible.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessiblebridge.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessibleobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessibleplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qbitmap.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qicon.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qiconengine.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qiconengineplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimage.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimageiohandler.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimagereader.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimagewriter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qmovie.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpicture.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpictureformatplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpixmapcache.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qclipboard.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qcursor.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qdrag.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qgenericplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qguiapplication.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qinputmethod.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qkeysequence.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qoffscreensurface.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglcontext.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpalette.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpixelformat.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qrasterwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qscreen.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsessionmanager.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qstylehints.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsurface.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsurfaceformat.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtouchdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qwindowdefs.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qgenericmatrix.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qquaternion.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvector2d.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvector3d.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvector4d.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengldebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglframebufferobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglpaintdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglpixeltransferoptions.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengltexture.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengltimerquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglversionfunctions.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qbackingstore.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qmatrix.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpagelayout.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpagesize.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpaintdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpaintengine.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpainterpath.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpdfwriter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpolygon.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qregion.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qrgb.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtransform.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfontdatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfontinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfontmetrics.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qglyphrun.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qrawfont.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qstatictext.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextcursor.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextdocument.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextformat.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextlayout.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextoption.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtexttable.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qdesktopservices.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvalidator.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtguiversion.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QtCore \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qanimationgroup.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpauseanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvariantanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcompilerdetection.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qendian.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qflags.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qglobal.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qglobalstatic.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qisenum.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlibraryinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qnamespace.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qnumeric.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qprocessordetection.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsysinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsystemdetection.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtypeinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtypetraits.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbuffer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatastream.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdir.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdiriterator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfiledevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileselector.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qiodevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlockfile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qloggingcategory.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qprocess.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qresource.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsavefile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstorageinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtemporarydir.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtemporaryfile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qurlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractproxymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qidentityproxymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbasictimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcoreevent.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qeventloop.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmath.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmetaobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmetatype.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmimedata.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobjectdefs.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsharedmemory.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsignalmapper.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsocketnotifier.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsystemsemaphore.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtranslator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qwineventnotifier.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmimedatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmimetype.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfactoryinterface.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlibrary.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpluginloader.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/quuid.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractstate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstracttransition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qeventtransition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfinalstate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qhistorystate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsignaltransition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstatemachine.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qatomic.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qexception.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfuture.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfutureinterface.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfuturewatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qgenericatomic.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmutex.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qreadwritelock.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qresultstore.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qrunnable.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsemaphore.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthread.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthreadpool.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthreadstorage.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qwaitcondition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qalgorithms.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qarraydata.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qarraydataops.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qarraydatapointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbitarray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbytearraylist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbytearraymatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcache.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qchar.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcollator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcommandlineoption.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcommandlineparser.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcontainerfwd.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcontiguouscache.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcryptographichash.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qeasingcurve.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qelapsedtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qhash.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qiterator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qline.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlinkedlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlocale.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmargins.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpair.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpoint.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qqueue.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qrect.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qrefcount.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qregexp.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qregularexpression.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qscopedpointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qset.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsharedpointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsize.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstack.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringbuilder.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringmatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimeline.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimezone.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvarlengtharray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtcoreversion.h \
+		../GroupFour_DoctorsOffice/dbhelper.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../GroupFour_DoctorsOffice/main.cpp
+
+widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/widget.h \
+		../GroupFour_DoctorsOffice/doctor.h \
+		../GroupFour_DoctorsOffice/patient.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../GroupFour_DoctorsOffice/doctorpage.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../GroupFour_DoctorsOffice/patientpage.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QtGui \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessible.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessiblebridge.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessibleobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qaccessibleplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qbitmap.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qicon.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qiconengine.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qiconengineplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimage.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimageiohandler.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimagereader.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qimagewriter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qmovie.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpicture.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpictureformatplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpixmapcache.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qclipboard.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qcursor.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qdrag.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qgenericplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qgenericpluginfactory.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qguiapplication.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qinputmethod.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qkeysequence.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qoffscreensurface.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglcontext.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpaintdevicewindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpalette.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpixelformat.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qrasterwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qscreen.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsessionmanager.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qstylehints.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsurface.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsurfaceformat.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtouchdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qwindowdefs.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qgenericmatrix.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qquaternion.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvector2d.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvector3d.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvector4d.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengldebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglframebufferobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglpaintdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglpixeltransferoptions.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengltexture.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopengltimerquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglversionfunctions.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qbackingstore.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qmatrix.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpagedpaintdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpagelayout.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpagesize.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpaintdevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpaintengine.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpainterpath.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpdfwriter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpolygon.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qregion.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qrgb.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtransform.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qabstracttextdocumentlayout.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfontdatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfontinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qfontmetrics.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qglyphrun.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qrawfont.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qstatictext.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qsyntaxhighlighter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextcursor.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextdocument.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextdocumentfragment.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextdocumentwriter.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextformat.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextlayout.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtextoption.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtexttable.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qdesktopservices.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qvalidator.h \
+		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qtguiversion.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QtCore \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qanimationgroup.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpauseanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvariantanimation.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcompilerdetection.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qendian.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qflags.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qglobal.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qglobalstatic.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qisenum.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlibraryinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qnamespace.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qnumeric.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qprocessordetection.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsysinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsystemdetection.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtypeinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtypetraits.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbuffer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatastream.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdir.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdiriterator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfiledevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileselector.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qiodevice.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlockfile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qloggingcategory.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qprocess.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qresource.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsavefile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstorageinfo.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtemporarydir.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtemporaryfile.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qurl.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qurlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractproxymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qidentityproxymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbasictimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcoreevent.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qeventloop.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmath.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmetaobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmetatype.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmimedata.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobjectdefs.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsharedmemory.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsignalmapper.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsocketnotifier.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsystemsemaphore.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtranslator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qwineventnotifier.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmimedatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmimetype.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfactoryinterface.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlibrary.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpluginloader.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/quuid.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstractstate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qabstracttransition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qeventtransition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfinalstate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qhistorystate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsignaltransition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstate.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstatemachine.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qatomic.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qexception.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfuture.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfutureinterface.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfuturewatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qgenericatomic.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmutex.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qreadwritelock.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qresultstore.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qrunnable.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsemaphore.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthread.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthreadpool.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthreadstorage.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qwaitcondition.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qalgorithms.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qarraydata.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qarraydataops.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qarraydatapointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbitarray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbytearraylist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qbytearraymatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcache.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qchar.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcollator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcommandlineoption.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcommandlineparser.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcontainerfwd.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcontiguouscache.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qcryptographichash.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qeasingcurve.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qelapsedtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qhash.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qiterator.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qline.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlinkedlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qlocale.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmargins.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpair.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qpoint.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qqueue.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qrect.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qrefcount.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qregexp.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qregularexpression.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qscopedpointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qset.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsharedpointer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qsize.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstack.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringbuilder.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstringmatcher.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimeline.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimezone.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvarlengtharray.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtcoreversion.h \
+		../GroupFour_DoctorsOffice/dbhelper.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		ui_widget.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o ../GroupFour_DoctorsOffice/widget.cpp
@@ -988,6 +1557,19 @@ patientpage.o: ../GroupFour_DoctorsOffice/patientpage.cpp ../GroupFour_DoctorsOf
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		ui_patientpage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o patientpage.o ../GroupFour_DoctorsOffice/patientpage.cpp
+
+dbhelper.o: ../GroupFour_DoctorsOffice/dbhelper.cpp ../GroupFour_DoctorsOffice/dbhelper.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbhelper.o ../GroupFour_DoctorsOffice/dbhelper.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp
