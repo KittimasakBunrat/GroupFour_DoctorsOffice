@@ -28,20 +28,31 @@ SOURCES += \
     person.cpp \
     doctor.cpp \
     patient.cpp \
+<<<<<<< HEAD
     registerappointment.cpp \
     mainwindow.cpp \
     dbhelper.cpp
+=======
+    mainwindow.cpp \
+    dialog.cpp
+>>>>>>> f8043197a3bab7c0ca9f147ed7c2ef7082f96705
 
 HEADERS += \
     person.h \
     doctor.h \
     patient.h \
+<<<<<<< HEAD
     registerappointment.h \
     mainwindow.h \
     dbhelper.h
+=======
+    mainwindow.h \
+    dialog.h
+>>>>>>> f8043197a3bab7c0ca9f147ed7c2ef7082f96705
 
 FORMS += \
-    registerappointment.ui \
     mainwindow.ui
+    mainwindow.ui \
+    dialog.ui
 
 CONFIG += c++14

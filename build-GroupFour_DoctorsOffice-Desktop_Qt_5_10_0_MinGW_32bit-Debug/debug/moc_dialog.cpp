@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'registerappointment.h'
+** Meta object code from reading C++ file 'dialog.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.10.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../GroupFour_DoctorsOffice/registerappointment.h"
+#include "../../GroupFour_DoctorsOffice/dialog.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'registerappointment.h' doesn't include <QObject>."
+#error "The header file 'dialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.10.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -20,25 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_RegisterAppointment_t {
+struct qt_meta_stringdata_Dialog_t {
     QByteArrayData data[1];
-    char stringdata0[20];
+    char stringdata0[7];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_RegisterAppointment_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Dialog_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_RegisterAppointment_t qt_meta_stringdata_RegisterAppointment = {
+static const qt_meta_stringdata_Dialog_t qt_meta_stringdata_Dialog = {
     {
-QT_MOC_LITERAL(0, 0, 19) // "RegisterAppointment"
+QT_MOC_LITERAL(0, 0, 6) // "Dialog"
 
     },
-    "RegisterAppointment"
+    "Dialog"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_RegisterAppointment[] = {
+static const uint qt_meta_data_Dialog[] = {
 
  // content:
        7,       // revision
@@ -54,7 +54,7 @@ static const uint qt_meta_data_RegisterAppointment[] = {
        0        // eod
 };
 
-void RegisterAppointment::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -62,28 +62,28 @@ void RegisterAppointment::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
     Q_UNUSED(_a);
 }
 
-const QMetaObject RegisterAppointment::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_RegisterAppointment.data,
-      qt_meta_data_RegisterAppointment,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject Dialog::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_Dialog.data,
+      qt_meta_data_Dialog,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *RegisterAppointment::metaObject() const
+const QMetaObject *Dialog::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *RegisterAppointment::qt_metacast(const char *_clname)
+void *Dialog::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_RegisterAppointment.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_Dialog.stringdata0))
         return static_cast<void*>(this);
-    return QMainWindow::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
-int RegisterAppointment::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Dialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP
