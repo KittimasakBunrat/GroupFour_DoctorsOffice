@@ -9,6 +9,8 @@
 #include <QtCore>
 #include <string>
 #include <sstream>
+#include "dbhelper.h"
+#include <QApplication>
 
 namespace Ui {
 class Widget;
@@ -36,6 +38,11 @@ private:
     DoctorPage *doctorPage;
     PatientPage *patientPage;
 };
+
+static const QString db_path { "C:/Sqlite/office.db" };
+static const QString doctors_table { "doctors" };
+static const QString patients_table { "patients" };
+static const QString appointments_table { "appointments" };
 
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);

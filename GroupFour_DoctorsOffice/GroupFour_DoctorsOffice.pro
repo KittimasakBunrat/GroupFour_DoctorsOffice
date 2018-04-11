@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,7 +30,8 @@ SOURCES += \
     doctor.cpp \
     patient.cpp \
     doctorpage.cpp \
-    patientpage.cpp
+    patientpage.cpp \
+    dbhelper.cpp
 
 HEADERS += \
         widget.h \
@@ -38,7 +39,8 @@ HEADERS += \
     doctor.h \
     patient.h \
     doctorpage.h \
-    patientpage.h
+    patientpage.h \
+    dbhelper.h
 
 FORMS += \
         widget.ui \
