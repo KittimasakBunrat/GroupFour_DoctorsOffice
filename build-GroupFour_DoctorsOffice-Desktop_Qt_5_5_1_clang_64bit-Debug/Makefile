@@ -55,9 +55,11 @@ SOURCES       = ../GroupFour_DoctorsOffice/main.cpp \
 		../GroupFour_DoctorsOffice/patient.cpp \
 		../GroupFour_DoctorsOffice/doctorpage.cpp \
 		../GroupFour_DoctorsOffice/patientpage.cpp \
-		../GroupFour_DoctorsOffice/dbhelper.cpp moc_widget.cpp \
+		../GroupFour_DoctorsOffice/dbhelper.cpp \
+		../GroupFour_DoctorsOffice/createnewappointment.cpp moc_widget.cpp \
 		moc_doctorpage.cpp \
-		moc_patientpage.cpp
+		moc_patientpage.cpp \
+		moc_createnewappointment.cpp
 OBJECTS       = main.o \
 		widget.o \
 		person.o \
@@ -66,9 +68,11 @@ OBJECTS       = main.o \
 		doctorpage.o \
 		patientpage.o \
 		dbhelper.o \
+		createnewappointment.o \
 		moc_widget.o \
 		moc_doctorpage.o \
-		moc_patientpage.o
+		moc_patientpage.o \
+		moc_createnewappointment.o
 DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.5/clang_64/mkspecs/features/device_config.prf \
@@ -219,14 +223,16 @@ DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../GroupFour_DoctorsOffice/patient.h \
 		../GroupFour_DoctorsOffice/doctorpage.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
-		../GroupFour_DoctorsOffice/dbhelper.h ../GroupFour_DoctorsOffice/main.cpp \
+		../GroupFour_DoctorsOffice/dbhelper.h \
+		../GroupFour_DoctorsOffice/createnewappointment.h ../GroupFour_DoctorsOffice/main.cpp \
 		../GroupFour_DoctorsOffice/widget.cpp \
 		../GroupFour_DoctorsOffice/person.cpp \
 		../GroupFour_DoctorsOffice/doctor.cpp \
 		../GroupFour_DoctorsOffice/patient.cpp \
 		../GroupFour_DoctorsOffice/doctorpage.cpp \
 		../GroupFour_DoctorsOffice/patientpage.cpp \
-		../GroupFour_DoctorsOffice/dbhelper.cpp
+		../GroupFour_DoctorsOffice/dbhelper.cpp \
+		../GroupFour_DoctorsOffice/createnewappointment.cpp
 QMAKE_TARGET  = GroupFour_DoctorsOffice
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = GroupFour_DoctorsOffice.app/Contents/MacOS/GroupFour_DoctorsOffice
@@ -266,7 +272,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_widget.h ui_doctorpage.h ui_patientpage.h $(OBJECTS)  
+$(TARGET): ui_widget.h ui_doctorpage.h ui_patientpage.h ui_createnewappointment.h $(OBJECTS)  
 	@test -d GroupFour_DoctorsOffice.app/Contents/MacOS/ || mkdir -p GroupFour_DoctorsOffice.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -598,9 +604,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.h ../GroupFour_DoctorsOffice/person.h ../GroupFour_DoctorsOffice/doctor.h ../GroupFour_DoctorsOffice/patient.h ../GroupFour_DoctorsOffice/doctorpage.h ../GroupFour_DoctorsOffice/patientpage.h ../GroupFour_DoctorsOffice/dbhelper.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/person.cpp ../GroupFour_DoctorsOffice/doctor.cpp ../GroupFour_DoctorsOffice/patient.cpp ../GroupFour_DoctorsOffice/doctorpage.cpp ../GroupFour_DoctorsOffice/patientpage.cpp ../GroupFour_DoctorsOffice/dbhelper.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.ui ../GroupFour_DoctorsOffice/doctorpage.ui ../GroupFour_DoctorsOffice/patientpage.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.h ../GroupFour_DoctorsOffice/person.h ../GroupFour_DoctorsOffice/doctor.h ../GroupFour_DoctorsOffice/patient.h ../GroupFour_DoctorsOffice/doctorpage.h ../GroupFour_DoctorsOffice/patientpage.h ../GroupFour_DoctorsOffice/dbhelper.h ../GroupFour_DoctorsOffice/createnewappointment.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/person.cpp ../GroupFour_DoctorsOffice/doctor.cpp ../GroupFour_DoctorsOffice/patient.cpp ../GroupFour_DoctorsOffice/doctorpage.cpp ../GroupFour_DoctorsOffice/patientpage.cpp ../GroupFour_DoctorsOffice/dbhelper.cpp ../GroupFour_DoctorsOffice/createnewappointment.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../GroupFour_DoctorsOffice/widget.ui ../GroupFour_DoctorsOffice/doctorpage.ui ../GroupFour_DoctorsOffice/patientpage.ui ../GroupFour_DoctorsOffice/createnewappointment.ui ../GroupFour_DoctorsOffice/createnewappointment.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -626,9 +632,9 @@ compiler_objective_c_make_all:
 compiler_objective_c_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_widget.cpp moc_doctorpage.cpp moc_patientpage.cpp
+compiler_moc_header_make_all: moc_widget.cpp moc_doctorpage.cpp moc_patientpage.cpp moc_createnewappointment.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_widget.cpp moc_doctorpage.cpp moc_patientpage.cpp
+	-$(DEL_FILE) moc_widget.cpp moc_doctorpage.cpp moc_patientpage.cpp moc_createnewappointment.cpp
 moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
@@ -637,6 +643,7 @@ moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/createnewappointment.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QtGui \
@@ -924,16 +931,22 @@ moc_doctorpage.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/doctorpage.h
 	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/doctorpage.h -o moc_doctorpage.cpp
 
-moc_patientpage.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+moc_patientpage.cpp: ../GroupFour_DoctorsOffice/createnewappointment.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h
 	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/patientpage.h -o moc_patientpage.cpp
 
+moc_createnewappointment.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../GroupFour_DoctorsOffice/createnewappointment.h
+	/Users/shohaib/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/shohaib/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/shohaib/Documents/GitHub/GroupFour_DoctorsOffice/GroupFour_DoctorsOffice -I/Users/shohaib/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/shohaib/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/shohaib/Qt/5.5/clang_64/lib ../GroupFour_DoctorsOffice/createnewappointment.h -o moc_createnewappointment.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_widget.h ui_doctorpage.h ui_patientpage.h
+compiler_uic_make_all: ui_widget.h ui_doctorpage.h ui_patientpage.h ui_createnewappointment.h ui_createnewappointment.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_widget.h ui_doctorpage.h ui_patientpage.h
+	-$(DEL_FILE) ui_widget.h ui_doctorpage.h ui_patientpage.h ui_createnewappointment.h ui_createnewappointment.h
 ui_widget.h: ../GroupFour_DoctorsOffice/widget.ui
 	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/widget.ui -o ui_widget.h
 
@@ -942,6 +955,12 @@ ui_doctorpage.h: ../GroupFour_DoctorsOffice/doctorpage.ui
 
 ui_patientpage.h: ../GroupFour_DoctorsOffice/patientpage.ui
 	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/patientpage.ui -o ui_patientpage.h
+
+ui_createnewappointment.h: ../GroupFour_DoctorsOffice/createnewappointment.ui
+	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/createnewappointment.ui -o ui_createnewappointment.h
+
+ui_createnewappointment.h: ../GroupFour_DoctorsOffice/createnewappointment.ui
+	/Users/shohaib/Qt/5.5/clang_64/bin/uic ../GroupFour_DoctorsOffice/createnewappointment.ui -o ui_createnewappointment.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -964,6 +983,7 @@ main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.h 
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/createnewappointment.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QtGui \
@@ -1252,6 +1272,7 @@ widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/widge
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/createnewappointment.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QtGui \
@@ -1553,6 +1574,7 @@ doctorpage.o: ../GroupFour_DoctorsOffice/doctorpage.cpp ../GroupFour_DoctorsOffi
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o doctorpage.o ../GroupFour_DoctorsOffice/doctorpage.cpp
 
 patientpage.o: ../GroupFour_DoctorsOffice/patientpage.cpp ../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/createnewappointment.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		ui_patientpage.h
@@ -1568,8 +1590,16 @@ dbhelper.o: ../GroupFour_DoctorsOffice/dbhelper.cpp ../GroupFour_DoctorsOffice/d
 		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
 		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../GroupFour_DoctorsOffice/doctor.h \
+		../GroupFour_DoctorsOffice/patient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbhelper.o ../GroupFour_DoctorsOffice/dbhelper.cpp
+
+createnewappointment.o: ../GroupFour_DoctorsOffice/createnewappointment.cpp ../GroupFour_DoctorsOffice/createnewappointment.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_createnewappointment.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o createnewappointment.o ../GroupFour_DoctorsOffice/createnewappointment.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp
@@ -1579,6 +1609,9 @@ moc_doctorpage.o: moc_doctorpage.cpp
 
 moc_patientpage.o: moc_patientpage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_patientpage.o moc_patientpage.cpp
+
+moc_createnewappointment.o: moc_createnewappointment.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_createnewappointment.o moc_createnewappointment.cpp
 
 ####### Install
 

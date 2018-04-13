@@ -30,5 +30,8 @@ void PatientPage::setPhoneNumber(int phoneNumber)
 
 void PatientPage::on_pushButton_clicked()
 {
+    appointmentPage = new CreateNewAppointment(this);
 
+
+    appointmentPage->show();
 }

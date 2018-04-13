@@ -1,5 +1,6 @@
 #ifndef PATIENTPAGE_H
 #define PATIENTPAGE_H
+#include "createnewappointment.h"
 
 #include <QDialog>
 
@@ -24,6 +25,7 @@ private slots:
 
 private:
     Ui::PatientPage *ui;
+    CreateNewAppointment *appointmentPage;
 };
 
 #endif // PATIENTPAGE_H
