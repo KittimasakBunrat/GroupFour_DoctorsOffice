@@ -76,7 +76,8 @@ DIST          =  ..\GroupFour_DoctorsOffice\widget.h \
 		..\GroupFour_DoctorsOffice\doctorpage.h \
 		..\GroupFour_DoctorsOffice\patientpage.h \
 		..\GroupFour_DoctorsOffice\dbhelper.h \
-		..\GroupFour_DoctorsOffice\addpatientdialog.h ..\GroupFour_DoctorsOffice\main.cpp \
+		..\GroupFour_DoctorsOffice\addpatientdialog.h \
+		..\GroupFour_DoctorsOffice\constants.h ..\GroupFour_DoctorsOffice\main.cpp \
 		..\GroupFour_DoctorsOffice\widget.cpp \
 		..\GroupFour_DoctorsOffice\person.cpp \
 		..\GroupFour_DoctorsOffice\doctor.cpp \
@@ -144,6 +145,7 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) release\moc_widget.cpp release\moc_doctorpage.cpp release\moc_patientpage.cpp release\moc_addpatientdialog.cpp
 release/moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QListWidgetItem \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistwidget.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistview.h \
@@ -269,6 +271,7 @@ release/moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/addpatientdialog.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QWidget \
 		C:/Qt/5.5/mingw492_32/include/QtGui/QtGui \
 		C:/Qt/5.5/mingw492_32/include/QtGui/QtGuiDepends \
@@ -486,6 +489,7 @@ release/moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		C:/Qt/5.5/mingw492_32/include/QtSql/QSqlRecord \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/QDebug \
+		../GroupFour_DoctorsOffice/constants.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
@@ -494,6 +498,7 @@ release/moc_widget.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 
 release/moc_doctorpage.cpp: ../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qwidget.h \
@@ -844,6 +849,7 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 release/main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/widget.h \
 		../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QListWidgetItem \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistwidget.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistview.h \
@@ -969,6 +975,7 @@ release/main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/w
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/addpatientdialog.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QWidget \
 		C:/Qt/5.5/mingw492_32/include/QtGui/QtGui \
 		C:/Qt/5.5/mingw492_32/include/QtGui/QtGuiDepends \
@@ -1186,6 +1193,7 @@ release/main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/w
 		C:/Qt/5.5/mingw492_32/include/QtSql/QSqlRecord \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/QDebug \
+		../GroupFour_DoctorsOffice/constants.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h
@@ -1194,6 +1202,7 @@ release/main.o: ../GroupFour_DoctorsOffice/main.cpp ../GroupFour_DoctorsOffice/w
 release/widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffice/widget.h \
 		../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QListWidgetItem \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistwidget.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistview.h \
@@ -1319,6 +1328,7 @@ release/widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffi
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../GroupFour_DoctorsOffice/patientpage.h \
+		../GroupFour_DoctorsOffice/addpatientdialog.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QWidget \
 		C:/Qt/5.5/mingw492_32/include/QtGui/QtGui \
 		C:/Qt/5.5/mingw492_32/include/QtGui/QtGuiDepends \
@@ -1536,6 +1546,7 @@ release/widget.o: ../GroupFour_DoctorsOffice/widget.cpp ../GroupFour_DoctorsOffi
 		C:/Qt/5.5/mingw492_32/include/QtSql/QSqlRecord \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/QDebug \
+		../GroupFour_DoctorsOffice/constants.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
@@ -1568,15 +1579,18 @@ release/person.o: ../GroupFour_DoctorsOffice/person.cpp ../GroupFour_DoctorsOffi
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\person.o ..\GroupFour_DoctorsOffice\person.cpp
 
 release/doctor.o: ../GroupFour_DoctorsOffice/doctor.cpp ../GroupFour_DoctorsOffice/doctor.h \
-		../GroupFour_DoctorsOffice/patient.h
+		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\doctor.o ..\GroupFour_DoctorsOffice\doctor.cpp
 
-release/patient.o: ../GroupFour_DoctorsOffice/patient.cpp ../GroupFour_DoctorsOffice/patient.h
+release/patient.o: ../GroupFour_DoctorsOffice/patient.cpp ../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\patient.o ..\GroupFour_DoctorsOffice\patient.cpp
 
 release/doctorpage.o: ../GroupFour_DoctorsOffice/doctorpage.cpp ../GroupFour_DoctorsOffice/doctorpage.h \
 		../GroupFour_DoctorsOffice/doctor.h \
 		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qwidget.h \
@@ -1954,7 +1968,8 @@ release/dbhelper.o: ../GroupFour_DoctorsOffice/dbhelper.cpp ../GroupFour_Doctors
 		C:/Qt/5.5/mingw492_32/include/QtCore/qset.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
 		../GroupFour_DoctorsOffice/doctor.h \
-		../GroupFour_DoctorsOffice/patient.h
+		../GroupFour_DoctorsOffice/patient.h \
+		../GroupFour_DoctorsOffice/person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\dbhelper.o ..\GroupFour_DoctorsOffice\dbhelper.cpp
 
 release/addpatientdialog.o: ../GroupFour_DoctorsOffice/addpatientdialog.cpp ../GroupFour_DoctorsOffice/addpatientdialog.h \
@@ -2076,13 +2091,8 @@ release/addpatientdialog.o: ../GroupFour_DoctorsOffice/addpatientdialog.cpp ../G
 		C:/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QComboBox \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
@@ -2093,7 +2103,24 @@ release/addpatientdialog.o: ../GroupFour_DoctorsOffice/addpatientdialog.cpp ../G
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstyle.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qrubberband.h
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialogButtonBox \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHeaderView \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLabel \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLineEdit \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.5/mingw492_32/include/QtGui/qtextcursor.h \
+		C:/Qt/5.5/mingw492_32/include/QtGui/qtextformat.h \
+		C:/Qt/5.5/mingw492_32/include/QtGui/qpen.h \
+		C:/Qt/5.5/mingw492_32/include/QtGui/qtextoption.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\addpatientdialog.o ..\GroupFour_DoctorsOffice\addpatientdialog.cpp
 
 release/moc_widget.o: release/moc_widget.cpp 

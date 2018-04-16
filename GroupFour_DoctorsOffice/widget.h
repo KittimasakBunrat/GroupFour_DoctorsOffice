@@ -11,6 +11,7 @@
 #include <string>
 #include <sstream>
 #include "dbhelper.h"
+#include "constants.h"
 #include <QApplication>
 
 namespace Ui {

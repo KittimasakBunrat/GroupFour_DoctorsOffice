@@ -68,7 +68,7 @@
     <string>LastName:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="phone_label">
+  <widget class="QLabel" name="phone_number_label">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -94,7 +94,7 @@
     <string>Doctor:</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="doctor_combo_box">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -104,7 +104,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="phone_number_edit">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -114,7 +114,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="last_name_edit">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -124,7 +124,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="first_name_edit">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -134,7 +134,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="social_number_edit">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -145,6 +145,13 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>social_number_edit</tabstop>
+  <tabstop>first_name_edit</tabstop>
+  <tabstop>last_name_edit</tabstop>
+  <tabstop>phone_number_edit</tabstop>
+  <tabstop>doctor_combo_box</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

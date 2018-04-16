@@ -14,22 +14,19 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    static const QString app_data_path = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+    qDebug() << "DatabasePath: " << GLOBAL_CONST_app_data_path;
 
-    qDebug() << "DatabasePath: " << app_data_path;
-
-    QDir dir(app_data_path);
+    QDir dir(GLOBAL_CONST_app_data_path);
     if (!dir.exists())
-        dir.mkpath(app_data_path);
+        dir.mkpath(GLOBAL_CONST_app_data_path);
     if (!dir.exists("SQLite"))
         dir.mkdir("SQLite");
 
-    static const QString db_path { app_data_path + "/SQLite/office.db" };
     static const QString doctors_table { "doctors" };
     static const QString patients_table { "patients" };
     static const QString appointments_table { "appointments" };
 
-    DbHelper db(db_path);
+    DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
         db.create_table(doctors_table);

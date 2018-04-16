@@ -42,7 +42,8 @@ HEADERS += \
     doctorpage.h \
     patientpage.h \
     dbhelper.h \
-    addpatientdialog.h
+    addpatientdialog.h \
+    constants.h
 
 FORMS += \
         widget.ui \

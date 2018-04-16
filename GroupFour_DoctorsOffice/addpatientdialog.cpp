@@ -6,6 +6,7 @@ AddPatientDialog::AddPatientDialog(QWidget *parent) :
     ui(new Ui::AddPatientDialog)
 {
     ui->setupUi(this);
+
 }
 
 AddPatientDialog::~AddPatientDialog()
@@ -15,7 +16,22 @@ AddPatientDialog::~AddPatientDialog()
 
 void AddPatientDialog::on_add_patient_buttonBox_accepted()
 {
+    int social_number { ui->social_number_edit->text().toInt() };
+    QString first_name { ui->first_name_edit->text() };
+    QString last_name { ui->last_name_edit->text() };
+    int phone_number { ui->phone_number_edit->text().toInt() };
+    // TODO: LEGG INN ID FRA LEGE COMBOBOX
 
+    DbHelper db(GLOBAL_CONST_db_path);
+    if (db.isOpen())
+    {
+        db.create_new_patient(social_number, first_name, last_name, phone_number, 9);
+        qDebug() << "Database OK";
+    }
+    else
+    {
+        qDebug() << "Database not connected";
+    }
 }
 
 void AddPatientDialog::on_add_patient_buttonBox_rejected()
