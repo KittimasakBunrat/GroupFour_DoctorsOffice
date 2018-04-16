@@ -79,23 +79,28 @@ bool DbHelper::create_table(const QString& table_name)
 
 }
 
-bool DbHelper::create_new_patient()
+bool DbHelper::create_new_patient(const int& social_number, const QString& first_name,
+                                  const QString& last_name, const int& phone_number, const int& doctor_id)
 {
     bool success { false };
 
     QSqlQuery query;
-    query.prepare("INSERT INTO patients social_number, first_name,"
-                  "last_name, phone_number, doctor"
-                  "VALUES (123, hei, nei, 12345, 1);");
+    query.prepare("INSERT INTO patients (social_number, first_name,last_name, phone_number, doctor)"
+                  "VALUES (:social_number, :first_name, :last_name, :phone_number, :doctor_id)");
+    query.bindValue(":social_number", social_number);
+    query.bindValue(":first_name", first_name);
+    query.bindValue(":last_name", last_name);
+    query.bindValue(":phone_number", phone_number);
+    query.bindValue(":doctor_id", doctor_id);
 
     if(!query.exec())
     {
-        cout << "Couldn't create the table ': one might already exist.";
+        qDebug() << "Create patient error: " << query.lastError();
         success = { false };
     }
     else
     {
-        cout << "Created table";
+        qDebug() << "Created table";
     }
     return success;
 }

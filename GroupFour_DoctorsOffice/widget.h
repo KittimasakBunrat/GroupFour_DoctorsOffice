@@ -45,10 +45,10 @@ private:
     AddPatientDialog *add_patient_dialog_;
 };
 
-static const QString db_path { "C:/Sqlite/office.db" };
+/*static const QString db_path { "C:/Sqlite/office.db" };
 static const QString doctors_table { "doctors" };
 static const QString patients_table { "patients" };
-static const QString appointments_table { "appointments" };
+static const QString appointments_table { "appointments" };*/
 
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);

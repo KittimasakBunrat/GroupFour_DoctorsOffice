@@ -16,6 +16,8 @@ Widget::Widget(QWidget *parent) :
 
     static const QString app_data_path = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
 
+    qDebug() << "DatabasePath: " << app_data_path;
+
     QDir dir(app_data_path);
     if (!dir.exists())
         dir.mkpath(app_data_path);
@@ -33,7 +35,7 @@ Widget::Widget(QWidget *parent) :
         db.create_table(doctors_table);
         db.create_table(patients_table);
         db.create_table(appointments_table);
-        db.create_new_patient();
+        db.create_new_patient(12321, "Kitti", "Masak", 876, 9);
         qDebug() << "Database OK";
     }
     else

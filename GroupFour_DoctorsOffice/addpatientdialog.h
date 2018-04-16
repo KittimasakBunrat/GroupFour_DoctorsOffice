@@ -16,8 +16,6 @@ public:
     ~AddPatientDialog();
 
 private slots:
-  //  void on_buttonBox_accepted();
-
     void on_add_patient_buttonBox_accepted();
 
     void on_add_patient_buttonBox_rejected();

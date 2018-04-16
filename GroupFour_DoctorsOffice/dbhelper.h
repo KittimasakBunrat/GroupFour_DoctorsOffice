@@ -22,7 +22,8 @@ public:
 
     bool isOpen() const;
     bool create_table(const QString& table_name);
-    bool create_new_patient();
+    bool create_new_patient(const int& social_number, const QString& first_name,
+                            const QString& last_name, const int& phone_number, const int& doctor_id);
     /*bool remove_person();
     bool update_person();
     bool person_exists() const;
