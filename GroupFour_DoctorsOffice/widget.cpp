@@ -63,10 +63,10 @@ Widget::Widget(QWidget *parent) :
     doctors->push_back(*doctor3);
     doctors->push_back(*doctor4);
 
-    patients->push_back(*patient1);
+ /*   patients->push_back(*patient1);
     patients->push_back(*patient2);
     patients->push_back(*patient3);
-    patients->push_back(*patient4);
+    patients->push_back(*patient4);*/
 
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
