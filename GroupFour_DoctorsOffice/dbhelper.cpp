@@ -105,6 +105,18 @@ bool DbHelper::create_new_patient(const int& social_number, const QString& first
     }
     return success;
 }
+
+bool DbHelper::update_patient(const int &social_number, const QString &first_name, const QString &last_name, const int &phone_number, const int &doctor_id, const int& id)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE patients SET social_number = ':social_number', first_name = ':first_name', last_name = ':last_name', phone_number = ':phone_number', doctor_id = ':doctor_id' WHERE id = ':id'");
+    query.bindValue(":social_number", social_number);
+    query.bindValue(":first_name", first_name);
+    query.bindValue(":last_name", last_name);
+    query.bindValue(":phone_number", phone_number);
+    query.bindValue("doctor_id", doctor_id);
+    query.bindValue(":id", id);
+}
 /*
 bool DbManager::addPerson(const QString& name)
 {
