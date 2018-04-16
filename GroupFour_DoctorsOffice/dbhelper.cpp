@@ -117,6 +117,14 @@ bool DbHelper::update_patient(const int &social_number, const QString &first_nam
     query.bindValue("doctor_id", doctor_id);
     query.bindValue(":id", id);
 }
+
+QSqlQuery DbHelper::query(const QString &sql)
+{
+    QSqlQuery query(sql);
+    query.exec();
+    return query;
+}
+
 /*
 bool DbManager::addPerson(const QString& name)
 {

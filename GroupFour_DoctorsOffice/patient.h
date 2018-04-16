@@ -7,7 +7,10 @@ using namespace std;
 class Patient : public Person
 {
 public:
-    Patient(string first_name, string last_name, int social_number, int phone_number);
+    Patient(int social_number, string first_name, string last_name, int phone_number, int doctor_id_);
+
+private:
+    int doctor_id_;
 };
 
 #endif // PATIENT_H

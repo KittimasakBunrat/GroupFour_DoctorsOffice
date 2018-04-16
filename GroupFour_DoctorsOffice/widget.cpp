@@ -4,7 +4,8 @@
 #include <iostream>
 //ikke disse
 #include <QMessageBox>
-
+#include <QSqlQuery>
+#include <QDebug>
 
 
 using namespace std;
@@ -48,15 +49,9 @@ Widget::Widget(QWidget *parent) :
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 12345678, 35465);
     Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 12345678, 35466);
 
-    /*
-    Patient *patient1 = new Patient("Shohaib", "Muhammad", 123321123, 46937362);
-    Patient *patient2 = new Patient("Kittimasak", "Bunrat", 34534345, 456765);
-    Patient *patient3 = new Patient("Rudi", "Dahle", 6785677, 92567894);
-    Patient *patient4 = new Patient("Pontus", "Skóld", 98786758, 80904930);
-    */
+    //db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
+    //db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
 
-    db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
-    db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
 
     doctors = new vector<Doctor>();
     patients = new vector<Patient>();
@@ -66,10 +61,25 @@ Widget::Widget(QWidget *parent) :
     doctors->push_back(*doctor3);
     doctors->push_back(*doctor4);
 
-    patients->push_back(*patient1);
-    patients->push_back(*patient2);
-    patients->push_back(*patient3);
-    patients->push_back(*patient4);
+    QSqlQuery query = db.query("SELECT * FROM patients");
+
+    while(query.next()) {
+        int social = query.value(0).toInt();
+        qDebug() << "Social: " << social;
+        QString first = query.value(1).toString();
+        QString last = query.value(2).toString();
+        int phone = query.value(3).toInt();
+        int doc = query.value(4).toInt();
+        qDebug() << "phone: " << phone << "doc: " << doc;
+        string firstt = first.toStdString();
+        string lastt = last.toStdString();
+
+        Patient *patient = new Patient(social, firstt, lastt, phone, doc);
+
+        qDebug() << "PHONE AND SOCIAL: " << patient->get_phone_number() << patient->get_social_number() << endl;
+
+        patients->push_back(*patient);
+    }
 
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
