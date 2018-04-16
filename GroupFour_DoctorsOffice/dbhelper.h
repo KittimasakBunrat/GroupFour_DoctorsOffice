@@ -1,9 +1,10 @@
 #ifndef DBHELPER_H
 #define DBHELPER_H
 
-#include <QSqlDatabase>
+
 #include <string>
 #include <iostream>
+#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlRecord>
@@ -21,8 +22,8 @@ public:
 
     bool isOpen() const;
     bool create_table(const QString& table_name);
-  /*  bool create_new_entry();
-    bool remove_person();
+    bool create_new_patient();
+    /*bool remove_person();
     bool update_person();
     bool person_exists() const;
     void print_person();

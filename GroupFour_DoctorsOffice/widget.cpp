@@ -5,6 +5,8 @@
 //ikke disse
 #include <QMessageBox>
 
+
+
 using namespace std;
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -12,18 +14,32 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-   // DbHelper db(db_path);
-   // if (db.isOpen())
-   // {
-    //    db.create_table(doctors_table);
-    //    db.create_table(patients_table);
-    //    db.create_table(appointments_table);
-   //     qDebug() << "Database OK";
-   // }
-   // else
-   // {
-   //     qDebug() << "Database not connected";
-   // }
+    static const QString app_data_path = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+
+    QDir dir(app_data_path);
+    if (!dir.exists())
+        dir.mkpath(app_data_path);
+    if (!dir.exists("SQLite"))
+        dir.mkdir("SQLite");
+
+    static const QString db_path { app_data_path + "/SQLite/office.db" };
+    static const QString doctors_table { "doctors" };
+    static const QString patients_table { "patients" };
+    static const QString appointments_table { "appointments" };
+
+    DbHelper db(db_path);
+    if (db.isOpen())
+    {
+        db.create_table(doctors_table);
+        db.create_table(patients_table);
+        db.create_table(appointments_table);
+        db.create_new_patient();
+        qDebug() << "Database OK";
+    }
+    else
+    {
+        qDebug() << "Database not connected";
+    }
 
     Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 12345678, 35463);
     Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 12345678, 35464);
@@ -68,6 +84,7 @@ Widget::~Widget()
     delete patients;
     delete doctorPage;
     delete patientPage;
+    delete add_patient_dialog_;
     delete ui;
 }
 
@@ -126,4 +143,16 @@ void Widget::on_button_SelectPatient_clicked()
 void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectDoctor->setEnabled(true);
+}
+
+void Widget::on_button_AddPatient_clicked()
+{
+    add_patient_dialog_ = new AddPatientDialog(this);
+    add_patient_dialog_->show();
+}
+
+void Widget::on_button_AddDoctor_clicked()
+{
+    //add_doctor_page = new AddDoctorPage(this);
+    //add_doctor_page->show();
 }

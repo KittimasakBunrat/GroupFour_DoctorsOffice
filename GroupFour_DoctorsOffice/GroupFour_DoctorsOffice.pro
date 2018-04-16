@@ -31,7 +31,8 @@ SOURCES += \
     patient.cpp \
     doctorpage.cpp \
     patientpage.cpp \
-    dbhelper.cpp
+    dbhelper.cpp \
+    addpatientdialog.cpp
 
 HEADERS += \
         widget.h \
@@ -40,11 +41,13 @@ HEADERS += \
     patient.h \
     doctorpage.h \
     patientpage.h \
-    dbhelper.h
+    dbhelper.h \
+    addpatientdialog.h
 
 FORMS += \
         widget.ui \
     doctorpage.ui \
-    patientpage.ui
+    patientpage.ui \
+    addpatientdialog.ui
 
 CONFIG += c++11

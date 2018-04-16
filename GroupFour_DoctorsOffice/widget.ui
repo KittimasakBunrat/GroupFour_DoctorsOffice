@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
-    <height>400</height>
+    <width>629</width>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>120</x>
      <y>10</y>
-     <width>281</width>
+     <width>371</width>
      <height>51</height>
     </rect>
    </property>
@@ -32,13 +32,13 @@
     <string>iDoctor Software</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
      <y>80</y>
      <width>524</width>
-     <height>260</height>
+     <height>323</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -61,6 +61,13 @@
       </item>
       <item>
        <widget class="QListWidget" name="listWidget_Doctors"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_AddDoctor">
+        <property name="text">
+         <string>Add Doctor</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="button_SelectDoctor">
@@ -90,6 +97,13 @@
       </item>
       <item>
        <widget class="QListWidget" name="listWidget_Patients"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_AddPatient">
+        <property name="text">
+         <string>Add Patient</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="button_SelectPatient">

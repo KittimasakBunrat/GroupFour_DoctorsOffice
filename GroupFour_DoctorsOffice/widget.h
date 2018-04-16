@@ -4,6 +4,7 @@
 #include <QListWidgetItem>
 #include "doctorpage.h"
 #include "patientpage.h"
+#include "addpatientdialog.h"
 #include <QWidget>
 #include <QtGui>
 #include <QtCore>
@@ -31,12 +32,17 @@ private slots:
 
     void on_button_SelectPatient_clicked();
 
+    void on_button_AddPatient_clicked();
+
+    void on_button_AddDoctor_clicked();
+
 private:
     Ui::Widget *ui;
     vector<Doctor> *doctors;
     vector<Patient> *patients;
     DoctorPage *doctorPage;
     PatientPage *patientPage;
+    AddPatientDialog *add_patient_dialog_;
 };
 
 static const QString db_path { "C:/Sqlite/office.db" };
