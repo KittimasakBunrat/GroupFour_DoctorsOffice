@@ -12,11 +12,7 @@ public:
     int get_social_number();
     int get_phone_number();
 
-    void set_first_name(string first_name);
-    void set_last_name(string last_name);
-    void set_phone_number(int phone_number);
-
-private:
+protected:
     string first_name_;
     string last_name_;
     int social_number_;
