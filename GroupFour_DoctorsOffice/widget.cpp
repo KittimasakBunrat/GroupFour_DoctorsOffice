@@ -35,7 +35,7 @@ Widget::Widget(QWidget *parent) :
         db.create_table(doctors_table);
         db.create_table(patients_table);
         db.create_table(appointments_table);
-        db.create_new_patient(12321, "Kitti", "Masak", 876, 9);
+        //db.create_new_patient(12321, "Kitti", "Masak", 876, 9);
         qDebug() << "Database OK";
     }
     else
@@ -48,10 +48,15 @@ Widget::Widget(QWidget *parent) :
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 12345678, 35465);
     Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 12345678, 35466);
 
+    /*
     Patient *patient1 = new Patient("Shohaib", "Muhammad", 123321123, 46937362);
     Patient *patient2 = new Patient("Kittimasak", "Bunrat", 34534345, 456765);
     Patient *patient3 = new Patient("Rudi", "Dahle", 6785677, 92567894);
     Patient *patient4 = new Patient("Pontus", "Skóld", 98786758, 80904930);
+    */
+
+    db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
+    db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
 
     doctors = new vector<Doctor>();
     patients = new vector<Patient>();

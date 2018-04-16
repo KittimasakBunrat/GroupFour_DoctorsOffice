@@ -39,6 +39,10 @@ public:
     bool create_new_Patient(Patient *patient);
     void print_info(Patient *patient);
 
+    bool update_patient(const int& social_number, const QString& first_name,
+                            const QString& last_name, const int& phone_number, const int& doctor_id, const int& id);
+
+
 private:
     QSqlDatabase office_db;
 };
