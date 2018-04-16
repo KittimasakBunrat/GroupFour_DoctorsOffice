@@ -47,7 +47,8 @@ bool DbHelper::create_table(const QString& table_name)
     else if (table_name == "patients")
     {
         query.prepare("CREATE TABLE patients("
-                      "social_number INTEGER PRIMARY KEY,"
+                      "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                      "social_number INTEGER,"
                       "first_name TEXT NOT NULL,"
                       "last_name TEXT NOT NULL,"
                       "phone_number INT NOT NULL,"
