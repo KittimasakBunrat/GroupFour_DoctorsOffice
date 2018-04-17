@@ -8,6 +8,7 @@ INPUT(
 ./debug\patientpage.o
 ./debug\dbhelper.o
 ./debug\addpatientdialog.o
+./debug\appointment.o
 ./debug\moc_widget.o
 ./debug\moc_doctorpage.o
 ./debug\moc_patientpage.o

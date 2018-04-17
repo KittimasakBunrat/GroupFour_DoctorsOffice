@@ -32,7 +32,8 @@ SOURCES += \
     doctorpage.cpp \
     patientpage.cpp \
     dbhelper.cpp \
-    addpatientdialog.cpp
+    addpatientdialog.cpp \
+    appointment.cpp
 
 HEADERS += \
         widget.h \
@@ -43,7 +44,8 @@ HEADERS += \
     patientpage.h \
     dbhelper.h \
     addpatientdialog.h \
-    constants.h
+    constants.h \
+    appointment.h
 
 FORMS += \
         widget.ui \
