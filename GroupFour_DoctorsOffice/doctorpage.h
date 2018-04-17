@@ -18,7 +18,7 @@ public:
 
     void setFullName(QString name);
     void setPhoneNumber(int phoneNumber);
-    void setEmployeeNumber(int employeeNumber);
+    //void setEmployeeNumber(int employeeNumber);
 
 
 private:

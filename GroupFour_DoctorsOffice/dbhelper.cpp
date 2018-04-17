@@ -38,7 +38,7 @@ bool DbHelper::create_table(const QString& table_name)
     if(table_name == "doctors")
     {
         query.prepare("CREATE TABLE IF NOT EXISTS doctors("
-                      "employee_id INTEGER PRIMARY KEY,"
+                      "employee_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                       "first_name TEXT NOT NULL,"
                       "last_name TEXT NOT NULL,"
                       "phone_number INT NOT NULL"
@@ -101,7 +101,7 @@ bool DbHelper::create_new_patient(const int& social_number, const QString& first
     }
     else
     {
-        qDebug() << "Created table";
+        qDebug() << "Created patient";
     }
     return success;
 }
@@ -160,11 +160,48 @@ vector<Appointment> DbHelper::get_appointments()
     return v_appointments;
 }
 
+
 QSqlQuery DbHelper::query(const QString &sql)
 {
     QSqlQuery query(sql);
     query.exec();
     return query;
+}
+
+bool DbHelper::create_new_doctor(const QString &first_name, const QString &last_name, const int &social_number, const int &phone_number)
+{
+    bool success { false };
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO doctors (first_name, last_name, social_number, phone_number)"
+                  "VALUES (:first_name, :last_name, :social_number, :phone_number)");
+    query.bindValue(":first_name", first_name);
+    query.bindValue(":last_name", last_name);
+    query.bindValue(":social_number", social_number);
+    query.bindValue(":phone_number", phone_number);
+
+
+    if(!query.exec())
+    {
+        qDebug() << "Create doctor error: " << query.lastError();
+        success = { false };
+    }
+    else
+    {
+        qDebug() << "Created doctor";
+    }
+    return success;
+}
+
+bool DbHelper::update_doctor(const QString &first_name, const QString &last_name, const int &social_number, const int &phone_number, const int &employee_id)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE doctors SET first_name = ':first_name', last_name = ':last_name', social_number = ':social_number', phone_number = ':phone_number' WHERE employee_id = ':employee_id'");
+    query.bindValue(":social_number", social_number);
+    query.bindValue(":first_name", first_name);
+    query.bindValue(":last_name", last_name);
+    query.bindValue(":phone_number", phone_number);
+    query.bindValue(":employee_id", employee_id);
 }
 
 /*
