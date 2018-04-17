@@ -80,19 +80,18 @@ bool DbHelper::create_table(const QString& table_name)
 
 }
 
-bool DbHelper::create_new_patient(const int& social_number, const QString& first_name,
-                                  const QString& last_name, const int& phone_number, const int& doctor_id)
+bool DbHelper::create_new_patient(Patient patient)
 {
     bool success { false };
 
     QSqlQuery query;
     query.prepare("INSERT INTO patients (social_number, first_name,last_name, phone_number, doctor)"
                   "VALUES (:social_number, :first_name, :last_name, :phone_number, :doctor_id)");
-    query.bindValue(":social_number", social_number);
-    query.bindValue(":first_name", first_name);
-    query.bindValue(":last_name", last_name);
-    query.bindValue(":phone_number", phone_number);
-    query.bindValue(":doctor_id", doctor_id);
+    query.bindValue(":social_number", patient.getSocialNumber());
+    query.bindValue(":first_name", patient.get_first_name());
+    query.bindValue(":last_name", patient.get_last_name());
+    query.bindValue(":phone_number", patient.get_phone_number());
+    query.bindValue(":doctor_id", patient.getDoctorID());
 
     if(!query.exec())
     {
@@ -106,15 +105,15 @@ bool DbHelper::create_new_patient(const int& social_number, const QString& first
     return success;
 }
 
-bool DbHelper::update_patient(const int &social_number, const QString &first_name, const QString &last_name, const int &phone_number, const int &doctor_id, const int& id)
+bool DbHelper::update_patient(Patient patient, int id)
 {
     QSqlQuery query;
     query.prepare("UPDATE patients SET social_number = ':social_number', first_name = ':first_name', last_name = ':last_name', phone_number = ':phone_number', doctor_id = ':doctor_id' WHERE id = ':id'");
-    query.bindValue(":social_number", social_number);
-    query.bindValue(":first_name", first_name);
-    query.bindValue(":last_name", last_name);
-    query.bindValue(":phone_number", phone_number);
-    query.bindValue("doctor_id", doctor_id);
+    query.bindValue(":social_number", patient.getSocialNumber());
+    query.bindValue(":first_name", patient.get_first_name());
+    query.bindValue(":last_name", patient.get_last_name());
+    query.bindValue(":phone_number", patient.get_phone_number());
+    query.bindValue("doctor_id", patient.getDoctorID());
     query.bindValue(":id", id);
 }
 
@@ -205,15 +204,14 @@ bool DbHelper::create_new_doctor(Doctor doctor)
     return success;
 }
 
-bool DbHelper::update_doctor(const QString &first_name, const QString &last_name, const int &social_number, const int &phone_number, const int &employee_id)
+bool DbHelper::update_doctor(Doctor doctor, int doctor_id)
 {
     QSqlQuery query;
-    query.prepare("UPDATE doctors SET first_name = ':first_name', last_name = ':last_name', social_number = ':social_number', phone_number = ':phone_number' WHERE employee_id = ':employee_id'");
-    query.bindValue(":social_number", social_number);
-    query.bindValue(":first_name", first_name);
-    query.bindValue(":last_name", last_name);
-    query.bindValue(":phone_number", phone_number);
-    query.bindValue(":employee_id", employee_id);
+    query.prepare("UPDATE doctors SET first_name = ':first_name', last_name = ':last_name', phone_number = ':phone_number' WHERE employee_id = ':employee_id'");
+    query.bindValue(":first_name", doctor.get_first_name());
+    query.bindValue(":last_name", doctor.get_last_name());
+    query.bindValue(":phone_number", doctor.get_phone_number());
+    query.bindValue(":employee_id", doctor_id);
 }
 
 vector<Doctor> *DbHelper::get_doctors()

@@ -46,10 +46,11 @@ Widget::Widget(QWidget *parent) :
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 43234565);
     Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 93456543);
 
+    /*
     db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
     db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
     db.create_new_doctor(*doctor1);
-
+    */
 
 
     doctors = new vector<Doctor>();

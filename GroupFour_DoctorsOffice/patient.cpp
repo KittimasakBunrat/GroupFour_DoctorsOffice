@@ -13,3 +13,8 @@ int Patient::getDoctorID()
 {
     return this->doctor_id_;
 }
+
+int Patient::getSocialNumber()
+{
+    return this->social_number_;
+}
