@@ -63,7 +63,7 @@ bool DbHelper::create_table(const QString& table_name)
                       "doctor INTEGER,"
                       "patient INTEGER,"
                       "FOREIGN KEY(doctor) REFERENCES doctors(employee_id),"
-                      "FOREIGN KEY(patient) REFERENCES patients(social_number)"
+                      "FOREIGN KEY(patient) REFERENCES patients(id)"
                       ");");
     }
 
@@ -116,6 +116,28 @@ bool DbHelper::update_patient(const int &social_number, const QString &first_nam
     query.bindValue(":phone_number", phone_number);
     query.bindValue("doctor_id", doctor_id);
     query.bindValue(":id", id);
+}
+
+bool DbHelper::create_new_appointment(Appointment appointment)
+{
+    bool success { false };
+    QSqlQuery query;
+    query.prepare("INSERT INTO appointments (appointment_time, doctor, patient)"
+                  "VALUES (:appointment_time, :doctor_id, :patient_id)");
+    query.bindValue(":appointment_time", appointment.get_appointment_time());
+    query.bindValue(":doctor_id", appointment.get_doctor_id());
+    query.bindValue(":patient_id", appointment.get_patient_id());
+
+    if(!query.exec())
+    {
+        qDebug() << "Create appointment error: " << query.lastError();
+        return success;
+    }
+    else
+    {
+        qDebug() << "Created new appointment";
+    }
+    return success;
 }
 
 QSqlQuery DbHelper::query(const QString &sql)

@@ -29,13 +29,13 @@ public:
     QLabel *social_number_label;
     QLabel *first_name_label;
     QLabel *last_name_label;
-    QLabel *phone_label;
+    QLabel *phone_number_label;
     QLabel *doctor_label;
-    QComboBox *comboBox;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_4;
+    QComboBox *doctor_combo_box;
+    QLineEdit *phone_number_edit;
+    QLineEdit *last_name_edit;
+    QLineEdit *first_name_edit;
+    QLineEdit *social_number_edit;
 
     void setupUi(QDialog *AddPatientDialog)
     {
@@ -56,27 +56,31 @@ public:
         last_name_label = new QLabel(AddPatientDialog);
         last_name_label->setObjectName(QStringLiteral("last_name_label"));
         last_name_label->setGeometry(QRect(50, 90, 71, 16));
-        phone_label = new QLabel(AddPatientDialog);
-        phone_label->setObjectName(QStringLiteral("phone_label"));
-        phone_label->setGeometry(QRect(50, 120, 81, 16));
+        phone_number_label = new QLabel(AddPatientDialog);
+        phone_number_label->setObjectName(QStringLiteral("phone_number_label"));
+        phone_number_label->setGeometry(QRect(50, 120, 81, 16));
         doctor_label = new QLabel(AddPatientDialog);
         doctor_label->setObjectName(QStringLiteral("doctor_label"));
         doctor_label->setGeometry(QRect(50, 150, 51, 16));
-        comboBox = new QComboBox(AddPatientDialog);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(150, 150, 72, 22));
-        lineEdit = new QLineEdit(AddPatientDialog);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(150, 120, 113, 21));
-        lineEdit_2 = new QLineEdit(AddPatientDialog);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(150, 90, 113, 21));
-        lineEdit_3 = new QLineEdit(AddPatientDialog);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(150, 60, 113, 21));
-        lineEdit_4 = new QLineEdit(AddPatientDialog);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
-        lineEdit_4->setGeometry(QRect(150, 30, 113, 21));
+        doctor_combo_box = new QComboBox(AddPatientDialog);
+        doctor_combo_box->setObjectName(QStringLiteral("doctor_combo_box"));
+        doctor_combo_box->setGeometry(QRect(150, 150, 72, 22));
+        phone_number_edit = new QLineEdit(AddPatientDialog);
+        phone_number_edit->setObjectName(QStringLiteral("phone_number_edit"));
+        phone_number_edit->setGeometry(QRect(150, 120, 113, 21));
+        last_name_edit = new QLineEdit(AddPatientDialog);
+        last_name_edit->setObjectName(QStringLiteral("last_name_edit"));
+        last_name_edit->setGeometry(QRect(150, 90, 113, 21));
+        first_name_edit = new QLineEdit(AddPatientDialog);
+        first_name_edit->setObjectName(QStringLiteral("first_name_edit"));
+        first_name_edit->setGeometry(QRect(150, 60, 113, 21));
+        social_number_edit = new QLineEdit(AddPatientDialog);
+        social_number_edit->setObjectName(QStringLiteral("social_number_edit"));
+        social_number_edit->setGeometry(QRect(150, 30, 113, 21));
+        QWidget::setTabOrder(social_number_edit, first_name_edit);
+        QWidget::setTabOrder(first_name_edit, last_name_edit);
+        QWidget::setTabOrder(last_name_edit, phone_number_edit);
+        QWidget::setTabOrder(phone_number_edit, doctor_combo_box);
 
         retranslateUi(AddPatientDialog);
         QObject::connect(add_patient_buttonBox, SIGNAL(accepted()), AddPatientDialog, SLOT(accept()));
@@ -91,7 +95,7 @@ public:
         social_number_label->setText(QApplication::translate("AddPatientDialog", "Social Number:", 0));
         first_name_label->setText(QApplication::translate("AddPatientDialog", "First Name:", 0));
         last_name_label->setText(QApplication::translate("AddPatientDialog", "LastName:", 0));
-        phone_label->setText(QApplication::translate("AddPatientDialog", "Phone Number:", 0));
+        phone_number_label->setText(QApplication::translate("AddPatientDialog", "Phone Number:", 0));
         doctor_label->setText(QApplication::translate("AddPatientDialog", "Doctor:", 0));
     } // retranslateUi
 
