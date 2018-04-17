@@ -40,14 +40,12 @@ Widget::Widget(QWidget *parent) :
     {
         qDebug() << "Database not connected";
     }
+      
+    Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 46937362);
+    Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 45464847);
+    Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 43234565);
+    Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 93456543);
 
-    /*
-    Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 12345678, 35463);
-    Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 12345678, 35464);
-    Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 12345678, 35465);
-    Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 12345678, 35466);
-
-    */
     //db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
     //db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
 
@@ -75,8 +73,6 @@ Widget::Widget(QWidget *parent) :
         string lastt = last.toStdString();
 
         Patient *patient = new Patient(social, firstt, lastt, phone, doc);
-
-        qDebug() << "PHONE AND SOCIAL: " << patient->get_phone_number() << patient->get_social_number() << endl;
 
         patients->push_back(*patient);
 
@@ -147,12 +143,10 @@ void Widget::on_button_SelectDoctor_clicked()
     doctorPage = new DoctorPage(this);
 
     string fullName = BuildDoctorNamespace(&doctors->at(ui->listWidget_Doctors->currentRow())).c_str();
-    static const int socialNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_social_number();
     static const int phoneNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_phone_number();
     //static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
 
     doctorPage->setFullName(fullName.c_str());
-    doctorPage->setSocialNumber(socialNumber);
     doctorPage->setPhoneNumber(phoneNumber);
     doctorPage->setEmployeeNumber(employeeNumber);
 
@@ -165,11 +159,11 @@ void Widget::on_button_SelectPatient_clicked()
     patientPage = new PatientPage(this);
 
     string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
-    static const int socialNumber = patients->at(ui->listWidget_Patients->currentRow()).get_social_number();
+    static const int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
     static const int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
 
     patientPage->setFullName(fullName.c_str());
-    patientPage->setSocialNumber(socialNumber);
+    patientPage->setDoctorID(doctorID);
     patientPage->setPhoneNumber(phoneNumber);
 
     patientPage->show();

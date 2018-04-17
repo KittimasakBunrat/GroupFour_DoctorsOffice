@@ -23,11 +23,6 @@ void DoctorPage::setFullName(QString name)
     ui->label_DoctorName->setText(name);
 }
 
-void DoctorPage::setSocialNumber(int socialNumber)
-{
-    ui->label_SocialNumber->setText(QString::number(socialNumber));
-}
-
 void DoctorPage::setPhoneNumber(int phoneNumber)
 {
     ui->label_PhoneNumber->setText(QString::number(phoneNumber));

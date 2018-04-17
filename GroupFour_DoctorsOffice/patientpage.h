@@ -16,7 +16,7 @@ public:
     ~PatientPage();
 
     void setFullName(QString name);
-    void setSocialNumber(int socialNumber);
+    void setDoctorID(int doctorID);
     void setPhoneNumber(int phoneNumber);
 
 private slots:

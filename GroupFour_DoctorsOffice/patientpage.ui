@@ -58,7 +58,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -92,7 +92,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Social Number: </string>
+         <string>Doctor ID: </string>
         </property>
        </widget>
       </item>
@@ -121,9 +121,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_SocialNumber">
+       <widget class="QLabel" name="label_DoctorID">
         <property name="text">
-         <string>SocialNumber</string>
+         <string>Doctor ID: </string>
         </property>
        </widget>
       </item>

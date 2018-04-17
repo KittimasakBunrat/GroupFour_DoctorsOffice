@@ -18,9 +18,9 @@ void PatientPage::setFullName(QString name)
     ui->label_PatientName->setText(name);
 }
 
-void PatientPage::setSocialNumber(int socialNumber)
+void PatientPage::setDoctorID(int doctorID)
 {
-    ui->label_SocialNumber->setText(QString::number(socialNumber));
+    ui->label_DoctorID->setText(QString::number(doctorID));
 }
 
 void PatientPage::setPhoneNumber(int phoneNumber)
