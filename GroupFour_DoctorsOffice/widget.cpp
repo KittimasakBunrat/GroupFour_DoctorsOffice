@@ -49,25 +49,25 @@ Widget::Widget(QWidget *parent) :
     //db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
     //db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
 
-
     doctors = new vector<Doctor>();
     patients = new vector<Patient>();
 
     /*
-    doctors->push_back(*doctor1);
     doctors->push_back(*doctor2);
     doctors->push_back(*doctor3);
     doctors->push_back(*doctor4);
 */
+
+
     QSqlQuery query = db.query("SELECT * FROM patients");
 
     while(query.next()) {
-        int social = query.value(0).toInt();
+        int social = query.value(1).toInt();
         qDebug() << "Social: " << social;
-        QString first = query.value(1).toString();
-        QString last = query.value(2).toString();
-        int phone = query.value(3).toInt();
-        int doc = query.value(4).toInt();
+        QString first = query.value(2).toString();
+        QString last = query.value(3).toString();
+        int phone = query.value(4).toInt();
+        int doc = query.value(5).toInt();
         qDebug() << "phone: " << phone << "doc: " << doc;
         string firstt = first.toStdString();
         string lastt = last.toStdString();
@@ -75,7 +75,6 @@ Widget::Widget(QWidget *parent) :
         Patient *patient = new Patient(social, firstt, lastt, phone, doc);
 
         patients->push_back(*patient);
-
     }
 
     QSqlQuery query_doctors = db.query("SELECT * FROM doctors");
@@ -139,19 +138,20 @@ static string BuildPatientNamespace(Patient *patient)
 void Widget::on_button_SelectDoctor_clicked()
 {
 
-    /*
+
     doctorPage = new DoctorPage(this);
 
     string fullName = BuildDoctorNamespace(&doctors->at(ui->listWidget_Doctors->currentRow())).c_str();
     static const int phoneNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_phone_number();
-    //static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
 
     doctorPage->setFullName(fullName.c_str());
     doctorPage->setPhoneNumber(phoneNumber);
     doctorPage->setEmployeeNumber(employeeNumber);
 
     doctorPage->show();
-    */
+
+
 }
 
 void Widget::on_button_SelectPatient_clicked()
@@ -165,6 +165,7 @@ void Widget::on_button_SelectPatient_clicked()
     patientPage->setFullName(fullName.c_str());
     patientPage->setDoctorID(doctorID);
     patientPage->setPhoneNumber(phoneNumber);
+
 
     patientPage->show();
 }

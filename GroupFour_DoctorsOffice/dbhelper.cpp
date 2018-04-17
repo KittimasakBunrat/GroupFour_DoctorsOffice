@@ -168,7 +168,7 @@ QSqlQuery DbHelper::query(const QString &sql)
     return query;
 }
 
-bool DbHelper::create_new_doctor(const QString &first_name, const QString &last_name, const int &social_number, const int &phone_number)
+bool DbHelper::create_new_doctor(const QString &first_name, const QString &last_name, const int &phone_number)
 {
     bool success { false };
 
@@ -177,7 +177,6 @@ bool DbHelper::create_new_doctor(const QString &first_name, const QString &last_
                   "VALUES (:first_name, :last_name, :social_number, :phone_number)");
     query.bindValue(":first_name", first_name);
     query.bindValue(":last_name", last_name);
-    query.bindValue(":social_number", social_number);
     query.bindValue(":phone_number", phone_number);
 
 

@@ -35,7 +35,7 @@ public:
 
     QSqlQuery query(const QString& sql);
 
-    bool create_new_doctor(const QString& first_name, const QString& last_name, const int& social_number, const int& phone_number);
+    bool create_new_doctor(const QString& first_name, const QString& last_name, const int& phone_number);
 
     bool update_doctor(const QString& first_name, const QString& last_name,
                             const int& social_number, const int& phone_number, const int& employee_id);
