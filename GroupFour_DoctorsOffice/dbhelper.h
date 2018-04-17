@@ -12,6 +12,7 @@
 #include "doctor.h"
 #include "patient.h"
 #include "appointment.h"
+#include <vector>
 #include <QSqlQuery>
 
 using namespace std;
@@ -29,6 +30,8 @@ public:
     bool update_patient(const int& social_number, const QString& first_name,
                             const QString& last_name, const int& phone_number, const int& doctor_id, const int& id);
     bool create_new_appointment(Appointment appointment);
+    vector<Appointment> get_appointments();
+
     QSqlQuery query(const QString& sql);
 
     /*bool remove_person();
