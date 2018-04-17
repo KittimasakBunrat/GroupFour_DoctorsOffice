@@ -118,6 +118,27 @@ bool DbHelper::update_patient(const int &social_number, const QString &first_nam
     query.bindValue(":id", id);
 }
 
+vector<Patient> *DbHelper::get_patients()
+{
+    QString sql = "SELECT * FROM patients";
+    vector<Patient> *v_patients;
+    QSqlQuery query(sql);
+    query.exec();
+
+    while(query.next()) {
+        int social = query.value(1).toInt();
+        QString first = query.value(2).toString();
+        QString last = query.value(3).toString();
+        int phone = query.value(4).toInt();
+        int doc = query.value(5).toInt();
+
+        Patient *patient = new Patient(social, first, last, phone, doc);
+
+        v_patients->push_back(*patient);
+    }
+    return v_patients;
+}
+
 bool DbHelper::create_new_appointment(Appointment appointment)
 {
     bool success { false };
@@ -140,10 +161,10 @@ bool DbHelper::create_new_appointment(Appointment appointment)
     return success;
 }
 
-vector<Appointment> DbHelper::get_appointments()
+vector<Appointment> *DbHelper::get_appointments()
 {
     QString sql = "SELECT * FROM appointments";
-    vector<Appointment> v_appointments;
+    vector<Appointment> *v_appointments;
     QSqlQuery query(sql);
     query.exec();
 
@@ -154,31 +175,22 @@ vector<Appointment> DbHelper::get_appointments()
 
         Appointment *appointment = new Appointment(appointment_time, doctor_id, patient_id);
 
-        v_appointments.push_back(*appointment);
+        v_appointments->push_back(*appointment);
     }
 
     return v_appointments;
 }
 
-
-QSqlQuery DbHelper::query(const QString &sql)
-{
-    QSqlQuery query(sql);
-    query.exec();
-    return query;
-}
-
-bool DbHelper::create_new_doctor(const QString &first_name, const QString &last_name, const int &social_number, const int &phone_number)
+bool DbHelper::create_new_doctor(Doctor doctor)
 {
     bool success { false };
 
     QSqlQuery query;
-    query.prepare("INSERT INTO doctors (first_name, last_name, social_number, phone_number)"
-                  "VALUES (:first_name, :last_name, :social_number, :phone_number)");
-    query.bindValue(":first_name", first_name);
-    query.bindValue(":last_name", last_name);
-    query.bindValue(":social_number", social_number);
-    query.bindValue(":phone_number", phone_number);
+    query.prepare("INSERT INTO doctors (first_name, last_name, phone_number)"
+                  "VALUES (:first_name, :last_name, :phone_number)");
+    query.bindValue(":first_name", doctor.get_first_name());
+    query.bindValue(":last_name", doctor.get_last_name());
+    query.bindValue(":phone_number", doctor.get_phone_number());
 
 
     if(!query.exec())
@@ -202,6 +214,26 @@ bool DbHelper::update_doctor(const QString &first_name, const QString &last_name
     query.bindValue(":last_name", last_name);
     query.bindValue(":phone_number", phone_number);
     query.bindValue(":employee_id", employee_id);
+}
+
+vector<Doctor> *DbHelper::get_doctors()
+{
+    QString sql = "SELECT * FROM doctors";
+    vector<Doctor> *v_doctors;
+    QSqlQuery query(sql);
+    query.exec();
+
+    while(query.next()) {
+        int employee_number = query.value(0).toInt();
+        QString first_name_db = query.value(1).toString();
+        QString last_name_db = query.value(2).toString();
+        int phone_db = query.value(3).toInt();
+
+        Doctor *doctor = new Doctor(first_name_db, last_name_db, phone_db, employee_number);
+
+        v_doctors->push_back(*doctor);
+    }
+    return v_doctors;
 }
 
 /*

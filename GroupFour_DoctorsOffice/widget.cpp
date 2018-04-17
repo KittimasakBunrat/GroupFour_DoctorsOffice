@@ -46,52 +46,17 @@ Widget::Widget(QWidget *parent) :
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 43234565);
     Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 93456543);
 
-    //db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
-    //db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
+    db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
+    db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
+    db.create_new_doctor(*doctor1);
+
 
 
     doctors = new vector<Doctor>();
     patients = new vector<Patient>();
 
-    /*
-    doctors->push_back(*doctor1);
-    doctors->push_back(*doctor2);
-    doctors->push_back(*doctor3);
-    doctors->push_back(*doctor4);
-*/
-    QSqlQuery query = db.query("SELECT * FROM patients");
-
-    while(query.next()) {
-        int social = query.value(0).toInt();
-        qDebug() << "Social: " << social;
-        QString first = query.value(1).toString();
-        QString last = query.value(2).toString();
-        int phone = query.value(3).toInt();
-        int doc = query.value(4).toInt();
-        qDebug() << "phone: " << phone << "doc: " << doc;
-        string firstt = first.toStdString();
-        string lastt = last.toStdString();
-
-        Patient *patient = new Patient(social, firstt, lastt, phone, doc);
-
-        patients->push_back(*patient);
-
-    }
-
-    QSqlQuery query_doctors = db.query("SELECT * FROM doctors");
-
-    while(query_doctors.next()) {
-        QString first_name_db = query.value(0).toString();
-        QString last_name_db = query.value(1).toString();
-        int social_number_db = query.value(2).toInt();
-        int phone_db = query.value(3).toInt();
-        string first_name = first_name_db.toStdString();
-        string last_name = last_name_db.toStdString();
-
-        Doctor *doctor = new Doctor(first_name, last_name, social_number_db, phone_db);
-
-        doctors->push_back(*doctor);
-    }
+    //doctors = db.get_doctors();
+    patients = db.get_patients();
 
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
@@ -122,7 +87,7 @@ static string BuildDoctorNamespace(Doctor *doctor)
 {
     string doctorInfo;
     ostringstream bodyStream;
-    bodyStream << doctor->get_first_name() << " " << doctor->get_last_name();
+    bodyStream << doctor->get_first_name().toStdString() << " " << doctor->get_last_name().toStdString();
     doctorInfo = bodyStream.str();
     return doctorInfo;
 }
@@ -131,7 +96,7 @@ static string BuildPatientNamespace(Patient *patient)
 {
     string patientInfo;
     ostringstream bodyStream;
-    bodyStream << patient->get_first_name() << " " << patient->get_last_name();
+    bodyStream << patient->get_first_name().toStdString() << " " << patient->get_last_name().toStdString();
     patientInfo = bodyStream.str();
     return patientInfo;
 }

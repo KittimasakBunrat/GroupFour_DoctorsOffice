@@ -25,20 +25,17 @@ public:
 
     bool isOpen() const;
     bool create_table(const QString& table_name);
-    bool create_new_patient(const int& social_number, const QString& first_name,
-                            const QString& last_name, const int& phone_number, const int& doctor_id);
-    bool update_patient(const int& social_number, const QString& first_name,
-                            const QString& last_name, const int& phone_number, const int& doctor_id, const int& id);
+
+    bool create_new_patient(const int& social_number, const QString& first_name, const QString& last_name, const int& phone_number, const int& doctor_id);
+    bool update_patient(const int& social_number, const QString& first_name, const QString& last_name, const int& phone_number, const int& doctor_id, const int& id);
+    vector<Patient> *get_patients();
 
     bool create_new_appointment(Appointment appointment);
-    vector<Appointment> get_appointments();
+    vector<Appointment> *get_appointments();
 
-    QSqlQuery query(const QString& sql);
-
-    bool create_new_doctor(const QString& first_name, const QString& last_name, const int& social_number, const int& phone_number);
-
-    bool update_doctor(const QString& first_name, const QString& last_name,
-                            const int& social_number, const int& phone_number, const int& employee_id);
+    bool create_new_doctor(Doctor doctor);
+    bool update_doctor(const QString& first_name, const QString& last_name, const int& social_number, const int& phone_number, const int& employee_id);
+    vector<Doctor> *get_doctors();
 
     /*bool remove_person();
     bool update_person();
