@@ -5,6 +5,7 @@
 #include "doctorpage.h"
 #include "patientpage.h"
 #include "addpatientdialog.h"
+#include "adddoctordialog.h"
 #include <QWidget>
 #include <QtGui>
 #include <QtCore>
@@ -44,6 +45,7 @@ private:
     DoctorPage *doctorPage;
     PatientPage *patientPage;
     AddPatientDialog *add_patient_dialog_;
+    AddDoctorDialog *add_doctor_dialog_;
 };
 
 /*static const QString db_path { "C:/Sqlite/office.db" };

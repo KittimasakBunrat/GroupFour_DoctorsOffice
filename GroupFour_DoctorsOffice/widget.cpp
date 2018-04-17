@@ -41,11 +41,13 @@ Widget::Widget(QWidget *parent) :
         qDebug() << "Database not connected";
     }
 
+    /*
     Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 12345678, 35463);
     Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 12345678, 35464);
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 12345678, 35465);
     Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 12345678, 35466);
 
+    */
     //db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
     //db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
 
@@ -53,11 +55,12 @@ Widget::Widget(QWidget *parent) :
     doctors = new vector<Doctor>();
     patients = new vector<Patient>();
 
+    /*
     doctors->push_back(*doctor1);
     doctors->push_back(*doctor2);
     doctors->push_back(*doctor3);
     doctors->push_back(*doctor4);
-
+*/
     QSqlQuery query = db.query("SELECT * FROM patients");
 
     while(query.next()) {
@@ -76,6 +79,22 @@ Widget::Widget(QWidget *parent) :
         qDebug() << "PHONE AND SOCIAL: " << patient->get_phone_number() << patient->get_social_number() << endl;
 
         patients->push_back(*patient);
+
+    }
+
+    QSqlQuery query_doctors = db.query("SELECT * FROM doctors");
+
+    while(query_doctors.next()) {
+        QString first_name_db = query.value(0).toString();
+        QString last_name_db = query.value(1).toString();
+        int social_number_db = query.value(2).toInt();
+        int phone_db = query.value(3).toInt();
+        string first_name = first_name_db.toStdString();
+        string last_name = last_name_db.toStdString();
+
+        Doctor *doctor = new Doctor(first_name, last_name, social_number_db, phone_db);
+
+        doctors->push_back(*doctor);
     }
 
     for(unsigned int i = 0; i < doctors->size(); i++)
@@ -124,12 +143,13 @@ static string BuildPatientNamespace(Patient *patient)
 void Widget::on_button_SelectDoctor_clicked()
 {
 
+    /*
     doctorPage = new DoctorPage(this);
 
     string fullName = BuildDoctorNamespace(&doctors->at(ui->listWidget_Doctors->currentRow())).c_str();
     static const int socialNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_social_number();
     static const int phoneNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_phone_number();
-    static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    //static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
 
     doctorPage->setFullName(fullName.c_str());
     doctorPage->setSocialNumber(socialNumber);
@@ -137,6 +157,7 @@ void Widget::on_button_SelectDoctor_clicked()
     doctorPage->setEmployeeNumber(employeeNumber);
 
     doctorPage->show();
+    */
 }
 
 void Widget::on_button_SelectPatient_clicked()
@@ -167,6 +188,6 @@ void Widget::on_button_AddPatient_clicked()
 
 void Widget::on_button_AddDoctor_clicked()
 {
-    //add_doctor_page = new AddDoctorPage(this);
-    //add_doctor_page->show();
+    add_doctor_dialog_ = new AddDoctorDialog(this);
+    add_doctor_dialog_->show();
 }
