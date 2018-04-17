@@ -25,7 +25,8 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
-        db.create_new_patient(social_number, first_name, last_name, phone_number, 9);
+        Patient *patient = new Patient(social_number,first_name,last_name,phone_number, 9);
+        db.create_new_patient(*patient);
         qDebug() << "Database OK";
     }
     else
