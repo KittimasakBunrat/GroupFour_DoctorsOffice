@@ -1,11 +1,9 @@
 #include "doctor.h"
 
-
-Doctor::Doctor(string first_name, string last_name, int social_number, int phone_number, int employee_number) : Person(first_name, last_name, social_number, phone_number)
+Doctor::Doctor(string first_name, string last_name, int phone_number, int employee_number) : Person(first_name, last_name, phone_number)
 {
     this->first_name_ = first_name;
     this->last_name_ = last_name;
-    this->social_number_ = social_number;
     this->phone_number_ = phone_number;
     this->employee_number_ = employee_number;
 }

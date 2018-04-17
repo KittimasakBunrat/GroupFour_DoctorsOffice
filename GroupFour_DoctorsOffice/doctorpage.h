@@ -17,7 +17,6 @@ public:
     ~DoctorPage();
 
     void setFullName(QString name);
-    void setSocialNumber(int socialNumber);
     void setPhoneNumber(int phoneNumber);
     void setEmployeeNumber(int employeeNumber);
 

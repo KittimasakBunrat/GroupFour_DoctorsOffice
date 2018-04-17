@@ -6,11 +6,10 @@
 #include "person.h"
 using namespace std;
 
-
 class Doctor : public Person
 {
 public:
-    Doctor(string first_name, string last_name, int social_number, int phone_number, int employee_number);
+    Doctor(string first_name, string last_name, int phone_number, int employee_number);
     int get_employee_number();
     vector<Patient> get_vector_patients();
 
