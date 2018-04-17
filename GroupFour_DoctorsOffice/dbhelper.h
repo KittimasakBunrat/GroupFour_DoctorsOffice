@@ -27,7 +27,13 @@ public:
                             const QString& last_name, const int& phone_number, const int& doctor_id);
     bool update_patient(const int& social_number, const QString& first_name,
                             const QString& last_name, const int& phone_number, const int& doctor_id, const int& id);
+
     QSqlQuery query(const QString& sql);
+
+    bool create_new_doctor(const QString& first_name, const QString& last_name, const int& social_number, const int& phone_number);
+
+    bool update_doctor(const QString& first_name, const QString& last_name,
+                            const int& social_number, const int& phone_number, const int& employee_id);
 
     /*bool remove_person();
     bool update_person();
@@ -37,7 +43,7 @@ public:
     bool remove_all_persons();
 */
     //doctor
-    bool create_new_doctor(Doctor *doctor);
+    //bool create_new_doctor(Doctor *doctor);
     void print_info(Doctor *doctor);
 
     //patients
