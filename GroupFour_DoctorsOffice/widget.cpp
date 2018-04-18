@@ -53,11 +53,11 @@ Widget::Widget(QWidget *parent) :
     */
 
 
-    doctors = new vector<Doctor>();
-    patients = new vector<Patient>();
+    doctors = new vector<Doctor>(*db.get_doctors());
+    patients = new vector<Patient>(*db.get_patients());
 
     //doctors = db.get_doctors();
-    patients = db.get_patients();
+    //patients = db.get_patients();
 
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
