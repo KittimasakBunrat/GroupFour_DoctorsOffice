@@ -28,9 +28,8 @@ void DoctorPage::setPhoneNumber(int phoneNumber)
     ui->label_PhoneNumber->setText(QString::number(phoneNumber));
 }
 
-/*
+
 void DoctorPage::setEmployeeNumber(int employeeNumber)
 {
     ui->label_EmployeeNumber->setText(QString::number(employeeNumber));
 }
-*/

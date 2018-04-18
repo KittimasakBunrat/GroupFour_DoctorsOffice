@@ -56,9 +56,6 @@ Widget::Widget(QWidget *parent) :
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
 
-    //doctors = db.get_doctors();
-    //patients = db.get_patients();
-
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
         ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
@@ -105,19 +102,17 @@ static string BuildPatientNamespace(Patient *patient)
 void Widget::on_button_SelectDoctor_clicked()
 {
 
-    /*
     doctorPage = new DoctorPage(this);
 
     string fullName = BuildDoctorNamespace(&doctors->at(ui->listWidget_Doctors->currentRow())).c_str();
-    static const int phoneNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_phone_number();
-    //static const int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    int phoneNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_phone_number();
+    int employeeNumber = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
 
     doctorPage->setFullName(fullName.c_str());
     doctorPage->setPhoneNumber(phoneNumber);
     doctorPage->setEmployeeNumber(employeeNumber);
 
     doctorPage->show();
-    */
 }
 
 void Widget::on_button_SelectPatient_clicked()
@@ -125,8 +120,8 @@ void Widget::on_button_SelectPatient_clicked()
     patientPage = new PatientPage(this);
 
     string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
-    static const int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
-    static const int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
+    int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
+    int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
 
     patientPage->setFullName(fullName.c_str());
     patientPage->setDoctorID(doctorID);
