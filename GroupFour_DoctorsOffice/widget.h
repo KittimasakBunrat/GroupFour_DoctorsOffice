@@ -31,12 +31,10 @@ public:
 private slots:
     void on_button_SelectDoctor_clicked();
     void on_listWidget_Doctors_itemClicked(QListWidgetItem *item);
-
     void on_button_SelectPatient_clicked();
-
     void on_button_AddPatient_clicked();
-
     void on_button_AddDoctor_clicked();
+    void refresh_lists();
 
 private:
     Ui::Widget *ui;

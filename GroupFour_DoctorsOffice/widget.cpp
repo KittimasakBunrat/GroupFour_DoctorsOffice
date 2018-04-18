@@ -138,6 +138,7 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 void Widget::on_button_AddPatient_clicked()
 {
     add_patient_dialog_ = new AddPatientDialog(this);
+    connect(add_patient_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
     add_patient_dialog_->show();
 }
 
@@ -145,4 +146,9 @@ void Widget::on_button_AddDoctor_clicked()
 {
     add_doctor_dialog_ = new AddDoctorDialog(this);
     add_doctor_dialog_->show();
+}
+
+void Widget::refresh_lists()
+{
+    qDebug() << "SLOTS n SIGNALS FUNKER SHOHAIBIBI";
 }
