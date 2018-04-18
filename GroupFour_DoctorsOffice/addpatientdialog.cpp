@@ -6,7 +6,6 @@ AddPatientDialog::AddPatientDialog(QWidget *parent) :
     ui(new Ui::AddPatientDialog)
 {
     ui->setupUi(this);
-
 }
 
 AddPatientDialog::~AddPatientDialog()
@@ -27,6 +26,7 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
     {
         Patient *patient = new Patient(social_number,first_name,last_name,phone_number, 9);
         db.create_new_patient(*patient);
+        emit this->accept_button_clicked();
         qDebug() << "Database OK";
     }
     else

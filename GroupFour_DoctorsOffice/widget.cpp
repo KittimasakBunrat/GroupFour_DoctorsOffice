@@ -143,6 +143,7 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 void Widget::on_button_AddPatient_clicked()
 {
     add_patient_dialog_ = new AddPatientDialog(this);
+        connect(add_patient_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (reload_patient_list()));
     add_patient_dialog_->show();
 }
 
@@ -150,4 +151,9 @@ void Widget::on_button_AddDoctor_clicked()
 {
     add_doctor_dialog_ = new AddDoctorDialog(this);
     add_doctor_dialog_->show();
+}
+
+void Widget::reload_patient_list()
+{
+    qDebug() << "SLOOOOOOOOOOTS n SIGNALS";
 }

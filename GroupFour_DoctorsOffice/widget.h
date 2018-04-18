@@ -28,6 +28,7 @@ public:
     ~Widget();
 
 
+
 private slots:
     void on_button_SelectDoctor_clicked();
     void on_listWidget_Doctors_itemClicked(QListWidgetItem *item);
@@ -37,6 +38,8 @@ private slots:
     void on_button_AddPatient_clicked();
 
     void on_button_AddDoctor_clicked();
+
+    void reload_patient_list();
 
 private:
     Ui::Widget *ui;
