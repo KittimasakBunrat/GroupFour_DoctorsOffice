@@ -54,4 +54,5 @@ static const QString appointments_table { "appointments" };*/
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
 
+
 #endif // WIDGET_H

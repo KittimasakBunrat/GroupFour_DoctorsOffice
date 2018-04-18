@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <constants.h>
 #include "dbhelper.h"
+#include "dbhelper.h"
 
 namespace Ui {
 class AddPatientDialog;
@@ -26,7 +27,7 @@ signals:
     void accept_button_clicked();
 
 private:
-    Ui::AddPatientDialog *ui;
+    Ui::AddPatientDialog *ui; 
 };
 
 #endif // ADDPATIENTDIALOG_H
