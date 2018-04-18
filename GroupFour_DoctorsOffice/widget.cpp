@@ -151,4 +151,22 @@ void Widget::on_button_AddDoctor_clicked()
 void Widget::refresh_lists()
 {
     qDebug() << "SLOTS n SIGNALS FUNKER SHOHAIBIBI";
+
+    DbHelper db(GLOBAL_CONST_db_path);
+    if (db.isOpen())
+    {
+        patients = new vector<Patient>(*db.get_patients());
+        ui->listWidget_Patients->clear();
+        for(unsigned int i = 0; i < patients->size(); i++)
+        {
+            ui->listWidget_Patients->addItem(BuildPatientNamespace(&patients->at(i)).c_str());
+        }
+        qDebug() << "Database OK";
+    }
+    else
+    {
+        qDebug() << "Database not connected";
+    }
+
+
 }
