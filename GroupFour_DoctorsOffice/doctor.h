@@ -15,6 +15,7 @@ public:
 
 private:
     int employee_number_;
+    vector<string> *v_time_;
     vector<Patient> v_patients_;
 };
 

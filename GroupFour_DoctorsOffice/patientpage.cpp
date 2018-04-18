@@ -28,7 +28,17 @@ void PatientPage::setPhoneNumber(int phoneNumber)
     ui->label_PhoneNumber->setText(QString::number(phoneNumber));
 }
 
+void PatientPage::setSocialNumber(int socialNumber)
+{
+    ui->label_SocialNumber->setText(QString::number(socialNumber));
+}
+
 void PatientPage::on_pushButton_clicked()
 {
+    add_appointment = new AddAppointmentDialog(this);
+    add_appointment->set_patientId(ui->label_SocialNumber->text().toInt());
+    add_appointment->set_patientName(ui->label_PatientName->text());
 
+    this->close();
+    add_appointment->show();
 }

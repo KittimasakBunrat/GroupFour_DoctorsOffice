@@ -122,10 +122,12 @@ void Widget::on_button_SelectPatient_clicked()
     string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
     int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
     int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
+    int socialNumber = patients->at(ui->listWidget_Patients->currentRow()).getSocialNumber();
 
     patientPage->setFullName(fullName.c_str());
     patientPage->setDoctorID(doctorID);
     patientPage->setPhoneNumber(phoneNumber);
+    patientPage->setSocialNumber(socialNumber);
 
     patientPage->show();
 }

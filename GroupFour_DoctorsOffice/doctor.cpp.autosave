@@ -26,3 +26,7 @@ vector<Patient> Doctor::get_vector_patients()
     return this->v_patients_;
 }
 
+
+
+HI IAM TURTOIZZGIT ))))
+
