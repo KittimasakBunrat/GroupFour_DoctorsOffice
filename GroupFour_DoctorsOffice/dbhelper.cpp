@@ -120,7 +120,7 @@ bool DbHelper::update_patient(Patient patient, int id)
 vector<Patient> *DbHelper::get_patients()
 {
     QString sql = "SELECT * FROM patients";
-    vector<Patient> *v_patients;
+    vector<Patient> *v_patients = new vector<Patient>;
     QSqlQuery query(sql);
     query.exec();
 
@@ -217,7 +217,7 @@ bool DbHelper::update_doctor(Doctor doctor, int doctor_id)
 vector<Doctor> *DbHelper::get_doctors()
 {
     QString sql = "SELECT * FROM doctors";
-    vector<Doctor> *v_doctors;
+    vector<Doctor> *v_doctors = new vector<Doctor>;
     QSqlQuery query(sql);
     query.exec();
 
