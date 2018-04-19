@@ -211,7 +211,6 @@ void Widget::refresh_lists()
     {
         qDebug() << "Database not connected";
     }
-
 }
 
 void Widget::on_filter_doctor_edit_textChanged(const QString &arg1)
