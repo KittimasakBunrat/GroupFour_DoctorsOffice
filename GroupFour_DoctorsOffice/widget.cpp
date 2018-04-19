@@ -45,7 +45,9 @@ Widget::Widget(QWidget *parent) :
     Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 45464847);
     Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 43234565);
     Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 93456543);
+    //Patient *patient1 = new Patient(1337, "Jada", "Jada", 45809225, 10);
 
+    //db.create_new_patient(*patient1);
     /*
     db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
     db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);

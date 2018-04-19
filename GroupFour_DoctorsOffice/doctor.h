@@ -12,6 +12,7 @@ public:
     int get_employee_number();
 
     vector<Patient> get_vector_patients();
+    vector<string> *get_vector_time();
 
 private:
     int employee_number_;

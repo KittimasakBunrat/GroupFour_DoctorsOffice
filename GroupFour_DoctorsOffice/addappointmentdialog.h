@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include "patient.h"
+#include "dbhelper.h"
+#include "constants.h"
+#include "appointment.h"
 
 namespace Ui {
 class AddAppointmentDialog;
@@ -17,11 +20,16 @@ public:
     ~AddAppointmentDialog();
     void set_patientId(int id);
     void set_patientName(QString name);
+    void set_doctorId(int id);
+    void set_doctorName(QString name);
+    void set_listTime(QString time);
 
+
+private slots:
+    void on_buttonBox_accepted();
 
 private:
     Ui::AddAppointmentDialog *ui;
-    Patient *patient;
 };
 
 #endif // ADDAPPOINTMENTDIALOG_H

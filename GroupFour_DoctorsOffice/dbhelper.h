@@ -37,26 +37,6 @@ public:
     bool update_doctor(Doctor doctor, int doctor_id);
     vector<Doctor> *get_doctors();
 
-    /*bool remove_person();
-    bool update_person();
-    bool person_exists() const;
-    void print_person();
-    void print_all_persons() const;
-    bool remove_all_persons();
-*/
-    //doctor
-    //bool create_new_doctor(Doctor *doctor);
-    void print_info(Doctor *doctor);
-
-    //patients
-    bool create_new_Patient(Patient *patient);
-    void print_info(Patient *patient);
-
-
-
-
-
-
 
 private:
     QSqlDatabase office_db;

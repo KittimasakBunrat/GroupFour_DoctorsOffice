@@ -26,16 +26,16 @@
     <enum>Qt::Horizontal</enum>
    </property>
    <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget">
+  <widget class="QListWidget" name="listTime">
    <property name="geometry">
     <rect>
      <x>205</x>
-     <y>40</y>
+     <y>81</y>
      <width>161</width>
-     <height>192</height>
+     <height>151</height>
     </rect>
    </property>
   </widget>
@@ -49,14 +49,14 @@
     </rect>
    </property>
    <property name="text">
-    <string>Patient info:</string>
+    <string>&lt;b&gt;Patient info:&lt;/b&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="patientId">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>160</y>
+     <x>40</x>
+     <y>70</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -68,14 +68,63 @@
   <widget class="QLabel" name="patientName">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>180</y>
+     <x>40</x>
+     <y>90</y>
      <width>111</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>150</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;b&gt;Doctor info:&lt;/b&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="doctorId">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>170</y>
+     <width>55</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="doctorName">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>190</y>
+     <width>55</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="date">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>50</y>
+     <width>161</width>
+     <height>25</height>
+    </rect>
    </property>
   </widget>
  </widget>

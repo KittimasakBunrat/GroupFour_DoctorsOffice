@@ -1,6 +1,8 @@
 #ifndef PATIENTPAGE_H
 #define PATIENTPAGE_H
 #include "addappointmentdialog.h"
+#include "doctor.h"
+#include "constants.h"
 
 #include <QDialog>
 
