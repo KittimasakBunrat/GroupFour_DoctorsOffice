@@ -15,15 +15,16 @@ AddDoctorDialog::~AddDoctorDialog()
 
 void AddDoctorDialog::on_add_doctor_buttonBox_accepted()
 {
-    QString first_name { ui->first_name_doctor_edit->text() };
-    QString last_name { ui->last_name_doctor_edit->text() };
-    int phone_number { ui->phone_number_doctor_edit->text().toInt() };
+    QString first_name { ui->first_name_edit->text() };
+    QString last_name { ui->last_name_edit->text() };
+    int phone_number { ui->phone_number_edit->text().toInt() };
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
         Doctor *doctor = new Doctor(first_name, last_name, phone_number, 0);
         db.create_new_doctor(*doctor);
+        emit this->accept_button_clicked();
         qDebug() << "Database OK";
     }
     else
@@ -36,4 +37,3 @@ void AddDoctorDialog::on_add_doctor_buttonBox_rejected()
 {
 
 }
-
