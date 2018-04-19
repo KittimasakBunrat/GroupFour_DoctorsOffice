@@ -39,9 +39,7 @@ private slots:
     void on_button_AddPatient_clicked();
     void on_button_AddDoctor_clicked();
     void refresh_lists();
-
     void on_filter_doctor_edit_textChanged(const QString &arg1);
-
     void on_filter_patient_edit_textChanged(const QString &arg1);
 
 private:
@@ -53,11 +51,6 @@ private:
     AddPatientDialog *add_patient_dialog_;
     AddDoctorDialog *add_doctor_dialog_;
 };
-
-/*static const QString db_path { "C:/Sqlite/office.db" };
-static const QString doctors_table { "doctors" };
-static const QString patients_table { "patients" };
-static const QString appointments_table { "appointments" };*/
 
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
