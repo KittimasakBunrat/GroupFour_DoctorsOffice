@@ -26,6 +26,10 @@ class Widget : public QWidget
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
+    void filter_doctors(QString filter_string);
+    void filter_patients(QString filter_string);
+    void hide_all_doctors();
+    void hide_all_patients();
 
 
 private slots:
@@ -35,6 +39,10 @@ private slots:
     void on_button_AddPatient_clicked();
     void on_button_AddDoctor_clicked();
     void refresh_lists();
+
+    void on_filter_doctor_edit_textChanged(const QString &arg1);
+
+    void on_filter_patient_edit_textChanged(const QString &arg1);
 
 private:
     Ui::Widget *ui;

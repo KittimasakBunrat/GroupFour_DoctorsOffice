@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>629</width>
-    <height>499</height>
+    <width>607</width>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,26 +38,51 @@
      <x>40</x>
      <y>80</y>
      <width>524</width>
-     <height>323</height>
+     <height>421</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>20</number>
+    </property>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <family>Gill Sans</family>
-          <pointsize>24</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Doctors</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>Gill Sans</family>
+            <pointsize>24</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Doctors</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="search_label_doctor">
+            <property name="text">
+             <string>Search Doctor: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="filter_doctor_edit">
+            <property name="placeholderText">
+             <string>Name/Employee Id</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QListWidget" name="listWidget_Doctors"/>
@@ -80,20 +105,54 @@
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>6</number>
+      </property>
       <item>
-       <widget class="QLabel" name="label_4">
-        <property name="font">
-         <font>
-          <family>Gill Sans</family>
-          <pointsize>24</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="bottomMargin">
+         <number>0</number>
         </property>
-        <property name="text">
-         <string>Patients</string>
-        </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>Gill Sans</family>
+            <pointsize>24</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Patients</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="search_label_patient">
+            <property name="text">
+             <string>Search Patient: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="filter_patient_edit">
+            <property name="inputMask">
+             <string/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>Name/Social Number</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QListWidget" name="listWidget_Patients"/>
