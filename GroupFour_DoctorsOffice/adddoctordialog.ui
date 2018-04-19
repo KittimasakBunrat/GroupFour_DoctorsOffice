@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddPatientDialog</class>
- <widget class="QDialog" name="AddPatientDialog">
+ <class>AddDoctorDialog</class>
+ <widget class="QDialog" name="AddDoctorDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="add_patient_buttonBox">
+  <widget class="QDialogButtonBox" name="add_doctor_buttonBox">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -29,24 +29,11 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
    </property>
   </widget>
-  <widget class="QLabel" name="social_number_label">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>90</y>
-     <width>81</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Social Number:</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="first_name_label">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>30</y>
+     <y>60</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -59,7 +46,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>60</y>
+     <y>90</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -81,29 +68,6 @@
     <string>Phone Number:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="doctor_label">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>150</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Doctor:</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="doctor_combo_box">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>150</y>
-     <width>72</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="phone_number_edit">
    <property name="geometry">
     <rect>
@@ -118,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>60</y>
+     <y>90</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -128,17 +92,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>30</y>
-     <width>113</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="social_number_edit">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>90</y>
+     <y>60</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -148,16 +102,14 @@
  <tabstops>
   <tabstop>first_name_edit</tabstop>
   <tabstop>last_name_edit</tabstop>
-  <tabstop>social_number_edit</tabstop>
   <tabstop>phone_number_edit</tabstop>
-  <tabstop>doctor_combo_box</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>add_patient_buttonBox</sender>
+   <sender>add_doctor_buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>AddPatientDialog</receiver>
+   <receiver>AddDoctorDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -171,9 +123,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>add_patient_buttonBox</sender>
+   <sender>add_doctor_buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>AddPatientDialog</receiver>
+   <receiver>AddDoctorDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
