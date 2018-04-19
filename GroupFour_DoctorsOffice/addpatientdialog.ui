@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>30</y>
+     <y>90</y>
      <width>81</width>
      <height>16</height>
     </rect>
@@ -46,7 +46,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>60</y>
+     <y>30</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -59,7 +59,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>90</y>
+     <y>60</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -118,7 +118,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>90</y>
+     <y>60</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -128,7 +128,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>60</y>
+     <y>30</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -138,7 +138,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>30</y>
+     <y>90</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -146,9 +146,9 @@
   </widget>
  </widget>
  <tabstops>
-  <tabstop>social_number_edit</tabstop>
   <tabstop>first_name_edit</tabstop>
   <tabstop>last_name_edit</tabstop>
+  <tabstop>social_number_edit</tabstop>
   <tabstop>phone_number_edit</tabstop>
   <tabstop>doctor_combo_box</tabstop>
  </tabstops>

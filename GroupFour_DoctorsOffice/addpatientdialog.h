@@ -2,7 +2,7 @@
 #define ADDPATIENTDIALOG_H
 
 #include <QDialog>
-#include <constants.h>
+#include "constants.h"
 #include "dbhelper.h"
 
 namespace Ui {

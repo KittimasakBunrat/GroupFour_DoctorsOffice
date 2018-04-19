@@ -147,6 +147,7 @@ void Widget::on_button_AddPatient_clicked()
 void Widget::on_button_AddDoctor_clicked()
 {
     add_doctor_dialog_ = new AddDoctorDialog(this);
+    connect(add_doctor_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
     add_doctor_dialog_->show();
 }
 
@@ -158,10 +159,16 @@ void Widget::refresh_lists()
     if (db.isOpen())
     {
         patients = new vector<Patient>(*db.get_patients());
+        doctors = new vector<Doctor>(*db.get_doctors());
         ui->listWidget_Patients->clear();
+        ui->listWidget_Doctors->clear();
         for(unsigned int i = 0; i < patients->size(); i++)
         {
             ui->listWidget_Patients->addItem(BuildPatientNamespace(&patients->at(i)).c_str());
+        }
+        for(unsigned int i = 0; i < doctors->size(); i++)
+        {
+            ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
         }
         qDebug() << "Database OK";
     }

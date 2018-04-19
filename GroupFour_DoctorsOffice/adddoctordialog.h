@@ -2,7 +2,7 @@
 #define ADDDOCTORDIALOG_H
 
 #include <QDialog>
-#include <constants.h>
+#include "constants.h"
 #include "dbhelper.h"
 
 namespace Ui {
@@ -18,6 +18,8 @@ public:
     ~AddDoctorDialog();
 
 private slots:
+
+
     void on_add_doctor_buttonBox_accepted();
 
     void on_add_doctor_buttonBox_rejected();
