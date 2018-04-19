@@ -80,6 +80,27 @@ Widget::~Widget()
     delete ui;
 }
 
+/*********************************************/
+/*
+void Widget::filter(QString filter_string)
+{
+  hide_all();
+  QList<QListWidgetItem*> matches ( m_list->findItems(filter_string, Qt::MatchFlag::MatchContains) );
+  for(QListWidgetItem* item : matches)
+    item->setHidden(false);
+}
+
+void Widget::hide_all()
+{
+  for(int row(0); row < m_list->count(); row++ )
+    m_list->item(row)->setHidden(true);
+}
+
+QLineEdit *m_filter_le = new QLineEdit(this);
+Widget *list_widget = new SpeciePropertiesListWidget(this)
+connect(m_filter_le, SIGNAL(textEdited(QString)), list_widget, SLOT(refresh_filter(QString)));
+*/
+/*********************************************/
 
 static string BuildDoctorNamespace(Doctor *doctor)
 {
@@ -175,5 +196,10 @@ void Widget::refresh_lists()
         qDebug() << "Database not connected";
     }
 
+
+}
+
+void Widget::on_filterLineEdit_textChanged(const QString &arg1)
+{
 
 }

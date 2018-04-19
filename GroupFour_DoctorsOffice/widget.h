@@ -36,6 +36,8 @@ private slots:
     void on_button_AddDoctor_clicked();
     void refresh_lists();
 
+    void on_filterLineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::Widget *ui;
     vector<Doctor> *doctors;
