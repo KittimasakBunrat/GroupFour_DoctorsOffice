@@ -2,6 +2,7 @@
 #include "ui_widget.h"
 #include "doctor.h"
 #include <iostream>
+#include <sstream>
 //ikke disse
 #include <QMessageBox>
 #include <QSqlQuery>
@@ -187,6 +188,8 @@ void Widget::on_button_SelectPatient_clicked()
 void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectDoctor->setEnabled(true);
+    int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    list_doctor_time(doctorId);
 }
 
 void Widget::on_button_AddPatient_clicked()
@@ -202,6 +205,8 @@ void Widget::on_button_AddDoctor_clicked()
     connect(add_doctor_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
     add_doctor_dialog_->show();
 }
+
+
 
 void Widget::refresh_lists()
 {
@@ -236,4 +241,31 @@ void Widget::on_filter_doctor_edit_textChanged(const QString &arg1)
 void Widget::on_filter_patient_edit_textChanged(const QString &arg1)
 {
     filter_patients(arg1);
+}
+
+void Widget::list_doctor_time(int doctorId)
+{
+    DbHelper db(GLOBAL_CONST_db_path);
+
+    ui->listWidget_DoctorTime->clear();
+
+    vector<Patient> *patients = new vector<Patient>(*db.get_patients());
+
+    vector<Appointment> *appointments = new vector<Appointment>(*db.get_appointments());
+
+
+    for(unsigned int i=0; i < patients->size(); i++) {
+        if(patients->at(i).getDoctorID() == doctorId) {
+            QString patientsSocial = QString::number(patients->at(i).getSocialNumber());
+            QString patientsName = patients->at(i).get_first_name();
+            for(unsigned int j=0; j<appointments->size(); j++) {
+                if(appointments->at(j).get_patient_id() == patients->at(i).getSocialNumber()) {
+                    QString time = appointments->at(j).get_appointment_time();
+                    QString stringBinder = patientsSocial + " : " + patientsName + " - " + time;
+                    ui->listWidget_DoctorTime->addItem(stringBinder);
+                }
+            }
+        }
+    }
+
 }

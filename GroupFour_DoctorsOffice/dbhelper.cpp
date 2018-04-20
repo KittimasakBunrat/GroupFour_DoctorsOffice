@@ -163,14 +163,14 @@ bool DbHelper::create_new_appointment(Appointment appointment)
 vector<Appointment> *DbHelper::get_appointments()
 {
     QString sql = "SELECT * FROM appointments";
-    vector<Appointment> *v_appointments;
+    vector<Appointment> *v_appointments = new vector<Appointment>();
     QSqlQuery query(sql);
     query.exec();
 
     while(query.next()) {
         QString appointment_time = query.value(0).toString();
         int doctor_id = query.value(1).toInt();
-        int patient_id = query.value(1).toInt();
+        int patient_id = query.value(2).toInt();
 
         Appointment *appointment = new Appointment(appointment_time, doctor_id, patient_id);
 
