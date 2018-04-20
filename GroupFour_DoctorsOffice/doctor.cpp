@@ -7,6 +7,17 @@ Doctor::Doctor(QString first_name, QString last_name, int phone_number, int empl
     this->last_name_ = last_name;
     this->phone_number_ = phone_number;
     this->employee_number_ = employee_number;
+    this->v_time_ = new vector<string>();
+
+    for(int i = 0; i<24; i++) {
+        string time;
+        if(i < 10) {
+            time = "0" + to_string(i) + ":00";
+        } else {
+            time = to_string(i) + ":00";
+        }
+        v_time_->push_back(time);
+    }
 }
 
 
@@ -19,4 +30,10 @@ vector<Patient> Doctor::get_vector_patients()
 {
     return this->v_patients_;
 }
+
+vector<string> *Doctor::get_vector_time()
+{
+    return this->v_time_;
+}
+
 

@@ -1,5 +1,8 @@
 #ifndef PATIENTPAGE_H
 #define PATIENTPAGE_H
+#include "addappointmentdialog.h"
+#include "doctor.h"
+#include "constants.h"
 
 #include <QDialog>
 
@@ -18,12 +21,14 @@ public:
     void setFullName(QString name);
     void setDoctorID(int doctorID);
     void setPhoneNumber(int phoneNumber);
+    void setSocialNumber(int socialNumber);
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::PatientPage *ui;
+    AddAppointmentDialog *add_appointment;
 };
 
 #endif // PATIENTPAGE_H

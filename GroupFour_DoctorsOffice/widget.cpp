@@ -38,6 +38,19 @@ Widget::Widget(QWidget *parent) :
         qDebug() << "Database not connected";
     }
       
+    Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 46937362);
+    Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 45464847);
+    Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 43234565);
+    Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 93456543);
+    //Patient *patient1 = new Patient(1337, "Jada", "Jada", 45809225, 10);
+
+    //db.create_new_patient(*patient1);
+    /*
+    db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
+    db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
+    db.create_new_doctor(*doctor1);
+    */
+
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
     for(unsigned int i = 0; i < doctors->size(); i++)
@@ -161,10 +174,12 @@ void Widget::on_button_SelectPatient_clicked()
     string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
     int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
     int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
+    int socialNumber = patients->at(ui->listWidget_Patients->currentRow()).getSocialNumber();
 
     patientPage->setFullName(fullName.c_str());
     patientPage->setDoctorID(doctorID);
     patientPage->setPhoneNumber(phoneNumber);
+    patientPage->setSocialNumber(socialNumber);
 
     patientPage->show();
 }
