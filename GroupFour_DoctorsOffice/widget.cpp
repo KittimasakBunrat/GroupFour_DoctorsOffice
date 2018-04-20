@@ -2,7 +2,6 @@
 #include "ui_widget.h"
 #include "doctor.h"
 #include <iostream>
-#include <sstream>
 //ikke disse
 #include <QMessageBox>
 #include <QSqlQuery>
@@ -38,19 +37,6 @@ Widget::Widget(QWidget *parent) :
     {
         qDebug() << "Database not connected";
     }
-      
-    Doctor *doctor1 = new Doctor("Kittimasak", "Bunrat", 1112, 46937362);
-    Doctor *doctor2 = new Doctor("Shohaib", "Muhammad", 1113, 45464847);
-    Doctor *doctor3 = new Doctor("Pontus", "Skóld", 1113, 43234565);
-    Doctor *doctor4 = new Doctor("Rudi", "Dahle", 1114, 93456543);
-    //Patient *patient1 = new Patient(1337, "Jada", "Jada", 45809225, 10);
-
-    //db.create_new_patient(*patient1);
-    /*
-    db.create_new_patient(323,"Bundolf","Kittler", 665577, 442244);
-    db.create_new_patient(545,"Rudislav","Captanikoskav",999666,44330);
-    db.create_new_doctor(*doctor1);
-    */
 
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
@@ -65,16 +51,11 @@ Widget::Widget(QWidget *parent) :
     }
 
     ui->button_SelectDoctor->setEnabled(false);
-
+    ui->button_SelectPatient->setEnabled(false);
 }
 
 Widget::~Widget()
 {
-    delete doctors;
-    delete patients;
-    delete doctorPage;
-    delete patientPage;
-    delete add_patient_dialog_;
     delete ui;
 }
 
@@ -190,6 +171,11 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
     ui->button_SelectDoctor->setEnabled(true);
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
     list_doctor_time(doctorId);
+}
+
+void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
+{
+    ui->button_SelectPatient->setEnabled(true);
 }
 
 void Widget::on_button_AddPatient_clicked()
