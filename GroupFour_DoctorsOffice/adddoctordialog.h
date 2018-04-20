@@ -2,6 +2,7 @@
 #define ADDDOCTORDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "constants.h"
 #include "dbhelper.h"
 

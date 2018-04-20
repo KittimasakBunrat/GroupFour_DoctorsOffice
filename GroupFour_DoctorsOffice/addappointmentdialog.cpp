@@ -49,8 +49,9 @@ void AddAppointmentDialog::on_buttonBox_accepted()
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
-    {
+    {   
         db.create_new_appointment(*appointment);
+        QMessageBox::information(this,tr("Success"),tr("Appointment added"));
         qDebug() << "Added new appointment";
     }
     else

@@ -2,6 +2,7 @@
 #define ADDPATIENTDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "constants.h"
 #include "dbhelper.h"
 

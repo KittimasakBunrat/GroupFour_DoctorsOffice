@@ -2,6 +2,7 @@
 #define ADDAPPOINTMENTDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "patient.h"
 #include "dbhelper.h"
 #include "constants.h"
@@ -23,7 +24,6 @@ public:
     void set_doctorId(int id);
     void set_doctorName(QString name);
     void set_listTime(QString time);
-
 
 private slots:
     void on_buttonBox_accepted();
