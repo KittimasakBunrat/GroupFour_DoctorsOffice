@@ -15,8 +15,6 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    qDebug() << "DatabasePath: " << GLOBAL_CONST_app_data_path;
-
     QDir dir(GLOBAL_CONST_app_data_path);
     if (!dir.exists())
         dir.mkpath(GLOBAL_CONST_app_data_path);
@@ -33,7 +31,6 @@ Widget::Widget(QWidget *parent) :
         db.create_table(doctors_table);
         db.create_table(patients_table);
         db.create_table(appointments_table);
-        //db.create_new_patient(12321, "Kitti", "Masak", 876, 9);
         qDebug() << "Database OK";
     }
     else
@@ -54,10 +51,8 @@ Widget::Widget(QWidget *parent) :
     db.create_new_doctor(*doctor1);
     */
 
-
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
-
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
         ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
@@ -82,6 +77,61 @@ Widget::~Widget()
     delete ui;
 }
 
+void Widget::filter_doctors(QString filter_string)
+{
+  hide_all_doctors();
+  QList<QListWidgetItem*> matches;
+  if(filter_string.toLongLong())
+  {
+      for (unsigned int i = 0; i < doctors->size(); i++)
+      {
+          if (to_string(doctors->at(i).get_employee_number()).find(filter_string.toLocal8Bit().constData()) != string::npos)
+          {
+              matches.append(ui->listWidget_Doctors->findItems(doctors->at(i).get_first_name() + " " + doctors->at(i).get_last_name(), Qt::MatchFlag::MatchContains));
+          }
+      }
+  }
+  else
+  {
+      matches.append(ui->listWidget_Doctors->findItems(filter_string, Qt::MatchFlag::MatchContains));
+  }
+  for(QListWidgetItem* item : matches)
+    item->setHidden(false);
+}
+
+void Widget::hide_all_doctors()
+{
+  for(int row(0); row < ui->listWidget_Doctors->count(); row++ )
+    ui->listWidget_Doctors->item(row)->setHidden(true);
+}
+
+void Widget::filter_patients(QString filter_string)
+{
+  hide_all_patients();
+  QList<QListWidgetItem*> matches;
+  if(filter_string.toLongLong())
+  {
+      for (unsigned int i = 0; i < patients->size(); i++)
+      {
+          if (to_string(patients->at(i).getSocialNumber()).find(filter_string.toLocal8Bit().constData()) != string::npos)
+          {
+              matches.append(ui->listWidget_Patients->findItems(patients->at(i).get_first_name() + " " + patients->at(i).get_last_name(), Qt::MatchFlag::MatchContains));
+          }
+      }
+  }
+  else
+  {
+      matches.append(ui->listWidget_Patients->findItems(filter_string, Qt::MatchFlag::MatchContains));
+  }
+  for(QListWidgetItem* item : matches)
+    item->setHidden(false);
+}
+
+void Widget::hide_all_patients()
+{
+  for(int row(0); row < ui->listWidget_Patients->count(); row++ )
+    ui->listWidget_Patients->item(row)->setHidden(true);
+}
 
 static string BuildDoctorNamespace(Doctor *doctor)
 {
@@ -155,8 +205,6 @@ void Widget::on_button_AddDoctor_clicked()
 
 void Widget::refresh_lists()
 {
-    qDebug() << "SLOTS n SIGNALS FUNKER SHOHAIBIBI";
-
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
@@ -178,6 +226,14 @@ void Widget::refresh_lists()
     {
         qDebug() << "Database not connected";
     }
+}
 
+void Widget::on_filter_doctor_edit_textChanged(const QString &arg1)
+{
+    filter_doctors(arg1);
+}
 
+void Widget::on_filter_patient_edit_textChanged(const QString &arg1)
+{
+    filter_patients(arg1);
 }
