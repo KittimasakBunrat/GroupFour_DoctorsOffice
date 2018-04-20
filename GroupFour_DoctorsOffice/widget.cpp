@@ -69,11 +69,6 @@ Widget::Widget(QWidget *parent) :
 
 Widget::~Widget()
 {
-    delete doctors;
-    delete patients;
-    delete doctorPage;
-    delete patientPage;
-    delete add_patient_dialog_;
     delete ui;
 }
 

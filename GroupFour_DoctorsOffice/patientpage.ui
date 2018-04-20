@@ -84,6 +84,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="label_7">
+        <property name="font">
+         <font>
+          <family>Optima</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Social Number: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_4">
         <property name="font">
          <font>
@@ -121,6 +134,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="label_SocialNumber">
+        <property name="text">
+         <string>Social Number</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_DoctorID">
         <property name="text">
          <string>Doctor ID: </string>
@@ -137,32 +157,6 @@
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QLabel" name="label_SocialNumber">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>190</y>
-     <width>119</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>200</y>
-     <width>159</width>
-     <height>12</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Socialnr: </string>
-   </property>
   </widget>
  </widget>
  <resources/>
