@@ -42,6 +42,8 @@ private slots:
     void on_filter_doctor_edit_textChanged(const QString &arg1);
     void on_filter_patient_edit_textChanged(const QString &arg1);
 
+    void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
+
 private:
     Ui::Widget *ui;
     vector<Doctor> *doctors;
