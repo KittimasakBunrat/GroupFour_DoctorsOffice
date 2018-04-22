@@ -48,20 +48,22 @@ bool DbHelper::create_table(const QString& table_name)
     {
         query.prepare("CREATE TABLE patients("
                       "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                      "social_number INTEGER,"
+                      "social_number INTEGER NOT NULL,"
                       "first_name TEXT NOT NULL,"
                       "last_name TEXT NOT NULL,"
                       "phone_number INT NOT NULL,"
-                      "doctor INTEGER,"
+                      "doctor INTEGER NOT NULL,"
                       "FOREIGN KEY(doctor) REFERENCES doctors(employee_id)"
                       ");");
     }
     else if (table_name == "appointments")
     {
         query.prepare("CREATE TABLE appointments("
-                      "appointment_time TEXT PRIMARY KEY,"
-                      "doctor INTEGER,"
-                      "patient INTEGER,"
+                      "appointment_time TEXT NOT NULL,"
+                      "doctor INTEGER NOT NULL,"
+                      "patient INTEGER NOT NULL,"
+                      "notes TEXT,"
+                      "PRIMARY KEY (appointment_time, doctor, patient),"
                       "FOREIGN KEY(doctor) REFERENCES doctors(employee_id),"
                       "FOREIGN KEY(patient) REFERENCES patients(id)"
                       ");");
