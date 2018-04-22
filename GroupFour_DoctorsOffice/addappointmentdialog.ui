@@ -207,7 +207,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QLabel" name="patientId">
+         <widget class="QLabel" name="label_social_number">
           <property name="text">
            <string>social</string>
           </property>

@@ -24,7 +24,7 @@ private slots:
     void on_add_patient_buttonBox_rejected();
 
 signals:
-    void accept_button_clicked();
+    void accept_patient_button_clicked();
 
 private:
     Ui::AddPatientDialog *ui;

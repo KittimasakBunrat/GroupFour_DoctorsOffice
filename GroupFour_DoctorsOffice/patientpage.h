@@ -21,8 +21,10 @@ public:
 
     void setFullName(QString name);
     void setDoctorID(int doctorID);
+    void setPatientID(int patient_id);
+    void setDoctorName(QString doctorName);
     void setPhoneNumber(int phoneNumber);
-    void setSocialNumber(int socialNumber);
+    void setSocialNumber(long long socialNumber);
 
 private slots:
     void on_pushButton_clicked();
@@ -30,6 +32,8 @@ private slots:
     void on_pushButton_3_pressed();
 
 private:
+    int doctor_id_;
+    int patient_id_;
     Ui::PatientPage *ui;
     AddAppointmentDialog *add_appointment;
     PatientHistory *patient_history;

@@ -20,6 +20,8 @@ Doctor::Doctor(QString first_name, QString last_name, int phone_number, int empl
     }
 }
 
+Doctor::Doctor() { }
+
 
 int Doctor::get_employee_number()
 {

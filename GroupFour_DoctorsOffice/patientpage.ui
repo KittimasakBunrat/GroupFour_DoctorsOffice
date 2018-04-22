@@ -16,20 +16,20 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>120</x>
      <y>10</y>
-     <width>281</width>
+     <width>161</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Gill Sans</family>
-     <pointsize>18</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Information About Patient</string>
+    <string>Patient Information</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -74,8 +74,8 @@
        <widget class="QLabel" name="label_5">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -87,8 +87,8 @@
        <widget class="QLabel" name="label_7">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -100,12 +100,12 @@
        <widget class="QLabel" name="label_4">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Doctor ID: </string>
+         <string>Doctor's Name: </string>
         </property>
        </widget>
       </item>
@@ -113,8 +113,8 @@
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -127,30 +127,30 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label_PatientName">
-        <property name="text">
-         <string>PatientName</string>
+       <widget class="QLineEdit" name="edit_PatientName">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_SocialNumber">
-        <property name="text">
-         <string>Social Number</string>
+       <widget class="QLineEdit" name="edit_SocialNumber">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_DoctorID">
-        <property name="text">
-         <string>Doctor ID: </string>
+       <widget class="QLineEdit" name="edit_DoctorsName">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_PhoneNumber">
-        <property name="text">
-         <string>PhoneNumber</string>
+       <widget class="QLineEdit" name="edit_PhoneNumber">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -164,7 +164,7 @@
      <x>260</x>
      <y>240</y>
      <width>91</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">

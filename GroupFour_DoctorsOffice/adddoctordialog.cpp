@@ -24,7 +24,7 @@ void AddDoctorDialog::on_add_doctor_buttonBox_accepted()
     {
         Doctor *doctor = new Doctor(first_name, last_name, phone_number, 0);
         db.create_new_doctor(*doctor);
-        emit this->accept_button_clicked();
+        emit this->accept_doctor_button_clicked();
         QMessageBox::information(this,tr("Success"),tr("Doctor added"));
         qDebug() << "Database OK";
     }

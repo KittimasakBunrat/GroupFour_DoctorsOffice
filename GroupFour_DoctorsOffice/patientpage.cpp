@@ -16,39 +16,62 @@ PatientPage::~PatientPage()
 
 void PatientPage::setFullName(QString name)
 {
-    ui->label_PatientName->setText(name);
+    ui->edit_PatientName->setText(name);
 }
 
 void PatientPage::setDoctorID(int doctorID)
 {
-    ui->label_DoctorID->setText(QString::number(doctorID));
+    this->doctor_id_ = { doctorID };
+}
+
+void PatientPage::setPatientID(int patient_id)
+{
+    this->patient_id_ = { patient_id };
+}
+
+void PatientPage::setDoctorName(QString doctorName)
+{
+    ui->edit_DoctorsName->setText(doctorName);
 }
 
 void PatientPage::setPhoneNumber(int phoneNumber)
 {
-    ui->label_PhoneNumber->setText(QString::number(phoneNumber));
+    ui->edit_PhoneNumber->setText(QString::number(phoneNumber));
 }
 
-void PatientPage::setSocialNumber(int socialNumber)
+void PatientPage::setSocialNumber(long long socialNumber)
 {
-    ui->label_SocialNumber->setText(QString::number(socialNumber));
+    ui->edit_SocialNumber->setText(QString::number(socialNumber));
 }
 
 void PatientPage::on_pushButton_clicked()
 {
     add_appointment = new AddAppointmentDialog(this);
-    add_appointment->set_patientId(ui->label_SocialNumber->text().toInt());
-    add_appointment->set_patientName(ui->label_PatientName->text());
-    add_appointment->set_doctorId(ui->label_DoctorID->text().toInt());
+    add_appointment->set_patientId(this->patient_id_);
+    add_appointment->set_patientName(ui->edit_PatientName->text());
+    add_appointment->set_patient_social_number(ui->edit_SocialNumber->text());
+    add_appointment->set_doctorName(ui->edit_DoctorsName->text());
+    add_appointment->set_doctorId(this->doctor_id_);
+    /*
+    patientPage->setFullName(fullName.c_str());
+    patientPage->setDoctorID(doctorID);
+    patientPage->setPatientID(patient_id);
+    patientPage->setDoctorName(doctorName.c_str());
+    patientPage->setPhoneNumber(phoneNumber);
+    patientPage->setSocialNumber(socialNumber);
+    */
+
+    /*
+    add_appointment->set_patientId(ui->edit_SocialNumber->text().toLongLong());
+    add_appointment->set_patientName(ui->edit_PatientName->text());
+    add_appointment->set_doctorId(ui->edit_DoctorID->text().toInt());*/
 
     Doctor *doctor;
-    int doctorId = ui->label_DoctorID->text().toInt();
-
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
         for(int i = 0; i < db.get_doctors()->size(); i++) {
-            if(db.get_doctors()->at(i).get_employee_number() == doctorId) {
+            if(db.get_doctors()->at(i).get_employee_number() == doctor_id_) {
                 QString firstname = db.get_doctors()->at(i).get_first_name();
                 QString lastname = db.get_doctors()->at(i).get_last_name();
                 int phoneNr = db.get_doctors()->at(i).get_phone_number();
@@ -63,7 +86,7 @@ void PatientPage::on_pushButton_clicked()
         qDebug() << "Database not connected";
     }
 
-    add_appointment->set_doctorName(doctor->get_first_name());
+
 
     for(unsigned int i = 0; i < doctor->get_vector_time()->size(); i++)
     {
@@ -81,6 +104,5 @@ void PatientPage::on_pushButton_3_pressed()
 {
     patient_history = new PatientHistory(this);
 
-    this->close();
     patient_history->show();
 }

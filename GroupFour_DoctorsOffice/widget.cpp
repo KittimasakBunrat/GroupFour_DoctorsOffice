@@ -40,6 +40,8 @@ Widget::Widget(QWidget *parent) :
 
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
+    appointments = new vector<Appointment>(*db.get_appointments());
+
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
         ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
@@ -52,6 +54,7 @@ Widget::Widget(QWidget *parent) :
 
     ui->button_SelectDoctor->setEnabled(false);
     ui->button_SelectPatient->setEnabled(false);
+    ui->button_SelectAppointment->setEnabled(false);
 }
 
 Widget::~Widget()
@@ -133,6 +136,15 @@ static string BuildPatientNamespace(Patient *patient)
     return patientInfo;
 }
 
+string BuildAppointmentNamespace(Appointment *appointment)
+{
+    string appointmentInfo;
+    ostringstream bodyStream;
+    bodyStream << appointment->get_appointment_time().toStdString();
+    appointmentInfo = bodyStream.str();
+    return appointmentInfo;
+}
+
 void Widget::on_button_SelectDoctor_clicked()
 {
 
@@ -155,16 +167,35 @@ void Widget::on_button_SelectPatient_clicked()
 
     string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
     int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
+    string doctorName;
+    for(unsigned int i = 0; i < doctors->size(); i++)
+    {
+        if (doctors->at(i).get_employee_number() == doctorID)
+        {
+            doctorName = BuildDoctorNamespace(&doctors->at(i)).c_str();
+        }
+    }
+    int patient_id = patients->at(ui->listWidget_Patients->currentRow()).getPatientId();
+    qDebug() << "PASIENT ID: " << patient_id;
     int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
-    int socialNumber = patients->at(ui->listWidget_Patients->currentRow()).getSocialNumber();
+    long long socialNumber = patients->at(ui->listWidget_Patients->currentRow()).getSocialNumber();
 
     patientPage->setFullName(fullName.c_str());
     patientPage->setDoctorID(doctorID);
+    patientPage->setPatientID(patient_id);
+    patientPage->setDoctorName(doctorName.c_str());
     patientPage->setPhoneNumber(phoneNumber);
     patientPage->setSocialNumber(socialNumber);
-
     patientPage->show();
 }
+
+void Widget::on_button_SelectAppointment_clicked()
+{
+    add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
+
+    add_appointment_note_dialog_->show();
+}
+
 
 void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
@@ -178,21 +209,24 @@ void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
     ui->button_SelectPatient->setEnabled(true);
 }
 
+void Widget::on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item)
+{
+    ui->button_SelectAppointment->setEnabled(true);
+}
+
 void Widget::on_button_AddPatient_clicked()
 {
     add_patient_dialog_ = new AddPatientDialog(this);
-    connect(add_patient_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
+    connect(add_patient_dialog_, SIGNAL (accept_patient_button_clicked()), this, SLOT (refresh_lists()));
     add_patient_dialog_->show();
 }
 
 void Widget::on_button_AddDoctor_clicked()
 {
     add_doctor_dialog_ = new AddDoctorDialog(this);
-    connect(add_doctor_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
+    connect(add_doctor_dialog_, SIGNAL (accept_doctor_button_clicked()), this, SLOT (refresh_lists()));
     add_doctor_dialog_->show();
 }
-
-
 
 void Widget::refresh_lists()
 {

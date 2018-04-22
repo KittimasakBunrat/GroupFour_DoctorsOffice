@@ -9,6 +9,7 @@ class Doctor : public Person
 {
 public:
     Doctor(QString first_name, QString last_name, int phone_number, int employee_number);
+    Doctor();
     int get_employee_number();
 
     vector<Patient> get_vector_patients();

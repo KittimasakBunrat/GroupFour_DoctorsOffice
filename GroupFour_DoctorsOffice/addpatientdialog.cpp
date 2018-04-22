@@ -44,7 +44,7 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
     }
     else
     {
-        int social_number { ui->social_number_edit->text().toInt() };
+        long long social_number { ui->social_number_edit->text().toLongLong() };
         QString first_name { ui->first_name_edit->text() };
         QString last_name { ui->last_name_edit->text() };
         QString comboBox {ui->doctor_combo_box->currentText()};
@@ -57,10 +57,10 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
         DbHelper db(GLOBAL_CONST_db_path);
         if (db.isOpen())
         {
-            Patient *patient = new Patient(social_number,first_name,last_name,phone_number, doctorID);
+            Patient *patient = new Patient(0, social_number,first_name,last_name,phone_number, doctorID);
             db.create_new_patient(*patient);
-            emit this->accept_button_clicked();
-            QMessageBox::information(this,tr("Success"),tr("Appointment added"));
+            emit this->accept_patient_button_clicked();
+            QMessageBox::information(this,tr("Success"),tr("Patient added"));
             qDebug() << "Database OK";
         }
         else

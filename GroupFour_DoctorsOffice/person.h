@@ -7,6 +7,7 @@ class Person
 {
 public:
     Person(QString first_name, QString last_name, int phone_number);
+    Person();
     QString get_first_name();
     QString get_last_name();
     int get_phone_number();

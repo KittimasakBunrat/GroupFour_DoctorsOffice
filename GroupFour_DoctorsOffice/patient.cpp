@@ -1,7 +1,8 @@
 #include "patient.h"
 
-Patient::Patient(int social_number, QString first_name, QString last_name, int phone_number, int doctor_id) : Person(first_name, last_name, phone_number)
+Patient::Patient(int patient_id, long long social_number, QString first_name, QString last_name, int phone_number, int doctor_id) : Person(first_name, last_name, phone_number)
 {
+    this->patient_id_ = patient_id;
     this->social_number_ = social_number;
     this->first_name_ = first_name;
     this->last_name_ = last_name;
@@ -14,7 +15,12 @@ int Patient::getDoctorID()
     return this->doctor_id_;
 }
 
-int Patient::getSocialNumber()
+long long Patient::getSocialNumber()
 {
     return this->social_number_;
+}
+
+int Patient::getPatientId()
+{
+    return this->patient_id_;
 }
