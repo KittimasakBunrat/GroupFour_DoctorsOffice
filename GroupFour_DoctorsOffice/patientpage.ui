@@ -105,7 +105,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Doctor ID: </string>
+         <string>Doctor's Name: </string>
         </property>
        </widget>
       </item>
@@ -127,30 +127,30 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label_PatientName">
-        <property name="text">
-         <string>PatientName</string>
+       <widget class="QLineEdit" name="edit_PatientName">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_SocialNumber">
-        <property name="text">
-         <string>Social Number</string>
+       <widget class="QLineEdit" name="edit_SocialNumber">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_DoctorID">
-        <property name="text">
-         <string>Doctor ID: </string>
+       <widget class="QLineEdit" name="edit_DoctorsName">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_PhoneNumber">
-        <property name="text">
-         <string>PhoneNumber</string>
+       <widget class="QLineEdit" name="edit_PhoneNumber">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>

@@ -15,12 +15,17 @@ AddAppointmentDialog::~AddAppointmentDialog()
 
 void AddAppointmentDialog::set_patientId(int id)
 {
-    ui->patientId->setText(QString::number(id));
+    this->patient_id_ = { id };
 }
 
 void AddAppointmentDialog::set_patientName(QString name)
 {
     ui->patientName->setText(name);
+}
+
+void AddAppointmentDialog::set_patient_social_number(QString social_number)
+{
+    ui->label_social_number->setText(social_number);
 }
 
 void AddAppointmentDialog::set_doctorId(int id)
@@ -43,9 +48,9 @@ void AddAppointmentDialog::on_buttonBox_accepted()
 
     QString appointment_time = ui->date->text() + " - " + ui->listTime->currentItem()->text();
     int doctorId = ui->doctorId->text().toInt();
-    int patientId = ui->patientId->text().toInt();
+    //int patientId = ui->label_social_number->text().toInt();
 
-    Appointment *appointment = new Appointment(appointment_time, doctorId, patientId);
+    Appointment *appointment = new Appointment(appointment_time, doctorId, this->patient_id_);
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())

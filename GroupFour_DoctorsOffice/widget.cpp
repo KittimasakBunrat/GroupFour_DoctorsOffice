@@ -155,14 +155,25 @@ void Widget::on_button_SelectPatient_clicked()
 
     string fullName = BuildPatientNamespace(&patients->at(ui->listWidget_Patients->currentRow())).c_str();
     int doctorID = patients->at(ui->listWidget_Patients->currentRow()).getDoctorID();
+    string doctorName;
+    for(unsigned int i = 0; i < doctors->size(); i++)
+    {
+        if (doctors->at(i).get_employee_number() == doctorID)
+        {
+            doctorName = BuildDoctorNamespace(&doctors->at(i)).c_str();
+        }
+    }
+    int patient_id = patients->at(ui->listWidget_Patients->currentRow()).getPatientId();
+    qDebug() << "PASIENT ID: " << patient_id;
     int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
     long long socialNumber = patients->at(ui->listWidget_Patients->currentRow()).getSocialNumber();
 
     patientPage->setFullName(fullName.c_str());
     patientPage->setDoctorID(doctorID);
+    patientPage->setPatientID(patient_id);
+    patientPage->setDoctorName(doctorName.c_str());
     patientPage->setPhoneNumber(phoneNumber);
     patientPage->setSocialNumber(socialNumber);
-
     patientPage->show();
 }
 

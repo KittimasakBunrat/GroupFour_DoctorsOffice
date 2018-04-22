@@ -7,6 +7,8 @@ Person::Person(QString first_name, QString last_name, int phone_number)
     this->phone_number_ = phone_number;
 }
 
+Person::Person() {}
+
 QString Person::get_first_name()
 {
     return this->first_name_;

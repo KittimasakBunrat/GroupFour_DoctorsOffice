@@ -67,10 +67,10 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLineEdit" name="last_name_edit"/>
+       <widget class="QLineEdit" name="first_name_edit"/>
       </item>
       <item>
-       <widget class="QLineEdit" name="first_name_edit"/>
+       <widget class="QLineEdit" name="last_name_edit"/>
       </item>
       <item>
        <widget class="QLineEdit" name="phone_number_edit"/>
@@ -81,8 +81,8 @@
   </widget>
  </widget>
  <tabstops>
-  <tabstop>last_name_edit</tabstop>
   <tabstop>first_name_edit</tabstop>
+  <tabstop>last_name_edit</tabstop>
   <tabstop>phone_number_edit</tabstop>
  </tabstops>
  <resources/>

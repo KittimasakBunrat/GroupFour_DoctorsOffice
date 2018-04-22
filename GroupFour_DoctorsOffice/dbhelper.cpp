@@ -127,13 +127,14 @@ vector<Patient> *DbHelper::get_patients()
     query.exec();
 
     while(query.next()) {
+        int id = query.value(0).toInt();
         long long social = query.value(1).toLongLong();
         QString first = query.value(2).toString();
         QString last = query.value(3).toString();
         int phone = query.value(4).toInt();
         int doc = query.value(5).toInt();
 
-        Patient *patient = new Patient(social, first, last, phone, doc);
+        Patient *patient = new Patient(id, social, first, last, phone, doc);
 
         v_patients->push_back(*patient);
     }
