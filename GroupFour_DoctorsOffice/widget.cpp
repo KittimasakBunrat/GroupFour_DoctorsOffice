@@ -40,6 +40,8 @@ Widget::Widget(QWidget *parent) :
 
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
+    appointments = new vector<Appointment>(*db.get_appointments());
+
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
         ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
@@ -134,6 +136,15 @@ static string BuildPatientNamespace(Patient *patient)
     return patientInfo;
 }
 
+string BuildAppointmentNamespace(Appointment *appointment)
+{
+    string appointmentInfo;
+    ostringstream bodyStream;
+    bodyStream << appointment->get_appointment_time().toStdString();
+    appointmentInfo = bodyStream.str();
+    return appointmentInfo;
+}
+
 void Widget::on_button_SelectDoctor_clicked()
 {
 
@@ -171,6 +182,12 @@ void Widget::on_button_SelectAppointment_clicked()
 {
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
 
+    string appointmentInfo = BuildAppointmentNamespace(&appointments->at(ui->listWidget_DoctorTime->currentRow())).c_str();
+    int doctorID = appointments->at(ui->listWidget_Doctors->currentRow()).get_doctor_id();
+
+    add_appointment_note_dialog_->setAppointmentInfo(appointmentInfo.c_str());
+    add_appointment_note_dialog_->setDoctorInfo(doctorID);
+
     add_appointment_note_dialog_->show();
 }
 
@@ -205,8 +222,6 @@ void Widget::on_button_AddDoctor_clicked()
     connect(add_doctor_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
     add_doctor_dialog_->show();
 }
-
-
 
 void Widget::refresh_lists()
 {

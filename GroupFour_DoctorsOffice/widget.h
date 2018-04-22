@@ -56,6 +56,7 @@ private:
     Ui::Widget *ui;
     vector<Doctor> *doctors;
     vector<Patient> *patients;
+    vector<Appointment> *appointments;
     DoctorPage *doctorPage;
     PatientPage *patientPage;
     AddPatientDialog *add_patient_dialog_;
@@ -65,5 +66,6 @@ private:
 
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
+static string BuildAppointmentNamespace(Appointment *appointment);
 
 #endif // WIDGET_H
