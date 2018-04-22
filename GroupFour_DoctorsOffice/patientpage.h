@@ -1,6 +1,7 @@
 #ifndef PATIENTPAGE_H
 #define PATIENTPAGE_H
 #include "addappointmentdialog.h"
+#include "patienthistory.h"
 #include "doctor.h"
 #include "constants.h"
 
@@ -26,9 +27,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_3_pressed();
+
 private:
     Ui::PatientPage *ui;
     AddAppointmentDialog *add_appointment;
+    PatientHistory *patient_history;
 };
 
 #endif // PATIENTPAGE_H

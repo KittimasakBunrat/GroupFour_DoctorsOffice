@@ -76,3 +76,11 @@ void PatientPage::on_pushButton_clicked()
     add_appointment->show();
 }
 
+
+void PatientPage::on_pushButton_3_pressed()
+{
+    patient_history = new PatientHistory(this);
+
+    this->close();
+    patient_history->show();
+}
