@@ -44,7 +44,7 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
     }
     else
     {
-        int social_number { ui->social_number_edit->text().toInt() };
+        long long social_number { ui->social_number_edit->text().toLongLong() };
         QString first_name { ui->first_name_edit->text() };
         QString last_name { ui->last_name_edit->text() };
         QString comboBox {ui->doctor_combo_box->currentText()};

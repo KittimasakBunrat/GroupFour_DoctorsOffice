@@ -22,7 +22,7 @@ public:
     void setFullName(QString name);
     void setDoctorID(int doctorID);
     void setPhoneNumber(int phoneNumber);
-    void setSocialNumber(int socialNumber);
+    void setSocialNumber(long long socialNumber);
 
 private slots:
     void on_pushButton_clicked();

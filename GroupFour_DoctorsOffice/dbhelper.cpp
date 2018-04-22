@@ -127,7 +127,7 @@ vector<Patient> *DbHelper::get_patients()
     query.exec();
 
     while(query.next()) {
-        int social = query.value(1).toInt();
+        long long social = query.value(1).toLongLong();
         QString first = query.value(2).toString();
         QString last = query.value(3).toString();
         int phone = query.value(4).toInt();
