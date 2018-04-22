@@ -40,6 +40,8 @@ Widget::Widget(QWidget *parent) :
 
     doctors = new vector<Doctor>(*db.get_doctors());
     patients = new vector<Patient>(*db.get_patients());
+    appointments = new vector<Appointment>(*db.get_appointments());
+
     for(unsigned int i = 0; i < doctors->size(); i++)
     {
         ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
@@ -52,6 +54,7 @@ Widget::Widget(QWidget *parent) :
 
     ui->button_SelectDoctor->setEnabled(false);
     ui->button_SelectPatient->setEnabled(false);
+    ui->button_SelectAppointment->setEnabled(false);
 }
 
 Widget::~Widget()
@@ -133,6 +136,15 @@ static string BuildPatientNamespace(Patient *patient)
     return patientInfo;
 }
 
+string BuildAppointmentNamespace(Appointment *appointment)
+{
+    string appointmentInfo;
+    ostringstream bodyStream;
+    bodyStream << appointment->get_appointment_time().toStdString();
+    appointmentInfo = bodyStream.str();
+    return appointmentInfo;
+}
+
 void Widget::on_button_SelectDoctor_clicked()
 {
 
@@ -177,6 +189,14 @@ void Widget::on_button_SelectPatient_clicked()
     patientPage->show();
 }
 
+void Widget::on_button_SelectAppointment_clicked()
+{
+    add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
+
+    add_appointment_note_dialog_->show();
+}
+
+
 void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectDoctor->setEnabled(true);
@@ -187,6 +207,11 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectPatient->setEnabled(true);
+}
+
+void Widget::on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item)
+{
+    ui->button_SelectAppointment->setEnabled(true);
 }
 
 void Widget::on_button_AddPatient_clicked()
@@ -202,8 +227,6 @@ void Widget::on_button_AddDoctor_clicked()
     connect(add_doctor_dialog_, SIGNAL (accept_button_clicked()), this, SLOT (refresh_lists()));
     add_doctor_dialog_->show();
 }
-
-
 
 void Widget::refresh_lists()
 {
