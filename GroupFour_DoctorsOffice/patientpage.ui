@@ -16,20 +16,20 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>120</x>
      <y>10</y>
-     <width>281</width>
+     <width>161</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Gill Sans</family>
-     <pointsize>18</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Information About Patient</string>
+    <string>Patient Information</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -74,8 +74,8 @@
        <widget class="QLabel" name="label_5">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -87,8 +87,8 @@
        <widget class="QLabel" name="label_7">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -100,8 +100,8 @@
        <widget class="QLabel" name="label_4">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -113,8 +113,8 @@
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
-          <family>Optima</family>
-          <pointsize>18</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="text">
@@ -164,7 +164,7 @@
      <x>260</x>
      <y>240</y>
      <width>91</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
