@@ -6,6 +6,7 @@
 #include "patientpage.h"
 #include "addpatientdialog.h"
 #include "adddoctordialog.h"
+#include "addappointmentnotedialog.h"
 #include <QWidget>
 #include <QtGui>
 #include <QtCore>
@@ -45,6 +46,12 @@ private slots:
 
     void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
 
+    void on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item);
+
+    //void on_pushButton_clicked();
+
+    void on_button_SelectAppointment_clicked();
+
 private:
     Ui::Widget *ui;
     vector<Doctor> *doctors;
@@ -53,6 +60,7 @@ private:
     PatientPage *patientPage;
     AddPatientDialog *add_patient_dialog_;
     AddDoctorDialog *add_doctor_dialog_;
+    AddAppointmentNoteDialog *add_appointment_note_dialog_;
 };
 
 static string BuildDoctorNamespace(Doctor *doctor);

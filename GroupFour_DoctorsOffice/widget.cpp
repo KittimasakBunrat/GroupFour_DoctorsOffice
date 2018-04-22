@@ -52,6 +52,7 @@ Widget::Widget(QWidget *parent) :
 
     ui->button_SelectDoctor->setEnabled(false);
     ui->button_SelectPatient->setEnabled(false);
+    ui->button_SelectAppointment->setEnabled(false);
 }
 
 Widget::~Widget()
@@ -166,6 +167,14 @@ void Widget::on_button_SelectPatient_clicked()
     patientPage->show();
 }
 
+void Widget::on_button_SelectAppointment_clicked()
+{
+    add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
+
+    add_appointment_note_dialog_->show();
+}
+
+
 void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectDoctor->setEnabled(true);
@@ -176,6 +185,11 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectPatient->setEnabled(true);
+}
+
+void Widget::on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item)
+{
+    ui->button_SelectAppointment->setEnabled(true);
 }
 
 void Widget::on_button_AddPatient_clicked()

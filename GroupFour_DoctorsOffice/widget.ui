@@ -217,7 +217,7 @@
        <widget class="QListWidget" name="listWidget_DoctorTime"/>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="button_SelectAppointment">
         <property name="text">
          <string>Select Appointment</string>
         </property>

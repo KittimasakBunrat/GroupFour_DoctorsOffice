@@ -36,7 +36,8 @@ SOURCES += \
     appointment.cpp \
     adddoctordialog.cpp \
     addappointmentdialog.cpp \
-    patienthistory.cpp
+    patienthistory.cpp \
+    addappointmentnotedialog.cpp
 
 HEADERS += \
         widget.h \
@@ -51,7 +52,8 @@ HEADERS += \
     appointment.h \
     adddoctordialog.h \
     addappointmentdialog.h \
-    patienthistory.h
+    patienthistory.h \
+    addappointmentnotedialog.h
 
 FORMS += \
         widget.ui \
@@ -60,6 +62,7 @@ FORMS += \
     addpatientdialog.ui \
     adddoctordialog.ui \
     addappointmentdialog.ui \
-    patienthistory.ui
+    patienthistory.ui \
+    addappointmentnotedialog.ui
 
 CONFIG += c++11
