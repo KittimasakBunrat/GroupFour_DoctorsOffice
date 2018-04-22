@@ -182,12 +182,6 @@ void Widget::on_button_SelectAppointment_clicked()
 {
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
 
-    string appointmentInfo = BuildAppointmentNamespace(&appointments->at(ui->listWidget_DoctorTime->currentRow())).c_str();
-    int doctorID = appointments->at(ui->listWidget_Doctors->currentRow()).get_doctor_id();
-
-    add_appointment_note_dialog_->setAppointmentInfo(appointmentInfo.c_str());
-    add_appointment_note_dialog_->setDoctorInfo(doctorID);
-
     add_appointment_note_dialog_->show();
 }
 

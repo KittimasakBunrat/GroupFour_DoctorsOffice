@@ -13,8 +13,8 @@ class AddAppointmentNoteDialog : public QDialog
 
 public:
     explicit AddAppointmentNoteDialog(QWidget *parent = 0);
-    void setAppointmentInfo(QString appointmentinfo);
-    void setDoctorInfo(int doctorinfo);
+    void setAppointmentInfo();
+    void setDoctorInfo();
     ~AddAppointmentNoteDialog();
 
 private slots:

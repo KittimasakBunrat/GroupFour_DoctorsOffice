@@ -8,14 +8,14 @@ AddAppointmentNoteDialog::AddAppointmentNoteDialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
-void AddAppointmentNoteDialog::setAppointmentInfo(QString appointmentinfo)
+void AddAppointmentNoteDialog::setAppointmentInfo()
 {
-    ui->appointment_label->setText(appointmentinfo);
+
 }
 
-void AddAppointmentNoteDialog::setDoctorInfo(int doctorinfo)
+void AddAppointmentNoteDialog::setDoctorInfo()
 {
-    ui->doctorId_label->setText(QString::number(doctorinfo));
+
 }
 
 AddAppointmentNoteDialog::~AddAppointmentNoteDialog()
