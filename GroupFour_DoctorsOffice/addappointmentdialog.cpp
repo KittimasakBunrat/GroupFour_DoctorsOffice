@@ -48,7 +48,6 @@ void AddAppointmentDialog::on_buttonBox_accepted()
 
     QString appointment_time = ui->date->text() + " - " + ui->listTime->currentItem()->text();
     int doctorId = ui->doctorId->text().toInt();
-    //int patientId = ui->label_social_number->text().toInt();
 
     Appointment *appointment = new Appointment(appointment_time, doctorId, this->patient_id_);
 

@@ -205,6 +205,9 @@
           <item>
            <widget class="QLineEdit" name="filter_appointm_edit">
             <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
              <string>dd/mm/yyyy</string>
             </property>
            </widget>

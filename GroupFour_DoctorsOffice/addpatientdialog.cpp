@@ -59,7 +59,7 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
         {
             Patient *patient = new Patient(0, social_number,first_name,last_name,phone_number, doctorID);
             db.create_new_patient(*patient);
-            emit this->accept_button_clicked();
+            emit this->accept_patient_button_clicked();
             QMessageBox::information(this,tr("Success"),tr("Patient added"));
             qDebug() << "Database OK";
         }
