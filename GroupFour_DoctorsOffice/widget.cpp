@@ -298,12 +298,6 @@ void Widget::on_filter_patient_edit_textChanged(const QString &arg1)
     filter_patients(arg1);
 }
 
-void Widget::on_comboBox_activated(const QString &arg1)
-{
-    qDebug() << arg1;
-    filter_appointments(arg1);
-}
-
 void Widget::list_doctor_time(int doctorId)
 {
     ui->listWidget_Appointments->clear();

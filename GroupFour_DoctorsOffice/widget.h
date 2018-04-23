@@ -63,8 +63,6 @@ private slots:
 
     void list_doctor_time(int doctorId);
 
-    void on_comboBox_activated(const QString &arg1);
-
 private:
     Ui::Widget *ui;
     vector<Doctor> *doctors;
