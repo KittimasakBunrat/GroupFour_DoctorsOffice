@@ -45,11 +45,11 @@ void AddAppointmentDialog::set_listTime(QString time)
 
 void AddAppointmentDialog::on_buttonBox_accepted()
 {
-
+    QString appointment_date = "";
     QString appointment_time = ui->date->text() + " - " + ui->listTime->currentItem()->text();
     int doctorId = ui->doctorId->text().toInt();
 
-    Appointment *appointment = new Appointment(appointment_time, doctorId, this->patient_id_);
+    Appointment *appointment = new Appointment(appointment_date, appointment_time, doctorId, this->patient_id_);
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())

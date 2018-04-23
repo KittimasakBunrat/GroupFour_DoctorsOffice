@@ -7,12 +7,14 @@ using namespace std;
 class Appointment {
 
 public:
-    Appointment(QString appointment_time, int doctor_id, int patient_id);
+    Appointment(QString appointment_date, QString appointment_time, int doctor_id, int patient_id);
+    QString get_appointment_date();
     QString get_appointment_time();
     int get_doctor_id();
     int get_patient_id();
 
 private:
+    QString appointment_date_;
     QString appointment_time_;
     int doctor_id_;
     int patient_id_;
