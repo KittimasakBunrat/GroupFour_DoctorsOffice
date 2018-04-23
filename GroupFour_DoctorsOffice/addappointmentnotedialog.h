@@ -2,6 +2,9 @@
 #define ADDAPPOINTMENTNOTEDIALOG_H
 
 #include <QDialog>
+#include "dbhelper.h"
+#include <QMessageBox>
+#include "constants.h"
 
 namespace Ui {
 class AddAppointmentNoteDialog;
