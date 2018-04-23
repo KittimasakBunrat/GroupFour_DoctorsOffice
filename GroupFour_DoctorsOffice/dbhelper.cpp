@@ -162,12 +162,11 @@ bool DbHelper::update_appointment(int doctorId, int patientId, QString appointme
     qDebug()<<"notes"<<notes;
 
     QSqlQuery query;
-    query.prepare("UPDATE appointments SET notes = ':notes' WHERE doctor = ':doctorId' AND patient = ':patientId' AND appointment_time = ':appointmentTime'");
-    query.bindValue(":doctor_id", doctorId);
-    query.bindValue(":patient_id", patientId);
+    query.prepare("UPDATE appointments SET notes = :notes WHERE doctor = :doctorId AND patient = :patientId AND appointment_time = :appointmentTime");
+    query.bindValue(":doctorId", doctorId);
+    query.bindValue(":patientId", patientId);
     query.bindValue(":appointmentTime", appointmentTime);
     query.bindValue(":notes", notes);
-
     query.exec();
 
     if(!query.exec())
@@ -178,6 +177,7 @@ bool DbHelper::update_appointment(int doctorId, int patientId, QString appointme
     else
     {
         qDebug() << "Updated Notes in appointment";
+        qDebug() << query.lastError();
     }
     return success;
 }
