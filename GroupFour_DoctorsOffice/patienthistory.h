@@ -7,6 +7,7 @@
 #include "appointment.h"
 
 namespace Ui {
+
 class PatientHistory;
 }
 
