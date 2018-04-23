@@ -39,8 +39,14 @@ void AddAppointmentDialog::set_doctorName(QString name)
     ui->doctorName->setText(name);
 }
 
-void AddAppointmentDialog::set_listTime(QString time)
+void AddAppointmentDialog::set_listTime(vector<string> *vector_time)
 {
+
+    for(unsigned int i = 0; i < vector_time->size(); i++)
+    {
+        ui->listTime->addItem(vector_time->at(i).c_str());
+    }
+
     vector<Appointment> *v_appointment;
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
@@ -53,14 +59,16 @@ void AddAppointmentDialog::set_listTime(QString time)
         qDebug() << "Appointment add failed!";
     }
 
-    for(int i = 0; i < v_appointment->size(); i++) {
-        if(ui->date->text() == v_appointment->at(i).get_appointment_date()) {
-            if(time != v_appointment->at(i).get_appointment_time()) {
-                ui->listTime->addItem(time);
+    for (int i = 0; i < v_appointment->size(); ++i) {
+        if(ui->date->text() == v_appointment->at(i).get_appointment_date()
+                && ui->doctorId->text().toInt() == v_appointment->at(i).get_doctor_id()) {
+            for(int j = 0; j < ui->listTime->count(); j++) {
+                if(v_appointment->at(i).get_appointment_time() == ui->listTime->item(j)->text()) {
+                    delete ui->listTime->item(j);
+                }
             }
         }
     }
-
 }
 
 void AddAppointmentDialog::set_time_vector(vector<string> *time)

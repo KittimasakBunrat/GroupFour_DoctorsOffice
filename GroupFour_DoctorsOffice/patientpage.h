@@ -31,6 +31,8 @@ private slots:
 
     void on_pushButton_3_pressed();
 
+    void on_pushButton_2_clicked();
+
 private:
     int doctor_id_;
     int patient_id_;

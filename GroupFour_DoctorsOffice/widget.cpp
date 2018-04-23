@@ -292,7 +292,7 @@ void Widget::list_doctor_time(int doctorId)
                 {
                     QString date = appointments->at(j).get_appointment_date();
                     QString time = appointments->at(j).get_appointment_time();
-                    QString stringBinder = patientsSocial + " : " + patientsFirstName + " " + patientsLastName + " - " + date + ":" + time;
+                    QString stringBinder = patientsSocial + " : " + patientsFirstName + " " + patientsLastName + " - " + date + " : " + time;
                     ui->listWidget_DoctorTime->addItem(stringBinder);
                 }
             }
