@@ -78,7 +78,6 @@ void PatientPage::on_pushButton_clicked()
     for(unsigned int i = 0; i < doctor->get_vector_time()->size(); i++)
     {
         add_appointment->set_listTime(doctor->get_vector_time()->at(i).c_str());
-
     }
 
 
