@@ -237,6 +237,13 @@ void Widget::on_button_SelectAppointment_clicked()
 {
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
 
+    DbHelper db(GLOBAL_CONST_db_path);
+    if (db.isOpen())
+    {
+        delete appointments;
+        appointments = new vector<Appointment>(*db.get_appointments());
+    }
+
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
     QString appointmentTime = appointments->at(ui->listWidget_Appointments->currentRow()).get_appointment_time();
     QString appointmentDate = appointments->at(ui->listWidget_Appointments->currentRow()).get_appointment_date();
