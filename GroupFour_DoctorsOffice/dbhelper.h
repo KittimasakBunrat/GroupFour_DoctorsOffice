@@ -32,6 +32,7 @@ public:
     bool create_new_appointment(Appointment appointment);
     bool update_appointment(int doctorId, int patientId, QString appointmentTime, QString notes);
     vector<Appointment> *get_distinct_appointments(int employee_id);
+    vector<Appointment> *get_single_patients_appointments(int patient_id);
     vector<Appointment> *get_appointments();
 
     bool create_new_doctor(Doctor doctor);

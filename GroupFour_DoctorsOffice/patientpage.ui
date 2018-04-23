@@ -158,7 +158,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="open_patient_history">
    <property name="geometry">
     <rect>
      <x>260</x>

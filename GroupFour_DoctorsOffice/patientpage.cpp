@@ -80,15 +80,22 @@ void PatientPage::on_pushButton_clicked()
     add_appointment->show();
 }
 
-
-void PatientPage::on_pushButton_3_pressed()
-{
-    patient_history = new PatientHistory(this);
-
-    patient_history->show();
-}
-
 void PatientPage::on_pushButton_2_clicked()
 {
     this->close();
+}
+
+void PatientPage::on_open_patient_history_clicked()
+{
+    patient_history = new PatientHistory(this);
+    patient_history->set_patient_name(ui->edit_PatientName->text());
+    vector<Appointment> *v_appointments_;
+    DbHelper db(GLOBAL_CONST_db_path);
+    if (db.isOpen())
+    {
+        v_appointments_ = new vector<Appointment>(*db.get_single_patients_appointments(this->patient_id_));
+    }
+
+    patient_history->copy_appointment_vector(v_appointments_);
+    patient_history->show();
 }

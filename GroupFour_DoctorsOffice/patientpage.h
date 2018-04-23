@@ -29,9 +29,9 @@ public:
 private slots:
     void on_pushButton_clicked();
 
-    void on_pushButton_3_pressed();
-
     void on_pushButton_2_clicked();
+
+    void on_open_patient_history_clicked();
 
 private:
     int doctor_id_;
@@ -39,6 +39,7 @@ private:
     Ui::PatientPage *ui;
     AddAppointmentDialog *add_appointment;
     PatientHistory *patient_history;
+    //vector<Appointment> *v_appointments_;
 };
 
 #endif // PATIENTPAGE_H
