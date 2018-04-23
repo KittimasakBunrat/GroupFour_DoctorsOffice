@@ -145,6 +145,16 @@ static string BuildAppointmentNamespace(Appointment *appointment)
     return appointmentInfo;
 }
 
+int getPatientSocialNumberForNoteDialog(QString displayedText)
+{
+    QStringList splittedText = displayedText.split(" : ");
+    QString last = splittedText.last();
+
+    int socialNumber = last.toInt();
+
+    return socialNumber;
+}
+
 void Widget::on_button_SelectDoctor_clicked()
 {
 
@@ -196,11 +206,25 @@ void Widget::on_button_SelectAppointment_clicked()
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
     QString appointmentTime = appointments->at(ui->listWidget_DoctorTime->currentRow()).get_appointment_time();
 
+    QString fullString = ui->listWidget_DoctorTime->currentItem()->text();
+
+    int socialNumber = getPatientSocialNumberForNoteDialog(fullString);
+
+    int patientID = 0;
+
+    for(unsigned int i = 0; i < patients->size(); i++)
+    {
+        if(patients->at(i).getSocialNumber() == socialNumber)
+        {
+            patientID = patients->at(i).getPatientId();
+            add_appointment_note_dialog_->setPatientInfo(patientID);
+        }
+    }
+
     add_appointment_note_dialog_->setDoctorInfo(doctorId);
     add_appointment_note_dialog_->setAppointmentTime(appointmentTime);
     add_appointment_note_dialog_->show();
 }
-
 
 void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {

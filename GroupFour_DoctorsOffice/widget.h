@@ -62,6 +62,6 @@ private:
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
 static string BuildAppointmentNamespace(Appointment *appointment);
-
+static int getPatientSocialNumberForNoteDialog(QString displayedText);
 
 #endif // WIDGET_H

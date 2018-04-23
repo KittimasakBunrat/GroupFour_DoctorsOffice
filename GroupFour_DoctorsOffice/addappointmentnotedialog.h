@@ -15,7 +15,7 @@ public:
     explicit AddAppointmentNoteDialog(QWidget *parent = 0);
     void setAppointmentTime(QString appointmentTime);
     void setDoctorInfo(int id);
-    void setPatientInfo(int id);
+    void setPatientInfo(int patient_social_number);
     ~AddAppointmentNoteDialog();
 
 private slots:
@@ -23,6 +23,7 @@ private slots:
 
 private:
     Ui::AddAppointmentNoteDialog *ui;
+    int patient_social_number;
 };
 
 #endif // ADDAPPOINTMENTNOTEDIALOG_H
