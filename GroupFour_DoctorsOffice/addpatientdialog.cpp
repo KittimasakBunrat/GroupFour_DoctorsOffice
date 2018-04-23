@@ -12,18 +12,20 @@ AddPatientDialog::AddPatientDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
     DbHelper db(GLOBAL_CONST_db_path);
     if(db.isOpen())
     {
-        for(unsigned int i = 0; i < db.get_doctors()->size(); i++)
-        {
-            ostringstream bodyStream;
-            string doctorInfo;
-            bodyStream << db.get_doctors()->at(i).get_first_name().toStdString() << " " << db.get_doctors()->at(i).get_employee_number();
-            doctorInfo = bodyStream.str();
-            ui->doctor_combo_box->addItem(doctorInfo.c_str());
+        v_doctors_ ={ new vector<Doctor>(*db.get_doctors()) };
+    }
 
-        }
+    for(unsigned int i = 0; i < v_doctors_->size(); i++)
+    {
+        employee_id_ ={ v_doctors_->at(i).get_employee_number() };
+        doctors_first_name_ ={  v_doctors_->at(i).get_first_name() };
+        doctors_last_name_ ={  v_doctors_->at(i).get_last_name() };
+        QString doctor_info { QString::number(employee_id_) + " : " + doctors_first_name_ + " " + doctors_last_name_ };
+        ui->doctor_combo_box->addItem(doctor_info);
     }
 }
 
@@ -50,14 +52,14 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
         QString comboBox {ui->doctor_combo_box->currentText()};
         int phone_number { ui->phone_number_edit->text().toInt() };
 
-        QStringList comboBoxSplit = comboBox.split(" ");
-        QString splittedString = comboBoxSplit.last();
-        int doctorID = splittedString.toInt();
+        QStringList comboBoxSplit = comboBox.split(" : ");
+        QString employee_id_split = comboBoxSplit.first();
+        int employee_id = employee_id_split.toInt();
 
         DbHelper db(GLOBAL_CONST_db_path);
         if (db.isOpen())
         {
-            Patient *patient = new Patient(0, social_number,first_name,last_name,phone_number, doctorID);
+            Patient *patient = new Patient(0, social_number,first_name,last_name,phone_number, employee_id);
             db.create_new_patient(*patient);
             emit this->accept_patient_button_clicked();
             QMessageBox::information(this,tr("Success"),tr("Patient added"));
