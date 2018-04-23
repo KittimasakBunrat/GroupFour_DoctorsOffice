@@ -181,10 +181,13 @@ static string BuildAppointmentNamespace(Appointment *appointment)
 int getPatientSocialNumberForNoteDialog(QString displayedText)
 {
     QStringList splittedText = displayedText.split(" : ");
-    QString last = splittedText.last();
-
-    int socialNumber = last.toInt();
-
+    QRegularExpression regex("\\((\\d*)\\)");
+    QRegularExpressionMatch match = regex.match(displayedText);
+    QString matched;
+    if (match.hasMatch()) {
+        matched = match.captured(1);
+    }
+    int socialNumber = matched.toInt();
     return socialNumber;
 }
 
@@ -219,7 +222,6 @@ void Widget::on_button_SelectPatient_clicked()
         }
     }
     int patient_id = patients->at(ui->listWidget_Patients->currentRow()).getPatientId();
-    qDebug() << "PASIENT ID: " << patient_id;
     int phoneNumber = patients->at(ui->listWidget_Patients->currentRow()).get_phone_number();
     long long socialNumber = patients->at(ui->listWidget_Patients->currentRow()).getSocialNumber();
 
@@ -237,9 +239,9 @@ void Widget::on_button_SelectAppointment_clicked()
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
 
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
-    QString appointmentTime = appointments->at(ui->listWidget_DoctorTime->currentRow()).get_appointment_time();
-
-    QString fullString = ui->listWidget_DoctorTime->currentItem()->text();
+    QString appointmentTime = appointments->at(ui->listWidget_Appointments->currentRow()).get_appointment_time();
+    QString appointmentDate = appointments->at(ui->listWidget_Appointments->currentRow()).get_appointment_date();
+    QString fullString = ui->listWidget_Appointments->currentItem()->text();
 
     int socialNumber = getPatientSocialNumberForNoteDialog(fullString);
 
@@ -256,6 +258,7 @@ void Widget::on_button_SelectAppointment_clicked()
 
     add_appointment_note_dialog_->setDoctorInfo(doctorId);
     add_appointment_note_dialog_->setAppointmentTime(appointmentTime);
+    add_appointment_note_dialog_->setAppointmentDate(appointmentDate);
     add_appointment_note_dialog_->show();
 }
 
@@ -272,10 +275,10 @@ void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
     ui->button_SelectPatient->setEnabled(true);
 }
 
-void Widget::on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item)
+void Widget::on_listWidget_Appointments_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectAppointment->setEnabled(true);
-    int patientId = appointments->at(ui->listWidget_DoctorTime->currentRow()).get_patient_id();
+    int patientId = appointments->at(ui->listWidget_Appointments->currentRow()).get_patient_id();
     qDebug() << "patientID" << patientId;
 }
 
@@ -329,7 +332,6 @@ void Widget::on_filter_patient_edit_textChanged(const QString &arg1)
     filter_patients(arg1);
 }
 
-void Widget::list_doctor_time(int doctorId)
 void Widget::on_comboBox_activated(const QString &arg1)
 {
     qDebug() << arg1;
@@ -366,8 +368,6 @@ void Widget::list_doctor_time(int doctorId)
 
                     QString date = appointments->at(j).get_appointment_date();
                     QString time = appointments->at(j).get_appointment_time();
-                    QString stringBinder = date + " : " + time + " - " + patientsFirstName + " : " + patientsSocial;
-                    ui->listWidget_DoctorTime->addItem(stringBinder);
                     QString stringBinder = date + " : " + time + " - " + patientsFirstName + " (" + patientsSocial + ") ";
                     ui->listWidget_Appointments->addItem(stringBinder);
                 }

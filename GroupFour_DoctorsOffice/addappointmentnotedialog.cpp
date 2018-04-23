@@ -13,6 +13,11 @@ void AddAppointmentNoteDialog::setAppointmentTime(QString appointmentTime)
     ui->appointment_label->setText(appointmentTime);
 }
 
+void AddAppointmentNoteDialog::setAppointmentDate(QString appointmentDate)
+{
+    ui->appointment_label_2->setText(appointmentDate);
+}
+
 void AddAppointmentNoteDialog::setDoctorInfo(int id)
 {
     ui->doctorId_label->setNum(id);
