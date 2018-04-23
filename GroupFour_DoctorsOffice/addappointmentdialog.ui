@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>30</y>
+     <y>60</y>
      <width>211</width>
-     <height>211</height>
+     <height>181</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -86,8 +86,10 @@
      <widget class="QLabel" name="label_4">
       <property name="font">
        <font>
-        <family>Optima</family>
-        <pointsize>18</pointsize>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -103,8 +105,8 @@
          <widget class="QLabel" name="label_8">
           <property name="font">
            <font>
-            <family>Optima</family>
-            <pointsize>14</pointsize>
+            <family>MS Shell Dlg 2</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -116,8 +118,8 @@
          <widget class="QLabel" name="label_7">
           <property name="font">
            <font>
-            <family>Optima</family>
-            <pointsize>14</pointsize>
+            <family>MS Shell Dlg 2</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -131,6 +133,9 @@
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <widget class="QLabel" name="doctorId">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>id</string>
           </property>
@@ -138,6 +143,9 @@
         </item>
         <item>
          <widget class="QLabel" name="doctorName">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>name</string>
           </property>
@@ -163,8 +171,10 @@
      <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
-        <family>Optima</family>
-        <pointsize>18</pointsize>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -180,8 +190,8 @@
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
-            <family>Optima</family>
-            <pointsize>14</pointsize>
+            <family>MS Shell Dlg 2</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -193,8 +203,8 @@
          <widget class="QLabel" name="label_6">
           <property name="font">
            <font>
-            <family>Optima</family>
-            <pointsize>14</pointsize>
+            <family>MS Shell Dlg 2</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
@@ -208,6 +218,9 @@
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <widget class="QLabel" name="label_social_number">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>social</string>
           </property>
@@ -215,6 +228,9 @@
         </item>
         <item>
          <widget class="QLabel" name="patientName">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>name</string>
           </property>
@@ -225,6 +241,22 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>40</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Note: mm/dd/yyyy</string>
+   </property>
   </widget>
  </widget>
  <resources/>

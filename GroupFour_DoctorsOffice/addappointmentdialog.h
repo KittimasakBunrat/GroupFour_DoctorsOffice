@@ -25,12 +25,15 @@ public:
     void set_doctorId(int id);
     void set_doctorName(QString name);
     void set_listTime(QString time);
+    void set_time_vector(vector<string> *time);
 
 private slots:
     void on_buttonBox_accepted();
+    void on_date_userDateChanged(const QDate &date);
 
 private:
     Ui::AddAppointmentDialog *ui;
+    vector<string> *time_vector;
     int patient_id_;
     int doctor_id_;
 };
