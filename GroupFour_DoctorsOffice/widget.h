@@ -57,6 +57,7 @@ private slots:
     void on_filter_patient_edit_textChanged(const QString &arg1);
 
     void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
+    void on_listWidget_Patients_itemClicked();
 
     void on_listWidget_Appointments_itemClicked(QListWidgetItem *item);
     void on_listWidget_Appointments_itemClicked();
