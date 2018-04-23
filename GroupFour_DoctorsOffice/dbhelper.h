@@ -31,6 +31,7 @@ public:
     vector<Patient> *get_patients();
 
     bool create_new_appointment(Appointment appointment);
+    vector<Appointment> *get_distinct_appointments(int employee_id);
     vector<Appointment> *get_appointments();
 
     bool create_new_doctor(Doctor doctor);

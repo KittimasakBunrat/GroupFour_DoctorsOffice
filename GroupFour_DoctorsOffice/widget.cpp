@@ -15,9 +15,6 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-   // QPixmap pix("C:/Users/pontusskold/Desktop/medic_cross.png");
-    //ui->label_picture->setPixmap(pix);
-
     QDir dir(GLOBAL_CONST_app_data_path);
     if (!dir.exists())
         dir.mkpath(GLOBAL_CONST_app_data_path);
@@ -54,6 +51,12 @@ Widget::Widget(QWidget *parent) :
     {
         ui->listWidget_Patients->addItem(BuildPatientNamespace(&patients->at(i)).c_str());
     }
+
+
+    buildEmptyComboBox();
+
+
+    connect(ui->date_comboBox, &QComboBox::currentTextChanged, [this](const QString& text){ this->filter_appointments(text); });
 
     ui->button_SelectDoctor->setEnabled(false);
     ui->button_SelectPatient->setEnabled(false);
@@ -120,6 +123,36 @@ void Widget::hide_all_patients()
   for(int row(0); row < ui->listWidget_Patients->count(); row++ )
     ui->listWidget_Patients->item(row)->setHidden(true);
 }
+
+void Widget::filter_appointments(const QString &filter_string)
+{
+    if (!(filter_string == "Select Date..."))
+    {
+        hide_all_appointments();
+        QList<QListWidgetItem*> matches;
+        matches.append(ui->listWidget_Appointments->findItems(filter_string, Qt::MatchFlag::MatchContains));
+        for(QListWidgetItem* item : matches)
+          item->setHidden(false);
+    }
+    else
+    {
+        for(int row(0); row < ui->listWidget_Appointments->count(); row++ )
+          ui->listWidget_Appointments->item(row)->setHidden(false);
+    }
+}
+
+void Widget::hide_all_appointments()
+{
+  for(int row(0); row < ui->listWidget_Appointments->count(); row++ )
+      ui->listWidget_Appointments->item(row)->setHidden(true);
+}
+
+void Widget::buildEmptyComboBox()
+{
+    ui->date_comboBox->clear();
+    ui->date_comboBox->addItem("Select Date...");
+}
+
 
 static string BuildDoctorNamespace(Doctor *doctor)
 {
@@ -204,6 +237,7 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectDoctor->setEnabled(true);
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    buildEmptyComboBox();
     list_doctor_time(doctorId);
 }
 
@@ -212,7 +246,7 @@ void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
     ui->button_SelectPatient->setEnabled(true);
 }
 
-void Widget::on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item)
+void Widget::on_listWidget_Appointments_itemClicked(QListWidgetItem *item)
 {
     ui->button_SelectAppointment->setEnabled(true);
 }
@@ -256,6 +290,7 @@ void Widget::refresh_lists()
     }
 }
 
+
 void Widget::on_filter_doctor_edit_textChanged(const QString &arg1)
 {
     filter_doctors(arg1);
@@ -266,15 +301,33 @@ void Widget::on_filter_patient_edit_textChanged(const QString &arg1)
     filter_patients(arg1);
 }
 
+void Widget::on_comboBox_activated(const QString &arg1)
+{
+    qDebug() << arg1;
+    filter_appointments(arg1);
+}
+
 void Widget::list_doctor_time(int doctorId)
 {
+    ui->listWidget_Appointments->clear();
+   // vector<Patient> *patients;
+   // vector<Appointment> *appointments;
+   // vector<Appointment> *v_distinct_appointments;
+
     DbHelper db(GLOBAL_CONST_db_path);
+    //if (db.isOpen())
+    //{
+        vector<Patient> *patients = { new vector<Patient>(*db.get_patients()) };
+        vector<Appointment> *appointments = { new vector<Appointment>(*db.get_appointments()) };
+        vector<Appointment>*v_distinct_appointments = { new vector<Appointment>(*db.get_distinct_appointments(doctorId)) };
+    //}
 
-    ui->listWidget_DoctorTime->clear();
-
-    vector<Patient> *patients = new vector<Patient>(*db.get_patients());
-
-    vector<Appointment> *appointments = new vector<Appointment>(*db.get_appointments());
+    // FLYTTE DETTE INN HVOR MAN VELGER DOKTOR
+    for(unsigned int i = 0; i < v_distinct_appointments->size(); i++)
+    {
+        ui->date_comboBox->addItem(v_distinct_appointments->at(i).get_appointment_date());
+    }
+    //********************
 
     for(unsigned int i=0; i < patients->size(); i++)
     {
@@ -292,10 +345,11 @@ void Widget::list_doctor_time(int doctorId)
                 {
                     QString date = appointments->at(j).get_appointment_date();
                     QString time = appointments->at(j).get_appointment_time();
-                    QString stringBinder = date + " : " + time + " - " + patientsFirstName + " : " + patientsSocial;
-                    ui->listWidget_DoctorTime->addItem(stringBinder);
+                    QString stringBinder = date + " : " + time + " - " + patientsFirstName + " (" + patientsSocial + ") ";
+                    ui->listWidget_Appointments->addItem(stringBinder);
                 }
             }
         }
     }
 }
+
