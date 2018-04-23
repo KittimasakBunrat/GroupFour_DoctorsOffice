@@ -29,7 +29,7 @@ public:
 
 private slots:
     void on_buttonBox_accepted();
-    void on_date_userDateChanged(const QDate &date);
+    void on_date_userDateChanged();
 
 private:
     Ui::AddAppointmentDialog *ui;

@@ -108,20 +108,6 @@ bool DbHelper::create_new_patient(Patient patient)
     return success;
 }
 
-bool DbHelper::update_patient(Patient patient, int id)
-{
-    QSqlQuery query;
-    query.prepare("UPDATE patients SET social_number = ':social_number', "
-                  "first_name = ':first_name', last_name = ':last_name', "
-                  "phone_number = ':phone_number', doctor_id = ':doctor_id' WHERE id = ':id'");
-    query.bindValue(":social_number", patient.getSocialNumber());
-    query.bindValue(":first_name", patient.get_first_name());
-    query.bindValue(":last_name", patient.get_last_name());
-    query.bindValue(":phone_number", patient.get_phone_number());
-    query.bindValue("doctor_id", patient.getDoctorID());
-    query.bindValue(":id", id);
-}
-
 vector<Patient> *DbHelper::get_patients()
 {
     QString sql = "SELECT * FROM patients";
@@ -262,16 +248,6 @@ bool DbHelper::create_new_doctor(Doctor doctor)
     return success;
 }
 
-bool DbHelper::update_doctor(Doctor doctor, int doctor_id)
-{
-    QSqlQuery query;
-    query.prepare("UPDATE doctors SET first_name = ':first_name', last_name = ':last_name', phone_number = ':phone_number' WHERE employee_id = ':employee_id'");
-    query.bindValue(":first_name", doctor.get_first_name());
-    query.bindValue(":last_name", doctor.get_last_name());
-    query.bindValue(":phone_number", doctor.get_phone_number());
-    query.bindValue(":employee_id", doctor_id);
-}
-
 vector<Doctor> *DbHelper::get_doctors()
 {
     QString sql = "SELECT * FROM doctors";
@@ -291,32 +267,3 @@ vector<Doctor> *DbHelper::get_doctors()
     }
     return v_doctors;
 }
-
-/*
-bool DbManager::addPerson(const QString& name)
-{
-    bool success = false;
-
-    if (!name.isEmpty())
-    {
-        QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO people (name) VALUES (:name)");
-        queryAdd.bindValue(":name", name);
-
-        if(queryAdd.exec())
-        {
-            success = true;
-        }
-        else
-        {
-            qDebug() << "add person failed: " << queryAdd.lastError();
-        }
-    }
-    else
-    {
-        qDebug() << "add person failed: name cannot be empty";
-    }
-
-    return success;
-}
-*/

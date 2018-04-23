@@ -27,7 +27,6 @@ public:
     bool create_table(const QString& table_name);
 
     bool create_new_patient(Patient patient);
-    bool update_patient(Patient patient, int id);
     vector<Patient> *get_patients();
 
     bool create_new_appointment(Appointment appointment);
@@ -36,7 +35,6 @@ public:
     vector<Appointment> *get_appointments();
 
     bool create_new_doctor(Doctor doctor);
-    bool update_doctor(Doctor doctor, int doctor_id);
     vector<Doctor> *get_doctors();
 
 

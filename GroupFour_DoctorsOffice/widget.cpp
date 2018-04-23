@@ -151,7 +151,7 @@ void Widget::buildEmptyComboBox()
 }
 
 
-static string BuildDoctorNamespace(Doctor *doctor)
+string BuildDoctorNamespace(Doctor *doctor)
 {
     string doctorInfo;
     ostringstream bodyStream;
@@ -160,7 +160,7 @@ static string BuildDoctorNamespace(Doctor *doctor)
     return doctorInfo;
 }
 
-static string BuildPatientNamespace(Patient *patient)
+string BuildPatientNamespace(Patient *patient)
 {
     string patientInfo;
     ostringstream bodyStream;
@@ -261,7 +261,7 @@ void Widget::on_button_SelectAppointment_clicked()
     add_appointment_note_dialog_->show();
 }
 
-void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
+void Widget::on_listWidget_Doctors_itemClicked()
 {
     ui->button_SelectDoctor->setEnabled(true);
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
@@ -269,16 +269,14 @@ void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
     list_doctor_time(doctorId);
 }
 
-void Widget::on_listWidget_Patients_itemClicked(QListWidgetItem *item)
+void Widget::on_listWidget_Patients_itemClicked()
 {
     ui->button_SelectPatient->setEnabled(true);
 }
 
-void Widget::on_listWidget_Appointments_itemClicked(QListWidgetItem *item)
+void Widget::on_listWidget_Appointments_itemClicked()
 {
     ui->button_SelectAppointment->setEnabled(true);
-    int patientId = appointments->at(ui->listWidget_Appointments->currentRow()).get_patient_id();
-    qDebug() << "patientID" << patientId;
 }
 
 void Widget::on_button_AddPatient_clicked()
