@@ -72,10 +72,10 @@ private slots:
     void on_pushButton_clicked();
 
     /**
-     * @brief hanterer knappetrykk for on_pushButton_3_pressed
+     * @brief hanterer knappetrykk for on_open_patient_history_clicked
      */
 
-    void on_pushButton_3_pressed();
+    void on_open_patient_history_clicked();
 
     /**
      * @brief hanterer knappetrykk for on_pushButton_2_clicked
@@ -89,6 +89,7 @@ private:
     Ui::PatientPage *ui;
     AddAppointmentDialog *add_appointment;
     PatientHistory *patient_history;
+    //vector<Appointment> *v_appointments_;
 };
 
 #endif // PATIENTPAGE_H

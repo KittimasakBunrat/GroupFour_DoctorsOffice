@@ -195,9 +195,32 @@ vector<Appointment> *DbHelper::get_distinct_appointments(int employee_id)
          QString appointment_time = query.value(1).toString();
          int doctor_id = query.value(2).toInt();
          int patient_id = query.value(3).toInt();
+         QString appointment_notes = query.value(4).toString();
 
-         Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id);
+         Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id, appointment_notes);
 
+         v_appointments->push_back(*appointment);
+     }
+     return v_appointments;
+}
+
+vector<Appointment> *DbHelper::get_single_patients_appointments(int patient_id)
+{
+    vector<Appointment> *v_appointments = new vector<Appointment>();
+    QSqlQuery query;
+    query.prepare("SELECT * FROM appointments WHERE patient = :patient_id");
+    query.bindValue(":patient_id", patient_id);
+     query.exec();
+
+     while(query.next()) {
+         QString appointment_date = query.value(0).toString();
+         QString appointment_time = query.value(1).toString();
+         int doctor_id = query.value(2).toInt();
+         int patient_id = query.value(3).toInt();
+         QString appointment_notes = query.value(4).toString();
+
+
+         Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id, appointment_notes);
          v_appointments->push_back(*appointment);
      }
      return v_appointments;
@@ -215,8 +238,9 @@ vector<Appointment> *DbHelper::get_appointments()
         QString appointment_time = query.value(1).toString();
         int doctor_id = query.value(2).toInt();
         int patient_id = query.value(3).toInt();
+        QString appointment_notes = query.value(4).toString();
 
-        Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id);
+        Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id, appointment_notes);
 
         v_appointments->push_back(*appointment);
     }
