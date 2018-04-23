@@ -33,6 +33,4 @@ private:
     QString doctors_last_name_;
     int employee_id_;
 };
-
-static void fill_combo_box(vector<Doctor> v_doctors);
 #endif // ADDPATIENTDIALOG_H

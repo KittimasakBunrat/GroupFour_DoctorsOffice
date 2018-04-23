@@ -40,6 +40,7 @@ private slots:
     void on_button_SelectDoctor_clicked();
 
     void on_listWidget_Doctors_itemClicked(QListWidgetItem *item);
+    void on_listWidget_Doctors_itemClicked();
 
     void on_button_SelectPatient_clicked();
 
@@ -58,6 +59,7 @@ private slots:
     void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
 
     void on_listWidget_Appointments_itemClicked(QListWidgetItem *item);
+    void on_listWidget_Appointments_itemClicked();
 
     void on_button_SelectAppointment_clicked();
 
@@ -77,10 +79,17 @@ private:
     AddAppointmentNoteDialog *add_appointment_note_dialog_;
 };
 
+<<<<<<< HEAD
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
 static string BuildAppointmentNamespace(Appointment *appointment);
 static int getPatientSocialNumberForNoteDialog(QString displayedText);
+=======
+string BuildDoctorNamespace(Doctor *doctor);
+string BuildPatientNamespace(Patient *patient);
+string BuildAppointmentNamespace(Appointment *appointment);
+
+>>>>>>> Develop
 
 
 #endif // WIDGET_H
