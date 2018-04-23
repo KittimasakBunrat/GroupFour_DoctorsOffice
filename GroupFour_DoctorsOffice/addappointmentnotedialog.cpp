@@ -8,14 +8,24 @@ AddAppointmentNoteDialog::AddAppointmentNoteDialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
-void AddAppointmentNoteDialog::setAppointmentInfo()
+void AddAppointmentNoteDialog::setAppointmentTime(QString appointmentTime)
 {
-
+    ui->appointment_label->setText(appointmentTime);
 }
 
-void AddAppointmentNoteDialog::setDoctorInfo()
+void AddAppointmentNoteDialog::setAppointmentDate(QString appointmentDate)
 {
+    ui->appointment_label_2->setText(appointmentDate);
+}
 
+void AddAppointmentNoteDialog::setDoctorInfo(int id)
+{
+    ui->doctorId_label->setNum(id);
+}
+
+void AddAppointmentNoteDialog::setPatientInfo(int patient_social_number)
+{
+    ui->patientId_label->setNum(patient_social_number);
 }
 
 AddAppointmentNoteDialog::~AddAppointmentNoteDialog()
@@ -44,6 +54,4 @@ void AddAppointmentNoteDialog::on_buttonBox_accepted()
         qDebug() << "Appointment add failed!";
     }
     */
-
-
 }
