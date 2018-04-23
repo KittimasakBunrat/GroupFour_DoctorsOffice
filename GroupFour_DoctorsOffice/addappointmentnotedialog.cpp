@@ -18,9 +18,15 @@ void AddAppointmentNoteDialog::setDoctorInfo(int id)
     ui->doctorId_label->setNum(id);
 }
 
+<<<<<<< HEAD
 void AddAppointmentNoteDialog::setPatientInfo(int patient_social_number)
 {
     ui->patientId_label->setNum(patient_social_number);
+=======
+void AddAppointmentNoteDialog::setPatientInfo(int patientId)
+{
+    ui->patientId_label->setNum(patientId);
+>>>>>>> 1b92e10b8858f77a2add0432259ef27858bbc8ea
 }
 
 AddAppointmentNoteDialog::~AddAppointmentNoteDialog()
