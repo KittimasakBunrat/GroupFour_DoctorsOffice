@@ -59,7 +59,7 @@ void AddAppointmentDialog::set_listTime(vector<string> *vector_time)
         qDebug() << "Appointment add failed!";
     }
 
-    for (int i = 0; i < v_appointment->size(); ++i) {
+    for (unsigned int i = 0; i < v_appointment->size(); ++i) {
         if(ui->date->text() == v_appointment->at(i).get_appointment_date()
                 && ui->doctorId->text().toInt() == v_appointment->at(i).get_doctor_id()) {
             for(int j = 0; j < ui->listTime->count(); j++) {
@@ -97,7 +97,7 @@ void AddAppointmentDialog::on_buttonBox_accepted()
     }
 }
 
-void AddAppointmentDialog::on_date_userDateChanged(const QDate &date)
+void AddAppointmentDialog::on_date_userDateChanged()
 {
 
     ui->listTime->clear();
@@ -119,7 +119,7 @@ void AddAppointmentDialog::on_date_userDateChanged(const QDate &date)
         qDebug() << "Appointment add failed!";
     }
 
-    for (int i = 0; i < v_appointment->size(); ++i) {
+    for (unsigned int i = 0; i < v_appointment->size(); ++i) {
         if(ui->date->text() == v_appointment->at(i).get_appointment_date()
                 && ui->doctorId->text().toInt() == v_appointment->at(i).get_doctor_id()) {
             for(int j = 0; j < ui->listTime->count(); j++) {

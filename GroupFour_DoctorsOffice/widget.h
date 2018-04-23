@@ -39,7 +39,7 @@ public:
 private slots:
     void on_button_SelectDoctor_clicked();
 
-    void on_listWidget_Doctors_itemClicked(QListWidgetItem *item);
+    void on_listWidget_Doctors_itemClicked();
 
     void on_button_SelectPatient_clicked();
 
@@ -55,9 +55,9 @@ private slots:
 
     void on_filter_patient_edit_textChanged(const QString &arg1);
 
-    void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
+    void on_listWidget_Patients_itemClicked();
 
-    void on_listWidget_Appointments_itemClicked(QListWidgetItem *item);
+    void on_listWidget_Appointments_itemClicked();
 
     void on_button_SelectAppointment_clicked();
 
@@ -77,9 +77,9 @@ private:
     AddAppointmentNoteDialog *add_appointment_note_dialog_;
 };
 
-static string BuildDoctorNamespace(Doctor *doctor);
-static string BuildPatientNamespace(Patient *patient);
-static string BuildAppointmentNamespace(Appointment *appointment);
+string BuildDoctorNamespace(Doctor *doctor);
+string BuildPatientNamespace(Patient *patient);
+string BuildAppointmentNamespace(Appointment *appointment);
 
 
 
