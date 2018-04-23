@@ -273,15 +273,26 @@ void Widget::list_doctor_time(int doctorId)
 
     vector<Appointment> *appointments = new vector<Appointment>(*db.get_appointments());
 
-
-    for(unsigned int i=0; i < patients->size(); i++) {
-        if(patients->at(i).getDoctorID() == doctorId) {
+/*    for (unsigned int i = 0; i < appointments->size(); i++)
+    {
+    }
+*/
+    for(unsigned int i=0; i < patients->size(); i++)
+    {
+        if(patients->at(i).getDoctorID() == doctorId)
+        {
+            int patient_id = patients->at(i).getPatientId();
             QString patientsSocial = QString::number(patients->at(i).getSocialNumber());
-            QString patientsName = patients->at(i).get_first_name();
-            for(unsigned int j=0; j<appointments->size(); j++) {
-                if(appointments->at(j).get_patient_id() == patients->at(i).getSocialNumber()) {
+            QString patientsFirstName = patients->at(i).get_first_name();
+            QString patientsLastName = patients->at(i).get_last_name();
+            //QString patientsName = BuildPatientNamespace(patients->at(i)).c_str();
+            for(unsigned int j = 0; j < appointments->size(); j++)
+            {
+                if(appointments->at(j).get_patient_id() == patient_id)
+                {
+                    QString date = appointments->at(j).get_appointment_date();
                     QString time = appointments->at(j).get_appointment_time();
-                    QString stringBinder = patientsSocial + " : " + patientsName + " - " + time;
+                    QString stringBinder = patientsSocial + " : " + patientsFirstName + " " + patientsLastName + " - " + date + ":" + time;
                     ui->listWidget_DoctorTime->addItem(stringBinder);
                 }
             }

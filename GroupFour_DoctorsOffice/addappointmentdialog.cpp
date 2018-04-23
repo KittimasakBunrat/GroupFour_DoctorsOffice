@@ -51,7 +51,6 @@ void AddAppointmentDialog::set_time_vector(vector<string> *time)
 
 void AddAppointmentDialog::on_buttonBox_accepted()
 {
-
     QString appointment_date = ui->date->text();
     QString appointment_time = ui->listTime->currentItem()->text();
     int doctorId = ui->doctorId->text().toInt();

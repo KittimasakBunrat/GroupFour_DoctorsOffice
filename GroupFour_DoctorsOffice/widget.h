@@ -42,15 +42,10 @@ private slots:
     void refresh_lists();
     void on_filter_doctor_edit_textChanged(const QString &arg1);
     void on_filter_patient_edit_textChanged(const QString &arg1);
-    void list_doctor_time(int doctorId);
-
     void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
-
     void on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item);
-
-    //void on_pushButton_clicked();
-
     void on_button_SelectAppointment_clicked();
+    void list_doctor_time(int doctorId);
 
 private:
     Ui::Widget *ui;
@@ -67,5 +62,6 @@ private:
 static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
 static string BuildAppointmentNamespace(Appointment *appointment);
+
 
 #endif // WIDGET_H
