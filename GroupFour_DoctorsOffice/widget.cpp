@@ -180,7 +180,6 @@ static string BuildAppointmentNamespace(Appointment *appointment)
 
 int getPatientSocialNumberForNoteDialog(QString displayedText)
 {
-    QStringList splittedText = displayedText.split(" : ");
     QRegularExpression regex("\\((\\d*)\\)");
     QRegularExpressionMatch match = regex.match(displayedText);
     QString matched;
