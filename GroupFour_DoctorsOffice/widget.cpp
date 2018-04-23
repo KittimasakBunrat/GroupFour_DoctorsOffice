@@ -277,8 +277,6 @@ void Widget::on_listWidget_Patients_itemClicked()
 void Widget::on_listWidget_Appointments_itemClicked()
 {
     ui->button_SelectAppointment->setEnabled(true);
-    int patientId = appointments->at(ui->listWidget_Appointments->currentRow()).get_patient_id();
-    qDebug() << "patientID" << patientId;
 }
 
 void Widget::on_button_AddPatient_clicked()
