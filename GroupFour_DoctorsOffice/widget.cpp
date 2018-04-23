@@ -52,10 +52,7 @@ Widget::Widget(QWidget *parent) :
         ui->listWidget_Patients->addItem(BuildPatientNamespace(&patients->at(i)).c_str());
     }
 
-
     buildEmptyComboBox();
-
-
     connect(ui->date_comboBox, &QComboBox::currentTextChanged, [this](const QString& text){ this->filter_appointments(text); });
 
     ui->button_SelectDoctor->setEnabled(false);
@@ -310,24 +307,16 @@ void Widget::on_comboBox_activated(const QString &arg1)
 void Widget::list_doctor_time(int doctorId)
 {
     ui->listWidget_Appointments->clear();
-   // vector<Patient> *patients;
-   // vector<Appointment> *appointments;
-   // vector<Appointment> *v_distinct_appointments;
 
     DbHelper db(GLOBAL_CONST_db_path);
-    //if (db.isOpen())
-    //{
-        vector<Patient> *patients = { new vector<Patient>(*db.get_patients()) };
-        vector<Appointment> *appointments = { new vector<Appointment>(*db.get_appointments()) };
-        vector<Appointment>*v_distinct_appointments = { new vector<Appointment>(*db.get_distinct_appointments(doctorId)) };
-    //}
+    vector<Patient> *patients = { new vector<Patient>(*db.get_patients()) };
+    vector<Appointment> *appointments = { new vector<Appointment>(*db.get_appointments()) };
+    vector<Appointment>*v_distinct_appointments = { new vector<Appointment>(*db.get_distinct_appointments(doctorId)) };
 
-    // FLYTTE DETTE INN HVOR MAN VELGER DOKTOR
     for(unsigned int i = 0; i < v_distinct_appointments->size(); i++)
     {
         ui->date_comboBox->addItem(v_distinct_appointments->at(i).get_appointment_date());
     }
-    //********************
 
     for(unsigned int i=0; i < patients->size(); i++)
     {
@@ -337,7 +326,6 @@ void Widget::list_doctor_time(int doctorId)
             QString patientsSocial = QString::number(patients->at(i).getSocialNumber());
             QString patientsFirstName = patients->at(i).get_first_name();
             QString patientsLastName = patients->at(i).get_last_name();
-            //QString patientsName = BuildPatientNamespace(patients->at(i)).c_str();
             for(unsigned int j = 0; j < appointments->size(); j++)
             {
 
