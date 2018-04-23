@@ -151,7 +151,6 @@ void Widget::buildEmptyComboBox()
 }
 
 
-static string BuildDoctorNamespace(Doctor *doctor)
 string BuildDoctorNamespace(Doctor *doctor)
 {
     string doctorInfo;
@@ -161,7 +160,6 @@ string BuildDoctorNamespace(Doctor *doctor)
     return doctorInfo;
 }
 
-static string BuildPatientNamespace(Patient *patient)
 string BuildPatientNamespace(Patient *patient)
 {
     string patientInfo;
@@ -263,12 +261,7 @@ void Widget::on_button_SelectAppointment_clicked()
     add_appointment_note_dialog_->show();
 }
 
-<<<<<<< HEAD
-void Widget::on_listWidget_Doctors_itemClicked(QListWidgetItem *item)
-=======
-
 void Widget::on_listWidget_Doctors_itemClicked()
->>>>>>> Develop
 {
     ui->button_SelectDoctor->setEnabled(true);
     int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
