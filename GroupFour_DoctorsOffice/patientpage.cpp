@@ -66,6 +66,7 @@ void PatientPage::on_pushButton_clicked()
                 int employeeNr = db.get_doctors()->at(i).get_employee_number();
                 doctor = new Doctor(firstname, lastname, phoneNr, employeeNr);
                 add_appointment->set_time_vector(doctor->get_vector_time());
+                add_appointment->set_listTime(doctor->get_vector_time());
             }
         }
         qDebug() << "Database OK, managed to retrieve a single doctor";
@@ -74,12 +75,6 @@ void PatientPage::on_pushButton_clicked()
     {
         qDebug() << "Database not connected";
     }
-
-    for(unsigned int i = 0; i < doctor->get_vector_time()->size(); i++)
-    {
-        add_appointment->set_listTime(doctor->get_vector_time()->at(i).c_str());
-    }
-
 
     this->close();
     add_appointment->show();
@@ -91,4 +86,9 @@ void PatientPage::on_pushButton_3_pressed()
     patient_history = new PatientHistory(this);
 
     patient_history->show();
+}
+
+void PatientPage::on_pushButton_2_clicked()
+{
+    this->close();
 }

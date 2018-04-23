@@ -24,7 +24,7 @@ public:
     void set_patient_social_number(QString social_number);
     void set_doctorId(int id);
     void set_doctorName(QString name);
-    void set_listTime(QString time);
+    void set_listTime(vector<string> *vector_time);
     void set_time_vector(vector<string> *time);
 
 private slots:
