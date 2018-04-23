@@ -58,7 +58,7 @@ void PatientPage::on_pushButton_clicked()
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
-        for(int i = 0; i < db.get_doctors()->size(); i++) {
+        for(unsigned int i = 0; i < db.get_doctors()->size(); i++) {
             if(db.get_doctors()->at(i).get_employee_number() == doctor_id_) {
                 QString firstname = db.get_doctors()->at(i).get_first_name();
                 QString lastname = db.get_doctors()->at(i).get_last_name();
