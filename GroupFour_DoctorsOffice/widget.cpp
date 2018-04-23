@@ -15,6 +15,9 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+   // QPixmap pix("C:/Users/pontusskold/Desktop/medic_cross.png");
+    //ui->label_picture->setPixmap(pix);
+
     QDir dir(GLOBAL_CONST_app_data_path);
     if (!dir.exists())
         dir.mkpath(GLOBAL_CONST_app_data_path);
@@ -287,5 +290,4 @@ void Widget::list_doctor_time(int doctorId)
             }
         }
     }
-
 }

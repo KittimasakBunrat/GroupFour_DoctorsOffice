@@ -16,9 +16,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>300</x>
      <y>20</y>
-     <width>311</width>
+     <width>381</width>
      <height>51</height>
     </rect>
    </property>
@@ -31,7 +31,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Doctors Software Application</string>
+    <string>Doctors Office Software Application</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
@@ -229,6 +229,22 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_picture">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>51</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../../../Desktop/medic_cross.png</pixmap>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
