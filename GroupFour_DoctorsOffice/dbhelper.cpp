@@ -111,7 +111,9 @@ bool DbHelper::create_new_patient(Patient patient)
 bool DbHelper::update_patient(Patient patient, int id)
 {
     QSqlQuery query;
-    query.prepare("UPDATE patients SET social_number = ':social_number', first_name = ':first_name', last_name = ':last_name', phone_number = ':phone_number', doctor_id = ':doctor_id' WHERE id = ':id'");
+    query.prepare("UPDATE patients SET social_number = ':social_number', "
+                  "first_name = ':first_name', last_name = ':last_name', "
+                  "phone_number = ':phone_number', doctor_id = ':doctor_id' WHERE id = ':id'");
     query.bindValue(":social_number", patient.getSocialNumber());
     query.bindValue(":first_name", patient.get_first_name());
     query.bindValue(":last_name", patient.get_last_name());
@@ -165,9 +167,30 @@ bool DbHelper::create_new_appointment(Appointment appointment)
     return success;
 }
 
+vector<Appointment> *DbHelper::get_distinct_appointments(int employee_id)
+{
+    vector<Appointment> *v_appointments = new vector<Appointment>();
+    QSqlQuery query;
+    query.prepare("SELECT DISTINCT appointment_date FROM appointments WHERE doctor = :employee_id");
+    query.bindValue(":employee_id", employee_id);
+     query.exec();
+
+     while(query.next()) {
+         QString appointment_date = query.value(0).toString();
+         QString appointment_time = query.value(1).toString();
+         int doctor_id = query.value(2).toInt();
+         int patient_id = query.value(3).toInt();
+
+         Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id);
+
+         v_appointments->push_back(*appointment);
+     }
+     return v_appointments;
+}
+
 vector<Appointment> *DbHelper::get_appointments()
 {
-    QString sql = "SELECT * FROM appointments";
+    const QString sql { "SELECT * FROM appointments" };
     vector<Appointment> *v_appointments = new vector<Appointment>();
     QSqlQuery query(sql);
     query.exec();

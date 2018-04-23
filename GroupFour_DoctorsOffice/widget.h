@@ -29,23 +29,41 @@ public:
     ~Widget();
     void filter_doctors(QString filter_string);
     void filter_patients(QString filter_string);
+    //void filter_appointments(QString filter_string);
     void hide_all_doctors();
     void hide_all_patients();
+    void hide_all_appointments();
+    void buildEmptyComboBox();
 
 
 private slots:
     void on_button_SelectDoctor_clicked();
+
     void on_listWidget_Doctors_itemClicked(QListWidgetItem *item);
+
     void on_button_SelectPatient_clicked();
+
     void on_button_AddPatient_clicked();
+
     void on_button_AddDoctor_clicked();
+
     void refresh_lists();
+
+    void filter_appointments(const QString& filter_string);
+
     void on_filter_doctor_edit_textChanged(const QString &arg1);
+
     void on_filter_patient_edit_textChanged(const QString &arg1);
+
     void on_listWidget_Patients_itemClicked(QListWidgetItem *item);
-    void on_listWidget_DoctorTime_itemClicked(QListWidgetItem *item);
+
+    void on_listWidget_Appointments_itemClicked(QListWidgetItem *item);
+
     void on_button_SelectAppointment_clicked();
+
     void list_doctor_time(int doctorId);
+
+    void on_comboBox_activated(const QString &arg1);
 
 private:
     Ui::Widget *ui;
@@ -63,5 +81,6 @@ static string BuildDoctorNamespace(Doctor *doctor);
 static string BuildPatientNamespace(Patient *patient);
 static string BuildAppointmentNamespace(Appointment *appointment);
 static int getPatientSocialNumberForNoteDialog(QString displayedText);
+
 
 #endif // WIDGET_H

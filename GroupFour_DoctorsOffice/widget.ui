@@ -196,28 +196,21 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QLabel" name="search_label_appointm">
+           <widget class="QLabel" name="select_date_label">
             <property name="text">
-             <string>Search Appointment:  </string>
+             <string>Select Date:  </string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="filter_appointm_edit">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="placeholderText">
-             <string>dd/mm/yyyy</string>
-            </property>
-           </widget>
+           <widget class="QComboBox" name="date_comboBox"/>
           </item>
          </layout>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QListWidget" name="listWidget_DoctorTime"/>
+       <widget class="QListWidget" name="listWidget_Appointments"/>
       </item>
       <item>
        <widget class="QPushButton" name="button_SelectAppointment">
@@ -229,6 +222,22 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLineEdit" name="filter_appointm_edit">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>10</y>
+     <width>167</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>dd/mm/yyyy</string>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
