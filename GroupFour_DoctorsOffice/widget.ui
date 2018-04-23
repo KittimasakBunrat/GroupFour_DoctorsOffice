@@ -31,7 +31,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Doctors Software Application</string>
+    <string>Doctors Office Application</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">

@@ -28,6 +28,11 @@ signals:
 
 private:
     Ui::AddPatientDialog *ui;
+    vector<Doctor> *v_doctors_;
+    QString doctors_first_name_;
+    QString doctors_last_name_;
+    int employee_id_;
 };
 
+static void fill_combo_box(vector<Doctor> v_doctors);
 #endif // ADDPATIENTDIALOG_H
