@@ -9,7 +9,7 @@ Doctor::Doctor(QString first_name, QString last_name, int phone_number, int empl
     this->employee_number_ = employee_number;
     this->v_time_ = new vector<string>();
 
-    for(int i = 0; i<24; i++) {
+    for(int i = 8; i <= 16; i++) {
         string time;
         if(i < 10) {
             time = "0" + to_string(i) + ":00";
