@@ -273,10 +273,6 @@ void Widget::list_doctor_time(int doctorId)
 
     vector<Appointment> *appointments = new vector<Appointment>(*db.get_appointments());
 
-/*    for (unsigned int i = 0; i < appointments->size(); i++)
-    {
-    }
-*/
     for(unsigned int i=0; i < patients->size(); i++)
     {
         if(patients->at(i).getDoctorID() == doctorId)
@@ -288,11 +284,12 @@ void Widget::list_doctor_time(int doctorId)
             //QString patientsName = BuildPatientNamespace(patients->at(i)).c_str();
             for(unsigned int j = 0; j < appointments->size(); j++)
             {
+
                 if(appointments->at(j).get_patient_id() == patient_id)
                 {
                     QString date = appointments->at(j).get_appointment_date();
                     QString time = appointments->at(j).get_appointment_time();
-                    QString stringBinder = patientsSocial + " : " + patientsFirstName + " " + patientsLastName + " - " + date + " : " + time;
+                    QString stringBinder = date + " : " + time + " - " + patientsFirstName + " : " + patientsSocial;
                     ui->listWidget_DoctorTime->addItem(stringBinder);
                 }
             }
