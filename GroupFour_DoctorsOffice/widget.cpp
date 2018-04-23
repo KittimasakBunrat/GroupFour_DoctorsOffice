@@ -287,5 +287,4 @@ void Widget::list_doctor_time(int doctorId)
             }
         }
     }
-
 }

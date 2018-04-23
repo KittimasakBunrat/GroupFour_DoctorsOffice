@@ -6,6 +6,7 @@ AddAppointmentDialog::AddAppointmentDialog(QWidget *parent) :
     ui(new Ui::AddAppointmentDialog)
 {
     ui->setupUi(this);
+    this->time_vector = new vector<string>();
 }
 
 AddAppointmentDialog::~AddAppointmentDialog()
@@ -43,13 +44,19 @@ void AddAppointmentDialog::set_listTime(QString time)
     ui->listTime->addItem(time);
 }
 
+void AddAppointmentDialog::set_time_vector(vector<string> *time)
+{
+    this->time_vector = time;
+}
+
 void AddAppointmentDialog::on_buttonBox_accepted()
 {
 
-    QString appointment_time = ui->date->text() + " - " + ui->listTime->currentItem()->text();
+    QString appointment_date = ui->date->text();
+    QString appointment_time = ui->listTime->currentItem()->text();
     int doctorId = ui->doctorId->text().toInt();
 
-    Appointment *appointment = new Appointment(appointment_time, doctorId, this->patient_id_);
+    Appointment *appointment = new Appointment(appointment_date, appointment_time, doctorId, this->patient_id_);
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
@@ -62,4 +69,39 @@ void AddAppointmentDialog::on_buttonBox_accepted()
     {
         qDebug() << "Appointment add failed!";
     }
+}
+
+void AddAppointmentDialog::on_date_userDateChanged(const QDate &date)
+{
+
+    ui->listTime->clear();
+
+    for(unsigned int i = 0; i < time_vector->size(); i++)
+    {
+        ui->listTime->addItem(time_vector->at(i).c_str());
+    }
+
+    vector<Appointment> *v_appointment;
+    DbHelper db(GLOBAL_CONST_db_path);
+    if (db.isOpen())
+    {
+        v_appointment = db.get_appointments();
+        qDebug() << "Retrieved appointments";
+    }
+    else
+    {
+        qDebug() << "Appointment add failed!";
+    }
+
+    for (int i = 0; i < v_appointment->size(); ++i) {
+        if(ui->date->text() == v_appointment->at(i).get_appointment_date()
+                && ui->doctorId->text().toInt() == v_appointment->at(i).get_doctor_id()) {
+            for(int j = 0; j < ui->listTime->count(); j++) {
+                if(v_appointment->at(i).get_appointment_time() == ui->listTime->item(j)->text()) {
+                    delete ui->listTime->item(j);
+                }
+            }
+        }
+    }
+
 }

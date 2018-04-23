@@ -59,11 +59,12 @@ bool DbHelper::create_table(const QString& table_name)
     else if (table_name == "appointments")
     {
         query.prepare("CREATE TABLE appointments("
+                      "appointment_date TEXT NOT NULL,"
                       "appointment_time TEXT NOT NULL,"
                       "doctor INTEGER NOT NULL,"
                       "patient INTEGER NOT NULL,"
                       "notes TEXT,"
-                      "PRIMARY KEY (appointment_time, doctor, patient),"
+                      "PRIMARY KEY (appointment_date, doctor, patient),"
                       "FOREIGN KEY(doctor) REFERENCES doctors(employee_id),"
                       "FOREIGN KEY(patient) REFERENCES patients(id)"
                       ");");
@@ -145,8 +146,9 @@ bool DbHelper::create_new_appointment(Appointment appointment)
 {
     bool success { false };
     QSqlQuery query;
-    query.prepare("INSERT INTO appointments (appointment_time, doctor, patient)"
-                  "VALUES (:appointment_time, :doctor_id, :patient_id)");
+    query.prepare("INSERT INTO appointments (appointment_date, appointment_time, doctor, patient)"
+                  "VALUES (:appointment_date, :appointment_time, :doctor_id, :patient_id)");
+    query.bindValue(":appointment_date", appointment.get_appointment_date());
     query.bindValue(":appointment_time", appointment.get_appointment_time());
     query.bindValue(":doctor_id", appointment.get_doctor_id());
     query.bindValue(":patient_id", appointment.get_patient_id());
@@ -171,11 +173,12 @@ vector<Appointment> *DbHelper::get_appointments()
     query.exec();
 
     while(query.next()) {
-        QString appointment_time = query.value(0).toString();
-        int doctor_id = query.value(1).toInt();
-        int patient_id = query.value(2).toInt();
+        QString appointment_date = query.value(0).toString();
+        QString appointment_time = query.value(1).toString();
+        int doctor_id = query.value(2).toInt();
+        int patient_id = query.value(3).toInt();
 
-        Appointment *appointment = new Appointment(appointment_time, doctor_id, patient_id);
+        Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id);
 
         v_appointments->push_back(*appointment);
     }

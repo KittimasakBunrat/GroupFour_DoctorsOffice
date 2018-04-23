@@ -1,10 +1,16 @@
 #include "appointment.h"
 
-Appointment::Appointment(QString appointment_time, int doctor_id, int patient_id)
+Appointment::Appointment(QString appointment_date, QString appointment_time, int doctor_id, int patient_id)
 {
+    this->appointment_date_ = appointment_date;
     this->appointment_time_ = appointment_time;
     this->doctor_id_ = doctor_id;
     this->patient_id_ = patient_id;
+}
+
+QString Appointment::get_appointment_date()
+{
+    return this->appointment_date_;
 }
 
 QString Appointment::get_appointment_time()

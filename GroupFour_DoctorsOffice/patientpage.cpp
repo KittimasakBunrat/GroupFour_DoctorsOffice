@@ -52,21 +52,9 @@ void PatientPage::on_pushButton_clicked()
     add_appointment->set_patient_social_number(ui->edit_SocialNumber->text());
     add_appointment->set_doctorName(ui->edit_DoctorsName->text());
     add_appointment->set_doctorId(this->doctor_id_);
-    /*
-    patientPage->setFullName(fullName.c_str());
-    patientPage->setDoctorID(doctorID);
-    patientPage->setPatientID(patient_id);
-    patientPage->setDoctorName(doctorName.c_str());
-    patientPage->setPhoneNumber(phoneNumber);
-    patientPage->setSocialNumber(socialNumber);
-    */
-
-    /*
-    add_appointment->set_patientId(ui->edit_SocialNumber->text().toLongLong());
-    add_appointment->set_patientName(ui->edit_PatientName->text());
-    add_appointment->set_doctorId(ui->edit_DoctorID->text().toInt());*/
 
     Doctor *doctor;
+
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
@@ -77,6 +65,7 @@ void PatientPage::on_pushButton_clicked()
                 int phoneNr = db.get_doctors()->at(i).get_phone_number();
                 int employeeNr = db.get_doctors()->at(i).get_employee_number();
                 doctor = new Doctor(firstname, lastname, phoneNr, employeeNr);
+                add_appointment->set_time_vector(doctor->get_vector_time());
             }
         }
         qDebug() << "Database OK, managed to retrieve a single doctor";
@@ -85,8 +74,6 @@ void PatientPage::on_pushButton_clicked()
     {
         qDebug() << "Database not connected";
     }
-
-
 
     for(unsigned int i = 0; i < doctor->get_vector_time()->size(); i++)
     {
