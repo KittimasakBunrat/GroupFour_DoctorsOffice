@@ -36,5 +36,4 @@ void PatientHistory::populate_history_list_vector(vector<Appointment> *v_patient
 void PatientHistory::on_history_listWidget_itemClicked()
 {
     ui->appointment_notes_textBrowser->setText(v_patient_appointments_->at(ui->history_listWidget->currentRow()).get_appointment_note());
-    qDebug() << v_patient_appointments_->at(ui->history_listWidget->currentRow()).get_appointment_note();
 }
