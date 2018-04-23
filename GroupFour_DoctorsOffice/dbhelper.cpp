@@ -153,6 +153,35 @@ bool DbHelper::create_new_appointment(Appointment appointment)
     return success;
 }
 
+bool DbHelper::update_appointment(int doctorId, int patientId, QString appointmentTime, QString notes)
+{
+    bool success { false };
+    qDebug()<<"doctorid" <<doctorId;
+    qDebug()<<"patientid" <<patientId;
+    qDebug()<<"appointmentTime" <<appointmentTime;
+    qDebug()<<"notes"<<notes;
+
+    QSqlQuery query;
+    query.prepare("UPDATE appointments SET notes = :notes WHERE doctor = :doctorId AND patient = :patientId AND appointment_time = :appointmentTime");
+    query.bindValue(":doctorId", doctorId);
+    query.bindValue(":patientId", patientId);
+    query.bindValue(":appointmentTime", appointmentTime);
+    query.bindValue(":notes", notes);
+    query.exec();
+
+    if(!query.exec())
+    {
+        qDebug()<< "Failed to add note to appointment";
+        return success;
+    }
+    else
+    {
+        qDebug() << "Updated Notes in appointment";
+        qDebug() << query.lastError();
+    }
+    return success;
+}
+
 vector<Appointment> *DbHelper::get_distinct_appointments(int employee_id)
 {
     vector<Appointment> *v_appointments = new vector<Appointment>();

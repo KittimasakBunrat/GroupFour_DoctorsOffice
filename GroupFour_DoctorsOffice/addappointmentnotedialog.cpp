@@ -35,23 +35,20 @@ AddAppointmentNoteDialog::~AddAppointmentNoteDialog()
 
 void AddAppointmentNoteDialog::on_buttonBox_accepted()
 {
-    /*
-    QString appointment_time = ui->date->text() + " - " + ui->listTime->currentItem()->text();
-    int doctorId = ui->doctorId->text().toInt();
-    int patientId = ui->patientId->text().toInt();
-
-    Appointment *appointment = new Appointment(appointment_time, doctorId, patientId);
+    int doctorId = ui->doctorId_label->text().toInt();
+    int patientId = ui->patientId_label->text().toInt();
+    QString appointmentTime = ui->appointment_label->text();
+    QString notes = ui->note_textEdit->toPlainText();
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
-        db.create_new_appointment(*appointment);
-        QMessageBox::information(this,tr("Success"),tr("Appointment added"));
-        qDebug() << "Added new appointment";
+        db.update_appointment(doctorId, patientId, appointmentTime, notes);
+        QMessageBox::information(this,tr("Success"),tr("Note added"));
+        qDebug() << "Database OK";
     }
     else
     {
-        qDebug() << "Appointment add failed!";
+        qDebug() << "Database not connected";
     }
-    */
 }
