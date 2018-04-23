@@ -15,9 +15,6 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-   // QPixmap pix("C:/Users/pontusskold/Desktop/medic_cross.png");
-    //ui->label_picture->setPixmap(pix);
-
     QDir dir(GLOBAL_CONST_app_data_path);
     if (!dir.exists())
         dir.mkpath(GLOBAL_CONST_app_data_path);
@@ -139,7 +136,7 @@ static string BuildPatientNamespace(Patient *patient)
     return patientInfo;
 }
 
-string BuildAppointmentNamespace(Appointment *appointment)
+static string BuildAppointmentNamespace(Appointment *appointment)
 {
     string appointmentInfo;
     ostringstream bodyStream;
@@ -196,6 +193,11 @@ void Widget::on_button_SelectAppointment_clicked()
 {
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
 
+    int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    QString appointmentTime = appointments->at(ui->listWidget_DoctorTime->currentRow()).get_appointment_time();
+
+    add_appointment_note_dialog_->setDoctorInfo(doctorId);
+    add_appointment_note_dialog_->setAppointmentTime(appointmentTime);
     add_appointment_note_dialog_->show();
 }
 
@@ -283,8 +285,6 @@ void Widget::list_doctor_time(int doctorId)
             int patient_id = patients->at(i).getPatientId();
             QString patientsSocial = QString::number(patients->at(i).getSocialNumber());
             QString patientsFirstName = patients->at(i).get_first_name();
-            QString patientsLastName = patients->at(i).get_last_name();
-            //QString patientsName = BuildPatientNamespace(patients->at(i)).c_str();
             for(unsigned int j = 0; j < appointments->size(); j++)
             {
 

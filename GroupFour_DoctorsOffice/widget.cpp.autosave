@@ -136,7 +136,7 @@ static string BuildPatientNamespace(Patient *patient)
     return patientInfo;
 }
 
-string BuildAppointmentNamespace(Appointment *appointment)
+static string BuildAppointmentNamespace(Appointment *appointment)
 {
     string appointmentInfo;
     ostringstream bodyStream;
@@ -193,6 +193,11 @@ void Widget::on_button_SelectAppointment_clicked()
 {
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
 
+    int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
+    QString appointmentTime = appointments->at(ui->listWidget_DoctorTime->currentRow()).get_appointment_time();
+
+    add_appointment_note_dialog_->setDoctorInfo(doctorId);
+    add_appointment_note_dialog_->setAppointmentTime(appointmentTime);
     add_appointment_note_dialog_->show();
 }
 
