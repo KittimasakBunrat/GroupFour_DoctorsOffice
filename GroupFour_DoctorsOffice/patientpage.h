@@ -31,6 +31,10 @@ public:
      * @param parent
      */
     explicit PatientPage(QWidget *parent = 0);
+
+    /**
+     * @brief Destruktor for klassen
+     */
     ~PatientPage();
 
     /**
