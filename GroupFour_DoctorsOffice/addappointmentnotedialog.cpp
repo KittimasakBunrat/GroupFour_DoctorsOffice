@@ -45,10 +45,5 @@ void AddAppointmentNoteDialog::on_buttonBox_accepted()
     {
         db.update_appointment(doctorId, patientId, appointmentTime, notes);
         QMessageBox::information(this,tr("Success"),tr("Note added"));
-        qDebug() << "Database OK";
-    }
-    else
-    {
-        qDebug() << "Database not connected";
     }
 }

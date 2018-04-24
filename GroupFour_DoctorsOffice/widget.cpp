@@ -31,11 +31,6 @@ Widget::Widget(QWidget *parent) :
         db.create_table(doctors_table);
         db.create_table(patients_table);
         db.create_table(appointments_table);
-        qDebug() << "Database OK";
-    }
-    else
-    {
-        qDebug() << "Database not connected";
     }
 
     doctors = new vector<Doctor>(*db.get_doctors());
@@ -169,7 +164,7 @@ string BuildPatientNamespace(Patient *patient)
     return patientInfo;
 }
 
-static string BuildAppointmentNamespace(Appointment *appointment)
+string BuildAppointmentNamespace(Appointment *appointment)
 {
     string appointmentInfo;
     ostringstream bodyStream;
@@ -317,11 +312,6 @@ void Widget::refresh_lists()
         {
             ui->listWidget_Doctors->addItem(BuildDoctorNamespace(&doctors->at(i)).c_str());
         }
-        qDebug() << "Database OK";
-    }
-    else
-    {
-        qDebug() << "Database not connected";
     }
 }
 

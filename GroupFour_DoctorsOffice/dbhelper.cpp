@@ -8,12 +8,10 @@ DbHelper::DbHelper(const QString &path)
     if(!office_db.open())
     {
         //TODO: Legg inn melding om databaseconnection error her
-         qDebug() << "Error: connection with database fail";
     }
     else
     {
         //TODO: Legg inn melding om databaseconnection success her
-        qDebug() << "Database: connection ok";
     }
 }
 
@@ -98,12 +96,7 @@ bool DbHelper::create_new_patient(Patient patient)
 
     if(!query.exec())
     {
-        qDebug() << "Create patient error: " << query.lastError();
-        success = { false };
-    }
-    else
-    {
-        qDebug() << "Created patient";
+        return success;
     }
     return success;
 }
@@ -133,6 +126,7 @@ vector<Patient> *DbHelper::get_patients()
 bool DbHelper::create_new_appointment(Appointment appointment)
 {
     bool success { false };
+
     QSqlQuery query;
     query.prepare("INSERT INTO appointments (appointment_date, appointment_time, doctor, patient)"
                   "VALUES (:appointment_date, :appointment_time, :doctor_id, :patient_id)");
@@ -143,12 +137,7 @@ bool DbHelper::create_new_appointment(Appointment appointment)
 
     if(!query.exec())
     {
-        qDebug() << "Create appointment error: " << query.lastError();
         return success;
-    }
-    else
-    {
-        qDebug() << "Created new appointment";
     }
     return success;
 }
@@ -156,10 +145,6 @@ bool DbHelper::create_new_appointment(Appointment appointment)
 bool DbHelper::update_appointment(int doctorId, int patientId, QString appointmentTime, QString notes)
 {
     bool success { false };
-    qDebug()<<"doctorid" <<doctorId;
-    qDebug()<<"patientid" <<patientId;
-    qDebug()<<"appointmentTime" <<appointmentTime;
-    qDebug()<<"notes"<<notes;
 
     QSqlQuery query;
     query.prepare("UPDATE appointments SET notes = :notes WHERE doctor = :doctorId AND patient = :patientId AND appointment_time = :appointmentTime");
@@ -171,13 +156,7 @@ bool DbHelper::update_appointment(int doctorId, int patientId, QString appointme
 
     if(!query.exec())
     {
-        qDebug()<< "Failed to add note to appointment";
         return success;
-    }
-    else
-    {
-        qDebug() << "Updated Notes in appointment";
-        qDebug() << query.lastError();
     }
     return success;
 }
@@ -262,12 +241,7 @@ bool DbHelper::create_new_doctor(Doctor doctor)
 
     if(!query.exec())
     {
-        qDebug() << "Create doctor error: " << query.lastError();
-        success = { false };
-    }
-    else
-    {
-        qDebug() << "Created doctor";
+        return success;
     }
     return success;
 }

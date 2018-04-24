@@ -169,7 +169,7 @@ private:
  * @param doctor objeketet som vi er interessert i å bygge navnstreng utifra.
  * @return Returnerer en streng som inneholder fornavn og etternavn
  */
-static string BuildDoctorNamespace(Doctor *doctor);
+string BuildDoctorNamespace(Doctor *doctor);
 /**
  * @brief BuildPatientNamespace er en hjelpefunksjon som skal bygge ut en streng
  * for å få vist denne strengen videre i Patientdialog. Dette er for at brukeren skal kunne
@@ -177,10 +177,10 @@ static string BuildDoctorNamespace(Doctor *doctor);
  * @param patient objektet som vi er interessert i å bygge navnestreng utifra
  * @return Returnerer en streng som inneholder fornavn og etternavn
  */
-static string BuildPatientNamespace(Patient *patient);
+string BuildPatientNamespace(Patient *patient);
 
 //tenk over denne
-static string BuildAppointmentNamespace(Appointment *appointment);
+string BuildAppointmentNamespace(Appointment *appointment);
 
 /**
  * @brief getPatientSocialNumberForNoteDialog brukes til å få ut informasjon fra 
@@ -190,15 +190,7 @@ static string BuildAppointmentNamespace(Appointment *appointment);
  * @param displayedText er teksten som viser timebestilling.
  * @return returnerer socialnumber
  */
-static int getPatientSocialNumberForNoteDialog(QString displayedText);
+int getPatientSocialNumberForNoteDialog(QString displayedText);
 
-//duplikat?
-string BuildDoctorNamespace(Doctor *doctor);
-
-//duplikat?
-string BuildPatientNamespace(Patient *patient);
-
-//duplikat?
-string BuildAppointmentNamespace(Appointment *appointment);
 
 #endif // WIDGET_H

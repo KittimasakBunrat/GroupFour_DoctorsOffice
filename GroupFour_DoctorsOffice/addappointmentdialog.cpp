@@ -52,11 +52,6 @@ void AddAppointmentDialog::set_listTime(vector<string> *vector_time)
     if (db.isOpen())
     {
         v_appointment = db.get_appointments();
-        qDebug() << "Retrieved appointments";
-    }
-    else
-    {
-        qDebug() << "Appointment add failed!";
     }
 
     for (unsigned int i = 0; i < v_appointment->size(); ++i) {
@@ -89,11 +84,6 @@ void AddAppointmentDialog::on_buttonBox_accepted()
     {   
         db.create_new_appointment(*appointment);
         QMessageBox::information(this,tr("Success"),tr("Appointment added"));
-        qDebug() << "Added new appointment";
-    }
-    else
-    {
-        qDebug() << "Appointment add failed!";
     }
 }
 
@@ -112,11 +102,6 @@ void AddAppointmentDialog::on_date_userDateChanged()
     if (db.isOpen())
     {
         v_appointment = db.get_appointments();
-        qDebug() << "Retrieved appointments";
-    }
-    else
-    {
-        qDebug() << "Appointment add failed!";
     }
 
     for (unsigned int i = 0; i < v_appointment->size(); ++i) {

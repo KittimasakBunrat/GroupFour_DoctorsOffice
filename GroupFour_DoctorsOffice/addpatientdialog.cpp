@@ -63,11 +63,6 @@ void AddPatientDialog::on_add_patient_buttonBox_accepted()
             db.create_new_patient(*patient);
             emit this->accept_patient_button_clicked();
             QMessageBox::information(this,tr("Success"),tr("Patient added"));
-            qDebug() << "Database OK";
-        }
-        else
-        {
-            qDebug() << "Database not connected";
         }
     }
 }

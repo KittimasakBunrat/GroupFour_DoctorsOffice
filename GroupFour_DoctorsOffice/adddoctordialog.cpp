@@ -26,11 +26,6 @@ void AddDoctorDialog::on_add_doctor_buttonBox_accepted()
         db.create_new_doctor(*doctor);
         emit this->accept_doctor_button_clicked();
         QMessageBox::information(this,tr("Success"),tr("Doctor added"));
-        qDebug() << "Database OK";
-    }
-    else
-    {
-        qDebug() << "Database not connected";
     }
 }
 

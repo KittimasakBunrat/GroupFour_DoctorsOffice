@@ -69,11 +69,6 @@ void PatientPage::on_pushButton_clicked()
                 add_appointment->set_listTime(doctor->get_vector_time());
             }
         }
-        qDebug() << "Database OK, managed to retrieve a single doctor";
-    }
-    else
-    {
-        qDebug() << "Database not connected";
     }
 
     this->close();
