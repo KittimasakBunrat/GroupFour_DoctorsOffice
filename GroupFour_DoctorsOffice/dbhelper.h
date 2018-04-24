@@ -99,6 +99,13 @@ public:
      * @return returnerer en vektor bestående av timer til en pasient
      */
     vector<Appointment> *get_single_patients_appointments(int patient_id);
+
+    /**
+     * @brief get_single_doctors_appointments alle timer som registrert på en enkelt lege.
+     * @param doctor_id
+     * @return returnerer en vektor bestående av timer til en doktor
+     */
+    vector<Appointment> *get_single_doctors_appointments(int doctor_id);
     
     /**
      * @brief get_appointments henter ut alle appointments fra databaen. 

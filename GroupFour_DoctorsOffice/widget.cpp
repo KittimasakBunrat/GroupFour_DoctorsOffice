@@ -2,7 +2,6 @@
 #include "ui_widget.h"
 #include "doctor.h"
 #include <iostream>
-//ikke disse
 #include <QMessageBox>
 #include <QSqlQuery>
 #include <QDebug>
@@ -231,15 +230,15 @@ void Widget::on_button_SelectPatient_clicked()
 void Widget::on_button_SelectAppointment_clicked()
 {
     add_appointment_note_dialog_ = new AddAppointmentNoteDialog(this);
+    int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
         delete appointments;
-        appointments = new vector<Appointment>(*db.get_appointments());
+        appointments = new vector<Appointment>(*db.get_single_doctors_appointments(doctorId));
     }
 
-    int doctorId = doctors->at(ui->listWidget_Doctors->currentRow()).get_employee_number();
     QString appointmentTime = appointments->at(ui->listWidget_Appointments->currentRow()).get_appointment_time();
     QString appointmentDate = appointments->at(ui->listWidget_Appointments->currentRow()).get_appointment_date();
     QString fullString = ui->listWidget_Appointments->currentItem()->text();
@@ -337,7 +336,7 @@ void Widget::list_doctor_time(int doctorId)
 
     DbHelper db(GLOBAL_CONST_db_path);
     vector<Patient> *patients = { new vector<Patient>(*db.get_patients()) };
-    vector<Appointment> *appointments = { new vector<Appointment>(*db.get_appointments()) };
+    vector<Appointment> *appointments = { new vector<Appointment>(*db.get_single_doctors_appointments(doctorId)) };
     vector<Appointment>*v_distinct_appointments = { new vector<Appointment>(*db.get_distinct_appointments(doctorId)) };
 
     for(unsigned int i = 0; i < v_distinct_appointments->size(); i++)
@@ -345,20 +344,35 @@ void Widget::list_doctor_time(int doctorId)
         ui->date_comboBox->addItem(v_distinct_appointments->at(i).get_appointment_date());
     }
 
-    for(unsigned int i=0; i < patients->size(); i++)
+
+    for(unsigned int i = 0; i < appointments->size(); i++)
+    {
+        for(unsigned int j = 0; j < patients->size(); j++)
+        {
+            if(patients->at(j).getPatientId() == appointments->at(i).get_patient_id())
+            {
+                QString date = appointments->at(i).get_appointment_date();
+                QString time = appointments->at(i).get_appointment_time();
+                QString patientsFirstName = patients->at(j).get_first_name();
+                QString patientsSocial = QString::number(patients->at(j).getSocialNumber());
+                QString stringBinder = date + " : " + time + " - " + patientsFirstName + " (" + patientsSocial + ") ";
+                ui->listWidget_Appointments->addItem(stringBinder);
+            }
+        }
+    }
+
+/*    for(unsigned int i=0; i < patients->size(); i++)
     {
         if(patients->at(i).getDoctorID() == doctorId)
         {
             int patient_id = patients->at(i).getPatientId();
             QString patientsSocial = QString::number(patients->at(i).getSocialNumber());
             QString patientsFirstName = patients->at(i).get_first_name();
-            QString patientsLastName = patients->at(i).get_last_name();
+
             for(unsigned int j = 0; j < appointments->size(); j++)
             {
-
                 if(appointments->at(j).get_patient_id() == patient_id)
                 {
-
                     QString date = appointments->at(j).get_appointment_date();
                     QString time = appointments->at(j).get_appointment_time();
                     QString stringBinder = date + " : " + time + " - " + patientsFirstName + " (" + patientsSocial + ") ";
@@ -366,6 +380,6 @@ void Widget::list_doctor_time(int doctorId)
                 }
             }
         }
-    }
+    }*/
 }
 

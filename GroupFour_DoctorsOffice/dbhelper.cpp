@@ -145,7 +145,6 @@ bool DbHelper::create_new_appointment(Appointment appointment)
 bool DbHelper::update_appointment(int doctorId, int patientId, QString appointmentTime, QString notes)
 {
     bool success { false };
-
     QSqlQuery query;
     query.prepare("UPDATE appointments SET notes = :notes WHERE doctor = :doctorId AND patient = :patientId AND appointment_time = :appointmentTime");
     query.bindValue(":doctorId", doctorId);
@@ -189,6 +188,28 @@ vector<Appointment> *DbHelper::get_single_patients_appointments(int patient_id)
     QSqlQuery query;
     query.prepare("SELECT * FROM appointments WHERE patient = :patient_id");
     query.bindValue(":patient_id", patient_id);
+     query.exec();
+
+     while(query.next()) {
+         QString appointment_date = query.value(0).toString();
+         QString appointment_time = query.value(1).toString();
+         int doctor_id = query.value(2).toInt();
+         int patient_id = query.value(3).toInt();
+         QString appointment_notes = query.value(4).toString();
+
+
+         Appointment *appointment = new Appointment(appointment_date, appointment_time, doctor_id, patient_id, appointment_notes);
+         v_appointments->push_back(*appointment);
+     }
+     return v_appointments;
+}
+
+vector<Appointment> *DbHelper::get_single_doctors_appointments(int doctor_id)
+{
+    vector<Appointment> *v_appointments = new vector<Appointment>();
+    QSqlQuery query;
+    query.prepare("SELECT * FROM appointments WHERE doctor = :doctor_id");
+    query.bindValue(":doctor_id", doctor_id);
      query.exec();
 
      while(query.next()) {
