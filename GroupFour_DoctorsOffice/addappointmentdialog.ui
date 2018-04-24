@@ -75,10 +75,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>140</y>
-     <width>261</width>
-     <height>101</height>
+     <width>231</width>
+     <height>71</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -160,10 +160,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>261</width>
-     <height>101</height>
+     <x>30</x>
+     <y>60</y>
+     <width>231</width>
+     <height>71</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -243,19 +243,21 @@
    </layout>
   </widget>
   <widget class="QLabel" name="label">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>40</y>
-     <width>91</width>
-     <height>16</height>
+     <x>160</x>
+     <y>20</y>
+     <width>231</width>
+     <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Note: mm/dd/yyyy</string>
+    <string>Register New Appointment</string>
    </property>
   </widget>
  </widget>
