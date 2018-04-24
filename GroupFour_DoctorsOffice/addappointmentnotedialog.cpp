@@ -37,13 +37,13 @@ void AddAppointmentNoteDialog::on_buttonBox_accepted()
 {
     int doctorId = ui->doctorId_label->text().toInt();
     int patientId = ui->patientId_label->text().toInt();
-    QString appointmentTime = ui->appointment_label->text();
+    QString appointmentDate = ui->appointment_label_2->text();
     QString notes = ui->note_textEdit->toPlainText();
 
     DbHelper db(GLOBAL_CONST_db_path);
     if (db.isOpen())
     {
-        db.update_appointment(doctorId, patientId, appointmentTime, notes);
+        db.update_appointment(doctorId, patientId, appointmentDate, notes);
         QMessageBox::information(this,tr("Success"),tr("Note added"));
     }
 }

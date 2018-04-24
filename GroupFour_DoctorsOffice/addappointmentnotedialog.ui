@@ -92,7 +92,7 @@
     </font>
    </property>
    <property name="text">
-    <string>AppointmentTime</string>
+    <string>AppointmentDate</string>
    </property>
   </widget>
   <widget class="QLabel" name="appointment_label">

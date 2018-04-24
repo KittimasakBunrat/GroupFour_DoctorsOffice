@@ -142,14 +142,14 @@ bool DbHelper::create_new_appointment(Appointment appointment)
     return success;
 }
 
-bool DbHelper::update_appointment(int doctorId, int patientId, QString appointmentTime, QString notes)
+bool DbHelper::update_appointment(int doctorId, int patientId, QString appointmentDate, QString notes)
 {
     bool success { false };
     QSqlQuery query;
-    query.prepare("UPDATE appointments SET notes = :notes WHERE doctor = :doctorId AND patient = :patientId AND appointment_time = :appointmentTime");
+    query.prepare("UPDATE appointments SET notes = :notes WHERE doctor = :doctorId AND patient = :patientId AND appointment_date = :appointmentDate");
     query.bindValue(":doctorId", doctorId);
     query.bindValue(":patientId", patientId);
-    query.bindValue(":appointmentTime", appointmentTime);
+    query.bindValue(":appointmentDate", appointmentDate);
     query.bindValue(":notes", notes);
     query.exec();
 
