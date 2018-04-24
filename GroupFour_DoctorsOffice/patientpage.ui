@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>50</x>
      <y>240</y>
      <width>111</width>
      <height>24</height>
@@ -48,7 +48,7 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>270</x>
      <y>240</y>
      <width>80</width>
      <height>24</height>
@@ -79,7 +79,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Patient Name: </string>
+         <string>Patient's Name: </string>
         </property>
        </widget>
       </item>
@@ -118,7 +118,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Phone Number</string>
+         <string>Phone Number:</string>
         </property>
        </widget>
       </item>
@@ -126,6 +126,9 @@
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>10</number>
+      </property>
       <item>
        <widget class="QLineEdit" name="edit_PatientName">
         <property name="enabled">
@@ -161,7 +164,7 @@
   <widget class="QPushButton" name="open_patient_history">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>170</x>
      <y>240</y>
      <width>91</width>
      <height>24</height>
