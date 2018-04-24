@@ -14,38 +14,39 @@ class Doctor : public Person
 public:
 
     /**
-     * @brief Konstruktør til Doctor som tar imot variablerne nedanfør
-     * @param first_name
-     * @param last_name
-     * @param phone_number
-     * @param employee_number
+     * @brief Konstruktør til Doctor
+     * @param first_name er fornavnet til doktoren
+     * @param last_name er etternavnet til doktoren
+     * @param phone_number er telefonNR til doktoren
+     * @param employee_number er employeenr/id til en doktor.
      */
 
     Doctor(QString first_name, QString last_name, int phone_number, int employee_number);
 
     /**
-     * @brief Konstruktør til Doctor
+     * @brief Standardkonstrukør til Doctor.
      */
 
     Doctor();
 
     /**
-     * @brief get_employee_number
+     * @brief get_employee_number er en get metode for å hente inn employeenumber til en doktor.
      * @return returnerer employee_number
      */
 
     int get_employee_number();
 
     /**
-     * @brief get_vector_patients
-     * @return returnerer v_patients_
+     * @brief get_vector_patients er en get metode for å hente inn en vektor bestående av pasienter, som
+     * er tilknyttet til doktoren. 
+     * @return returnerer en vektor bestående av pasienter
      */
 
     vector<Patient> get_vector_patients();
 
     /**
-     * @brief get_vector_time
-     * @return returnerer v_time_
+     * @brief get_vector_time er en get metode for å hente inn vektor bestående av tid.
+     * @return returnerer vektor bestående av tid
      */
 
     vector<string> *get_vector_time();

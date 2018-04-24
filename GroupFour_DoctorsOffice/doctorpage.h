@@ -28,6 +28,10 @@ public:
      */
 
     explicit DoctorPage(QWidget *parent = 0);
+
+    /**
+     * @brief Destruktor for klassen.
+     */
     ~DoctorPage();
 
     /**
