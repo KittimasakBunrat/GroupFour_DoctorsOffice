@@ -22,31 +22,31 @@ public:
 
     /**
      * @brief Funksjon for å hente appointment dato fra objektet.
-     * @return
+     * @return appointment_date i string format.
      */
     QString get_appointment_date();
 
     /**
      * @brief Funksjon for å hente appointment tid fra objektet.
-     * @return
+     * @return appointment_time i string format.
      */
     QString get_appointment_time();
 
     /**
      * @brief Funksjon for å hente notat fra objektet.
-     * @return
+     * @return notater i string format.
      */
     QString get_appointment_note();
 
     /**
      * @brief Funksjon for å hente doktor id.
-     * @return
+     * @return doctor id som int.
      */
     int get_doctor_id();
 
     /**
      * @brief Funksjon for å hente pasient id.
-     * @return
+     * @return pasient id som int.
      */
     int get_patient_id();
 
