@@ -10,7 +10,8 @@
 namespace Ui {
 
 /**
- *@brief Dette er en klasse for at oprette et PatientPage objekt
+ *@brief Dette er hovedklassen for patientpage. Funksjonene under vil beskrive 
+ * hvordan pasientpagen vil bli opprettet, og hva som blant annet blir vist frem.
  */
 
 class PatientPage;
@@ -25,55 +26,44 @@ class PatientPage : public QDialog
     Q_OBJECT
 
 public:
-    
     /**
-     * @brief Konstruktør til PatientPage
-     * @param tar imot parent som er et QWidget objekt
+     * @brief PatientPage konstruktør
+     * @param parent
      */
-    
     explicit PatientPage(QWidget *parent = 0);
     ~PatientPage();
 
     /**
-     * @brief setFullName
-     * @param tar imot name variabel
+     * @brief setFullName er en Set metode for å sette fulle navnstreng for personen 
+     * som blir vist frem i vinduet
+     * @param tar imot navn som kommer fra personen vi ønsker å vise informasjon om.
      */
-    
     void setFullName(QString name);
-    
     /**
-     * @brief setDoctorID
-     * @param tar imot doctorID variabel
+     * @brief setDoctorID er en set metode for å sette doktoren sin id. En pasient har en 
+     * doktor tilknyttet til seg. 
+     * @param tar imot en doktor id, som er id til doktoren pasienten har.
      */
-    
     void setDoctorID(int doctorID);
-    
     /**
-     * @brief setPatientID
-     * @param tar imot patient_id variabel
+     * @brief setPatientID er en set metode for å sette pasienten sin id.
+     * @param tar imot id til pasienten.
      */
-    
     void setPatientID(int patient_id);
-    
     /**
-     * @brief setDoctorName
-     * @param tar imot doctorName variabel
+     * @brief setDoctorName er en set metode for å sette doktoren sitt navn.
+     * @param tar imot navnet til doktoren.
      */
-    
     void setDoctorName(QString doctorName);
-    
     /**
-     * @brief setPhoneNumber
-     * @param tar imot phoneNumber variabel
+     * @brief setPhoneNumber er en set metode for å sette telefonNR til pasienten. 
+     * @param tar emot phoneNumber
      */
-    
     void setPhoneNumber(int phoneNumber);
-    
     /**
-     * @brief setSocialNumber
-     * @param tar imot socialNumber variabel
+     * @brief setSocialNumber er en set metode for å sette social number til pasienten.
+     * @param tar imot socialNumber fra en valgt pasient.
      */
-    
     void setSocialNumber(long long socialNumber);
 
 private slots:
