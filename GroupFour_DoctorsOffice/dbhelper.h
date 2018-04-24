@@ -32,6 +32,10 @@ public:
      */
 
     DbHelper(const QString& path);
+
+    /**
+     * @brief Destruktor for klassen.
+     */
     ~DbHelper();
 
     /**
