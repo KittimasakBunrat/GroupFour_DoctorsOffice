@@ -17,11 +17,27 @@
 
 using namespace std;
 
+/**
+ * @brief Dette er klasse for å opprette et DbHelper objekt.
+ */
+
 class DbHelper
 {
+
 public:
+
+    /**
+     * @brief Konstruktør til DbHelper
+     * @param path
+     */
+
     DbHelper(const QString& path);
     ~DbHelper();
+
+    /**
+     * @brief isOpen
+     * @return
+     */
 
     bool isOpen() const;
     bool create_table(const QString& table_name);

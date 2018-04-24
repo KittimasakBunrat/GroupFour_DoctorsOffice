@@ -7,13 +7,13 @@
 namespace Ui {
 
 /**
- *@brief Dette er en klasse for at oprette et DoctorPage objekt.
+ *@brief Dette er en klasse for at oprette et DoctorPage objekt
  */
 
 class DoctorPage;
 }
 /**
- * @brief DoctorPage klassen
+ * @brief DoctorPage klassen som extender QDialog klassen
  */
 class DoctorPage : public QDialog
 {
@@ -23,18 +23,31 @@ public:
 
     /**
      * @brief Konstruktøren til DoctorPage
-     * @param parent
+     * @param tar imot parent som er et QWidget objekt
      */
+
     explicit DoctorPage(QWidget *parent = 0);
     ~DoctorPage();
 
     /**
      * @brief setFullName
-     * @param name
+     * @param setter name variabel
      */
 
     void setFullName(QString name);
+
+    /**
+     * @brief setPhoneNumber
+     * @param setter phoneNumber variabel
+     */
+
     void setPhoneNumber(int phoneNumber);
+
+    /**
+     * @brief setEmployeeNumber
+     * @param setter employeeNumber variabel
+     */
+
     void setEmployeeNumber(int employeeNumber);
 
 

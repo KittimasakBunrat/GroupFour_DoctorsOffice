@@ -5,15 +5,16 @@
 using namespace std;
 
 /**
- * @brief Dette er en klasse for at upprette et Patient objekt
+ * @brief Dette er en klasse for at upprette et Patient objekt. Den arver fra Person klassen.
  */
+
 class Patient : public Person
 {
 
 public:
 
     /**
-     * @brief Konstruktør til Patient
+     * @brief Konstruktør til Patient, tar imot variablerne nedanfør.
      * @param patient_id
      * @param social_number
      * @param first_name

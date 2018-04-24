@@ -25,42 +25,55 @@ class PatientPage : public QDialog
     Q_OBJECT
 
 public:
+    
     /**
-     * @brief PatientPage konstruktør
-     * @param parent
+     * @brief Konstruktør til PatientPage
+     * @param tar imot parent som er et QWidget objekt
      */
+    
     explicit PatientPage(QWidget *parent = 0);
     ~PatientPage();
 
     /**
      * @brief setFullName
-     * @param tar emot name
+     * @param tar imot name variabel
      */
+    
     void setFullName(QString name);
+    
     /**
      * @brief setDoctorID
-     * @param tar emot doctorID
+     * @param tar imot doctorID variabel
      */
+    
     void setDoctorID(int doctorID);
+    
     /**
      * @brief setPatientID
-     * @param tar emot patient_id
+     * @param tar imot patient_id variabel
      */
+    
     void setPatientID(int patient_id);
+    
     /**
      * @brief setDoctorName
-     * @param tar emot doctorName
+     * @param tar imot doctorName variabel
      */
+    
     void setDoctorName(QString doctorName);
+    
     /**
      * @brief setPhoneNumber
-     * @param tar emot phoneNumber
+     * @param tar imot phoneNumber variabel
      */
+    
     void setPhoneNumber(int phoneNumber);
+    
     /**
      * @brief setSocialNumber
-     * @param tar emot socialNumber
+     * @param tar imot socialNumber variabel
      */
+    
     void setSocialNumber(long long socialNumber);
 
 private slots:
