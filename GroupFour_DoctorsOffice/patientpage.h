@@ -10,7 +10,8 @@
 namespace Ui {
 
 /**
- *@brief Dette er en klasse for at oprette et PatientPage objekt
+ *@brief Dette er hovedklassen for patientpage. Funksjonene under vil beskrive 
+ * hvordan pasientpagen vil bli opprettet, og hva som blant annet blir vist frem.
  */
 
 class PatientPage;
@@ -33,33 +34,35 @@ public:
     ~PatientPage();
 
     /**
-     * @brief setFullName
-     * @param tar emot name
+     * @brief setFullName er en Set metode for å sette fulle navnstreng for personen 
+     * som blir vist frem i vinduet
+     * @param tar imot navn som kommer fra personen vi ønsker å vise informasjon om.
      */
     void setFullName(QString name);
     /**
-     * @brief setDoctorID
-     * @param tar emot doctorID
+     * @brief setDoctorID er en set metode for å sette doktoren sin id. En pasient har en 
+     * doktor tilknyttet til seg. 
+     * @param tar imot en doktor id, som er id til doktoren pasienten har.
      */
     void setDoctorID(int doctorID);
     /**
-     * @brief setPatientID
-     * @param tar emot patient_id
+     * @brief setPatientID er en set metode for å sette pasienten sin id.
+     * @param tar imot id til pasienten.
      */
     void setPatientID(int patient_id);
     /**
-     * @brief setDoctorName
-     * @param tar emot doctorName
+     * @brief setDoctorName er en set metode for å sette doktoren sitt navn.
+     * @param tar imot navnet til doktoren.
      */
     void setDoctorName(QString doctorName);
     /**
-     * @brief setPhoneNumber
+     * @brief setPhoneNumber er en set metode for å sette telefonNR til pasienten. 
      * @param tar emot phoneNumber
      */
     void setPhoneNumber(int phoneNumber);
     /**
-     * @brief setSocialNumber
-     * @param tar emot socialNumber
+     * @brief setSocialNumber er en set metode for å sette social number til pasienten.
+     * @param tar imot socialNumber fra en valgt pasient.
      */
     void setSocialNumber(long long socialNumber);
 

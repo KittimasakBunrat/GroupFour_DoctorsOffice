@@ -15,32 +15,32 @@ public:
 
     /**
      * @brief Konstruktør til Patient, tar imot variablerne nedanfør.
-     * @param patient_id
-     * @param social_number
-     * @param first_name
-     * @param last_name
-     * @param phone_number
-     * @param doctor_id_
+     * @param patient_id er ID til en pasient. 
+     * @param social_number er social number til pasienten.
+     * @param first_name er fornavnet til pasienten.
+     * @param last_name er etternavnet til pasienten
+     * @param phone_number er telefonNR til pasienten
+     * @param doctor_id_ er doktorID til en pasient.
      */
 
     Patient(int patient_id, long long social_number, QString first_name, QString last_name, int phone_number, int doctor_id_);
 
     /**
-     * @brief getDoctorID
+     * @brief getDoctorID er en get metode for å hente inn ID til Doktoren som pasienten har som fastlege. 
      * @return retunerer doctor_id_
      */
 
     int getDoctorID();
 
     /**
-     * @brief getSocialNumber
+     * @brief getSocialNumber er en get metode for å hente inn socialNR til en pasient.
      * @return returnerer social_number_
      */
 
     long long getSocialNumber();
 
     /**
-     * @brief getPatientId
+     * @brief getPatientId er en get metode for å hente inn ID til en pasient.
      * @return returnerer patient_id_
      */
 

@@ -76,7 +76,14 @@ public:
     void set_time_vector(vector<string> *time);
 
 private slots:
+    /**
+     * @brief Når godkjent knappen blir trykket, blir en appointment objekt opprettet og lagret til database.
+     */
     void on_buttonBox_accepted();
+
+    /**
+     * @brief Når Dato blir endret, så sjekkes det om det finnes eksisterende tidspunkter.
+     */
     void on_date_userDateChanged();
 
 private:

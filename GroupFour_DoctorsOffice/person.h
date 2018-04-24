@@ -27,18 +27,21 @@ public:
      * @brief get_first_name er en getter for firstname
      * @return returnerer firstname
      */
+    
     QString get_first_name();
     
     /**
      * @brief get_last_name er en getter for lastname
      * @return returnerer lastname
      */
+    
     QString get_last_name();
     
     /**
      * @brief get_phone_number er en getter for phone number
      * @return returnerer phonenumber
      */
+    
     int get_phone_number();
 
 protected:
