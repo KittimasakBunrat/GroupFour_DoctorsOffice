@@ -338,7 +338,6 @@ void Widget::on_filter_patient_edit_textChanged(const QString &arg1)
 
 void Widget::on_comboBox_activated(const QString &arg1)
 {
-    qDebug() << arg1;
     filter_appointments(arg1);
 }
 
