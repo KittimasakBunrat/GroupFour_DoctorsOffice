@@ -1,0 +1,75 @@
+#ifndef DBHELPER_H
+#define DBHELPER_H
+
+
+#include <string>
+#include <iostream>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlRecord>
+#include <QDebug>
+#include "doctor.h"
+#include "patient.h"
+#include "appointment.h"
+#include <vector>
+#include <QSqlQuery>
+
+using namespace std;
+
+/**
+ * @brief Dette er klasse for å opprette et DbHelper objekt.
+ */
+
+class DbHelper
+{
+
+public:
+
+    /**
+     * @brief Konstruktør til DbHelper
+     * @param tar imot path som er et QString objekt
+     */
+
+    DbHelper(const QString& path);
+    ~DbHelper();
+
+    /**
+     * @brief isOpen
+     * @return returnerer en bool
+     */
+
+    bool isOpen() const;
+    
+    /**
+     * @brief create_table
+     * @param tar imot table_name som er et QString objekt
+     * @return returnerer en bool
+     */
+    
+    bool create_table(const QString& table_name);
+    
+    /**
+     * @brief create_new_patient
+     * @param patient
+     * @return 
+     */
+
+    bool create_new_patient(Patient patient);
+    vector<Patient> *get_patients();
+
+    bool create_new_appointment(Appointment appointment);
+    bool update_appointment(int doctorId, int patientId, QString appointmentTime, QString notes);
+    vector<Appointment> *get_distinct_appointments(int employee_id);
+    vector<Appointment> *get_single_patients_appointments(int patient_id);
+    vector<Appointment> *get_appointments();
+
+    bool create_new_doctor(Doctor doctor);
+    vector<Doctor> *get_doctors();
+
+
+private:
+    QSqlDatabase office_db;
+};
+
+#endif // DBHELPER_H
