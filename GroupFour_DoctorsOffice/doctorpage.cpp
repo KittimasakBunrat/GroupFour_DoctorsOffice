@@ -20,16 +20,15 @@ DoctorPage::~DoctorPage()
 
 void DoctorPage::setFullName(QString name)
 {
-    ui->label_DoctorName->setText(name);
+    ui->edit_DoctorName->setText(name);
 }
 
 void DoctorPage::setPhoneNumber(int phoneNumber)
 {
-    ui->label_PhoneNumber->setText(QString::number(phoneNumber));
+    ui->edit_PhoneNumber->setText(QString::number(phoneNumber));
 }
-
 
 void DoctorPage::setEmployeeNumber(int employeeNumber)
 {
-    ui->label_EmployeeNumber->setText(QString::number(employeeNumber));
+    ui->edit_EmployeeNumber->setText(QString::number(employeeNumber));
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>380</width>
+    <height>314</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="add_patient_buttonBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>240</y>
+     <x>-10</x>
+     <y>260</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -29,11 +29,11 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>40</y>
+     <x>50</x>
+     <y>70</y>
      <width>281</width>
      <height>171</height>
     </rect>
@@ -80,6 +80,9 @@
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>12</number>
+      </property>
       <item>
        <widget class="QLineEdit" name="first_name_edit"/>
       </item>
@@ -98,6 +101,24 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>20</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Register New Patient</string>
+   </property>
   </widget>
  </widget>
  <tabstops>
